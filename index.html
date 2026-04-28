@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeria mieszkania</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1f2430;
+      --text: #f5f7fb;
+      --muted: #a8b0bf;
+      --accent: #6ee7b7;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(110,231,183,.12), transparent 25%),
+        linear-gradient(180deg, #0b0d12 0%, #121621 100%);
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--maxw));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 56px 0 28px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: stretch;
+    }
+
+    .card {
+      background: rgba(23,26,33,.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .intro {
+      padding: 32px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(110,231,183,.1);
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0 0 18px;
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      color: #d8dfeb;
+      font-size: 14px;
+    }
+
+    .hero-photo {
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .hero-photo img,
+    .gallery a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    main {
+      padding: 10px 0 64px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 14px 0 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .gallery a {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      min-height: 220px;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery a::after {
+      content: "Powiększ";
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: white;
+      background: rgba(0,0,0,.48);
+      border: 1px solid rgba(255,255,255,.16);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .2s ease;
+    }
+
+    .gallery a:hover::after,
+    .gallery a:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery a img {
+      transition: transform .35s ease, filter .35s ease;
+      filter: saturate(1.02);
+    }
+
+    .gallery a:hover img,
+    .gallery a:focus-visible img {
+      transform: scale(1.03);
+      filter: saturate(1.08);
+    }
+
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+
+    footer {
+      padding: 10px 0 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(7, 10, 16, .82);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+    }
+
+    .lightbox.open { display: grid; }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(1100px, 100%);
+      max-height: 90vh;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #0b0d12;
+      box-shadow: var(--shadow);
+    }
+
+    .close,
+    .nav-btn {
+      position: absolute;
+      border: 0;
+      background: rgba(17, 20, 27, .82);
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .close {
+      top: 14px;
+      right: 14px;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .nav-btn {
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+    }
+
+    .prev { left: 14px; }
+    .next { right: 14px; }
+
+    .caption {
+      margin-top: 12px;
+      color: #d5dceb;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .span-8, .span-6, .span-4 { grid-column: span 1; }
+      .gallery a { min-height: 180px; }
+      .intro { padding: 24px; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      .gallery { grid-template-columns: 1fr; }
+      header { padding-top: 28px; }
+      .lead { font-size: 16px; }
+      .close { top: 8px; right: 8px; }
+      .prev { left: 8px; }
+      .next { right: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <section class="hero">
+        <div class="card intro">
+          <span class="eyebrow">Oferta mieszkania</span>
+          <h1>Nowoczesna galeria mieszkania</h1>
+          <p class="lead">
+            Minimalny szablon w jednym pliku HTML do szybkiego podmiany zdjęć i wystawienia na GitHub Pages.
+            Kliknij dowolne zdjęcie, aby otworzyć powiększenie.
+          </p>
+          <div class="meta">
+            <span>1 plik HTML</span>
+            <span>GitHub Pages</span>
+            <span>Lightbox</span>
+            <span>Responsywny układ</span>
+          </div>
+        </div>
+        <div class="card hero-photo">
+          <img src="https://picsum.photos/id/1068/1200/900" alt="Zdjęcie główne mieszkania" />
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <h2>Galeria zdjęć</h2>
+          </div>
+          <p>
+            Zamień poniższe adresy obrazów na własne zdjęcia, np. salon, kuchnia, sypialnia, łazienka i balkon.
+          </p>
+        </div>
+
+        <div class="gallery" id="gallery">
+          <a href="https://picsum.photos/id/1048/1800/1200" class="span-8" data-caption="Salon z częścią wypoczynkową">
+            <img src="https://picsum.photos/id/1048/1200/800" alt="Salon z częścią wypoczynkową" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1067/1800/1200" class="span-4" data-caption="Kuchnia i jadalnia">
+            <img src="https://picsum.photos/id/1067/900/1200" alt="Kuchnia i jadalnia" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1031/1800/1200" class="span-4" data-caption="Sypialnia">
+            <img src="https://picsum.photos/id/1031/900/900" alt="Sypialnia" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1018/1800/1200" class="span-4" data-caption="Łazienka">
+            <img src="https://picsum.photos/id/1018/900/900" alt="Łazienka" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1015/1800/1200" class="span-4" data-caption="Balkon i widok">
+            <img src="https://picsum.photos/id/1015/900/900" alt="Balkon i widok" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1040/1800/1200" class="span-6" data-caption="Drugi pokój">
+            <img src="https://picsum.photos/id/1040/1200/900" alt="Drugi pokój" loading="lazy" />
+          </a>
+          <a href="https://picsum.photos/id/1025/1800/1200" class="span-6" data-caption="Detal wnętrza lub okolica">
+            <img src="https://picsum.photos/id/1025/1200/900" alt="Detal wnętrza lub okolica" loading="lazy" />
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Podmień tytuł, opis i linki do zdjęć na własne materiały — plik jest gotowy do publikacji na GitHub Pages.
+    </footer>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="close" id="closeBtn" aria-label="Zamknij">×</button>
+      <button class="nav-btn prev" id="prevBtn" aria-label="Poprzednie zdjęcie">‹</button>
+      <button class="nav-btn next" id="nextBtn" aria-label="Następne zdjęcie">›</button>
+      <img id="lightboxImg" src="" alt="Powiększone zdjęcie" />
+      <div class="caption" id="caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const items = [...document.querySelectorAll('#gallery a')];
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const caption = document.getElementById('caption');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const item = items[index];
+      lightboxImg.src = item.href;
+      lightboxImg.alt = item.querySelector('img').alt;
+      caption.textContent = item.dataset.caption || item.querySelector('img').alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function showNext(step) {
+      currentIndex = (currentIndex + step + items.length) % items.length;
+      openLightbox(currentIndex);
+    }
+
+    items.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(index);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', () => showNext(-1));
+    nextBtn.addEventListener('click', () => showNext(1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showNext(-1);
+      if (e.key === 'ArrowRight') showNext(1);
+    });
+  </script>
+</body>
+</html>
