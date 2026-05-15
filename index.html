@@ -219,7 +219,6 @@
       color: color-mix(in srgb, var(--text) 98%, #111827 2%);
     }
     .subtext { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.72; max-width: 34ch; }
-
     .hero-otodom { display: flex; flex-direction: column; gap: 10px; }
     .hero-otodom-thumb {
       display: block;
@@ -241,8 +240,7 @@
       background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 20%, transparent) 100%);
       pointer-events: none;
     }
-
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -312,6 +310,23 @@
       font-size: 14px;
       font-weight: 700;
     }
+
+    .mobile-description-toggle, .gallery-choice-toggle { display: none; }
+    .mobile-description-toggle summary, .gallery-choice-toggle summary { list-style: none; cursor: pointer; }
+    .mobile-description-toggle summary::-webkit-details-marker, .gallery-choice-toggle summary::-webkit-details-marker { display: none; }
+    .mobile-description-toggle summary, .gallery-choice-toggle summary {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 16px 18px; border-radius: 22px; border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--text) 3%, transparent); font-weight: 800; color: var(--text);
+    }
+    .mobile-description-body, .gallery-choice-body { padding: 16px 2px 0; }
+    .choice-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .choice-btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px;
+      border-radius: 999px; background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%); color: #fff; font-weight: 800;
+    }
+    .choice-btn-secondary { background: color-mix(in srgb, var(--text) 4%, transparent); color: var(--text); border: 1px solid var(--border); }
+    .choice-note { margin: 10px 0 0; color: var(--muted); line-height: 1.7; }
 
     .section { padding: 18px 0 20px; }
     .section-header { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 16px; }
@@ -431,6 +446,8 @@
       .back-to-top.is-visible { display: inline-flex; }
       .mobile-room-links { display: flex; }
       .sticky-nav { display: none; }
+      .mobile-description-toggle, .gallery-choice-toggle { display: block; }
+      .description-content { display: none; }
     }
     @media (min-width: 769px) { .back-to-top { display: none !important; } }
     @media (max-width: 640px) {
@@ -478,14 +495,6 @@
             <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
           </div>
 
-          <div class="hero-otodom">
-            <span class="label">Ogłoszenie OTODOM</span>
-            <a class="hero-otodom-thumb" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer" aria-label="Otwórz ogłoszenie OTODOM">
-              <img src="images/cover2.png" alt="Miniatura ogłoszenia OTODOM">
-              <span class="hero-otodom-fade"></span>
-            </a>
-          </div>
-
           <div class="actions">
             <a class="btn btn-secondary" href="#galeria-pomieszczenia">Główna galeria</a>
             <a class="btn btn-primary" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">Ogłoszenie OTODOM</a>
@@ -494,338 +503,54 @@
       </section>
 
       <aside class="panel hero-side">
-        <div class="mobile-room-links">
-          <a href="#salon">Salon</a>
-          <a href="#kuchnia">Kuchnia</a>
-          <a href="#sypialnia">Sypialnia</a>
-          <a href="#pokoj">Drugi pokój</a>
-          <a href="#lazienka">Łazienka</a>
-          <a href="#balkon">Balkon</a>
-          <a href="#przedpokoj">Przedpokój</a>
-          <a href="#galeria-skrocona">Galeria skrócona</a>
-        </div>
+        <details class="mobile-description-toggle">
+          <summary>Opis mieszkania</summary>
+          <div class="mobile-description-body">
+            <div class="description-content">
+              <p><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy.</p>
+              <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. i ostatnim piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz, ewentualnie do odświeżenia według własnego gustu.</p>
+              <p class="description-highlight">Cena do negocjacji.</p>
+              <h4>Układ i wyposażenie</h4>
+              <ul class="description-list">
+                <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
+                <li>Aneks kuchenny z miejscem na wygodny stół jadalniany.</li>
+                <li>Balkon od strony południowo-zachodniej, idealny na popołudniowy relaks i zachody słońca.</li>
+                <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
+                <li>Duża szafa z lustrem w przedpokoju przy drzwiach wejściowych.</li>
+                <li>Klimatyzacja mająca 2 lata.</li>
+                <li>Meble, z wyjątkiem kanapy i stołu, oraz sprzęt AGD w cenie: zmywarka, lodówka, kuchenka i piekarnik.</li>
+                <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
+                <li>Brak windy i brak piwnicy.</li>
+                <li>Komórka lokatorska dostępna za dodatkową opłatą.</li>
+                <li>Miejsce parkingowe w hali garażowej możliwe do kupienia od osób trzecich.</li>
+              </ul>
+              <h4>Dodatkowe informacje</h4>
+              <ul class="description-list"><li>Dostępne od zaraz.</li><li>Pełna własność, księga wieczysta.</li></ul>
+              <h4>Lokalizacja</h4>
+              <ul class="description-list">
+                <li>Spokojne i bezpieczne osiedle, dobre dla rodzin z dziećmi.</li>
+                <li>W pobliżu sklepy: Biedronka, Topaz, Mrówka i Arhelan.</li>
+                <li>Blisko restauracje i bary, m.in. DaGrasso i Kebab Sułtan.</li>
+                <li>W okolicy przedszkola i kościół, około 5 minut pieszo.</li>
+                <li>Zalew w odległości około 10 minut spacerem.</li>
+                <li>Stacja Siedlce Zachodnie około 2–3 minuty biegiem, co dobrze sprawdza się przy dojazdach do Warszawy.</li>
+              </ul>
+              <p class="description-note">To dobry wybór dla rodziny lub pary szukającej funkcjonalnego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do infrastruktury i wygodnym dojazdem koleją do Warszawy.</p>
+              <p class="description-note">Zapraszam do kontaktu. Pytania można zadawać SMS-em.</p>
+            </div>
+          </div>
+        </details>
 
-        <div class="description-content">
-          <p><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy.</p>
-          <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. i ostatnim piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz, ewentualnie do odświeżenia według własnego gustu.</p>
-          <p class="description-highlight">Cena do negocjacji.</p>
-          <h4>Układ i wyposażenie</h4>
-          <ul class="description-list">
-            <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
-            <li>Aneks kuchenny z miejscem na wygodny stół jadalniany.</li>
-            <li>Balkon od strony południowo-zachodniej, idealny na popołudniowy relaks i zachody słońca.</li>
-            <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
-            <li>Duża szafa z lustrem w przedpokoju przy drzwiach wejściowych.</li>
-            <li>Klimatyzacja mająca 2 lata.</li>
-            <li>Meble, z wyjątkiem kanapy i stołu, oraz sprzęt AGD w cenie: zmywarka, lodówka, kuchenka i piekarnik.</li>
-            <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
-            <li>Brak windy i brak piwnicy.</li>
-            <li>Komórka lokatorska dostępna za dodatkową opłatą.</li>
-            <li>Miejsce parkingowe w hali garażowej możliwe do kupienia od osób trzecich.</li>
-          </ul>
-          <h4>Dodatkowe informacje</h4>
-          <ul class="description-list"><li>Dostępne od zaraz.</li><li>Pełna własność, księga wieczysta.</li></ul>
-          <h4>Lokalizacja</h4>
-          <ul class="description-list">
-            <li>Spokojne i bezpieczne osiedle, dobre dla rodzin z dziećmi.</li>
-            <li>W pobliżu sklepy: Biedronka, Topaz, Mrówka i Arhelan.</li>
-            <li>Blisko restauracje i bary, m.in. DaGrasso i Kebab Sułtan.</li>
-            <li>W okolicy przedszkola i kościół, około 5 minut pieszo.</li>
-            <li>Zalew w odległości około 10 minut spacerem.</li>
-            <li>Stacja Siedlce Zachodnie około 2–3 minuty biegiem, co dobrze sprawdza się przy dojazdach do Warszawy.</li>
-          </ul>
-          <p class="description-note">To dobry wybór dla rodziny lub pary szukającej funkcjonalnego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do infrastruktury i wygodnym dojazdem koleją do Warszawy.</p>
-          <p class="description-note">Zapraszam do kontaktu. Pytania można zadawać SMS-em.</p>
-        </div>
+        <details class="gallery-choice-toggle">
+          <summary>Wybierz galerię</summary>
+          <div class="gallery-choice-body">
+            <div class="choice-row">
+              <a class="choice-btn" href="#galeria-pomieszczenia">Galeria pełna</a>
+              <a class="choice-btn choice-btn-secondary" href="#galeria-skrocona">Galeria skrócona</a>
+            </div>
+            <p class="choice-note">Pełna galeria pokazuje wszystkie pomieszczenia, a skrócona daje szybki przegląd najważniejszych ujęć.</p>
+          </div>
+        </details>
       </aside>
     </div>
   </header>
-
-  <main class="wrap">
-    <nav class="sticky-nav">
-      <div class="nav-row">
-        <a href="#galeria-pomieszczenia">Główna galeria</a>
-        <a href="#salon">Salon</a>
-        <a href="#kuchnia">Kuchnia</a>
-        <a href="#sypialnia">Sypialnia</a>
-        <a href="#pokoj">Drugi pokój</a>
-        <a href="#lazienka">Łazienka</a>
-        <a href="#balkon">Balkon</a>
-        <a href="#przedpokoj">Przedpokój</a>
-        <a href="#galeria-skrocona">Galeria skrócona</a>
-      </div>
-    </nav>
-
-    <section class="section" id="galeria-pomieszczenia">
-      <div class="section-header">
-        <div>
-          <h2>Główna galeria</h2>
-          <p>Najważniejszy podgląd mieszkania z podziałem na pomieszczenia. Kliknij dowolne zdjęcie, aby otworzyć osobną galerię wybranego wnętrza.</p>
-        </div>
-      </div>
-
-      <section class="subgallery-list">
-        <article class="panel room-section" id="salon">
-          <div class="room-copy"><h3>Salon</h3><p>Tu później możesz podpiąć docelowe zdjęcia strefy dziennej oraz podkreślić jej otwarty, nowoczesny charakter.</p><span class="room-note">Podgląd otwiera osobną galerię salonu</span><div class="room-caption">Przykładowy podpis: jasna strefa dzienna z miejscem na wspólne spędzanie czasu.</div></div>
-          <button class="room-thumb" data-gallery="salon" data-index="0" type="button"><img src="images/IMG02657.JPG" alt="Salon - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="kuchnia">
-          <div class="room-copy"><h3>Kuchnia</h3><p>Sekcja pod zdjęcia kuchni lub aneksu kuchennego. Docelowo możesz tu pokazać funkcjonalność i ergonomię układu.</p><span class="room-note">Podgląd otwiera osobną galerię kuchni</span><div class="room-caption">Przykładowy podpis: funkcjonalna kuchnia z wygodnym blatem roboczym.</div></div>
-          <button class="room-thumb" data-gallery="kuchnia" data-index="0" type="button"><img src="images/IMG02663.JPG" alt="Kuchnia - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="sypialnia">
-          <div class="room-copy"><h3>Sypialnia</h3><p>Miejsce na zdjęcia pokoju głównego. Tu możesz później pokazać ustawność, spokój i bardziej prywatny charakter tej części mieszkania.</p><span class="room-note">Podgląd otwiera osobną galerię sypialni</span><div class="room-caption">Przykładowy podpis: kameralna sypialnia z miejscem na przechowywanie.</div></div>
-          <button class="room-thumb" data-gallery="sypialnia" data-index="0" type="button"><img src="images/IMG02684.JPG" alt="Sypialnia - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="pokoj">
-          <div class="room-copy"><h3>Drugi pokój</h3><p>Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny, zależnie od finalnej narracji oferty.</p><span class="room-note">Podgląd otwiera osobną galerię drugiego pokoju</span><div class="room-caption">Przykładowy podpis: elastyczny pokój pod gabinet, dziecięcy lub gościnny.</div></div>
-          <button class="room-thumb" data-gallery="pokoj" data-index="0" type="button"><img src="images/IMG02700.JPG" alt="Drugi pokój - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="lazienka">
-          <div class="room-copy"><h3>Łazienka</h3><p>Tu warto później wyeksponować osobną łazienkę i jej praktyczny układ, zwłaszcza jeśli chcesz podkreślić funkcjonalność mieszkania.</p><span class="room-note">Podgląd otwiera osobną galerię łazienki</span><div class="room-caption">Przykładowy podpis: osobna łazienka z wygodnym, praktycznym układem.</div></div>
-          <button class="room-thumb" data-gallery="lazienka" data-index="0" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="balkon">
-          <div class="room-copy"><h3>Balkon</h3><p>Balkon może być mocnym elementem oferty, szczególnie jeśli pokazuje światło, ekspozycję i przyjemną przestrzeń na odpoczynek.</p><span class="room-note">Podgląd otwiera osobną galerię balkonu</span><div class="room-caption">Przykładowy podpis: balkon z przyjemnym światłem i miejscem na poranną kawę.</div></div>
-          <button class="room-thumb" data-gallery="balkon" data-index="0" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Balkon - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="przedpokoj">
-          <div class="room-copy"><h3>Przedpokój</h3><p>Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem i pierwszego wrażenia po wejściu.</p><span class="room-note">Podgląd otwiera osobną galerię przedpokoju</span><div class="room-caption">Przykładowy podpis: uporządkowane wejście z miejscem na przechowywanie.</div></div>
-          <button class="room-thumb" data-gallery="przedpokoj" data-index="0" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-      </section>
-    </section>
-
-    <section class="section" id="galeria-skrocona">
-      <div class="section-header"><div><h2>Galeria skrócona</h2><p>Zbiorczy szybki przegląd najważniejszych ujęć mieszkania. Kliknij zdjęcie, aby otworzyć pełnoekranową galerię.</p></div></div>
-      <div class="main-gallery">
-        <button class="gallery-item wide" data-gallery="main" data-index="0" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 1"><span class="gallery-badge">Galeria</span></button>
-        <button class="gallery-item half" data-gallery="main" data-index="1" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 2"><span class="gallery-badge">Galeria</span></button>
-        <button class="gallery-item small" data-gallery="main" data-index="2" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="3" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="4" type="button"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="5" type="button"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="6" type="button"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="7" type="button"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="8" type="button"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="9" type="button"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="10" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="11" type="button"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 12"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="12" type="button"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 13"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="13" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 14"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="14" type="button"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 15"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="15" type="button"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 16"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="16" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 17"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="17" type="button"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 18"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="18" type="button"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 19"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="19" type="button"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 20"></button>
-      </div>
-    </section>
-  </main>
-
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galeria zdjęć mieszkania">
-    <div class="lightbox-inner">
-      <div class="lightbox-stage">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij galerię">×</button>
-        <button class="lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">‹</button>
-        <img id="lightboxImage" src="" alt="">
-        <button class="lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">›</button>
-      </div>
-      <div class="lightbox-meta" id="lightboxMeta"></div>
-      <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Miniatury zdjęć"></div>
-    </div>
-  </div>
-
-  <a href="#top" class="back-to-top" id="backToTop" aria-label="Powrót na górę">↑ <span>Na górę</span></a>
-
-  <footer class="wrap">Wersja z jasnym stylem inspirowanym układem Homeverse.</footer>
-
-  <script>
-    const galleries = {
-      main: [
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 1' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 2' },
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 3' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 4' },
-        { src: 'images/IMG02664.JPG', alt: 'Zdjęcie mieszkania 5' },
-        { src: 'images/IMG02682.JPG', alt: 'Zdjęcie mieszkania 6' },
-        { src: 'images/IMG02684.JPG', alt: 'Zdjęcie mieszkania 7' },
-        { src: 'images/IMG02688.JPG', alt: 'Zdjęcie mieszkania 8' },
-        { src: 'images/IMG02700.JPG', alt: 'Zdjęcie mieszkania 9' },
-        { src: 'images/IMG02708.JPG', alt: 'Zdjęcie mieszkania 10' },
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Zdjęcie mieszkania 11' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Zdjęcie mieszkania 12' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Zdjęcie mieszkania 13' },
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Zdjęcie mieszkania 14' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Zdjęcie mieszkania 15' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Zdjęcie mieszkania 16' },
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Zdjęcie mieszkania 17' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Zdjęcie mieszkania 18' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Zdjęcie mieszkania 19' },
-        { src: 'images/IMG_20260412_200118.jpg', alt: 'Zdjęcie mieszkania 20' }
-      ],
-      salon: [
-        { src: 'images/IMG02657.JPG', alt: 'Salon 1' },
-        { src: 'images/IMG02664.JPG', alt: 'Salon 2' },
-        { src: 'images/IMG02684.JPG', alt: 'Salon 3' }
-      ],
-      kuchnia: [
-        { src: 'images/IMG02663.JPG', alt: 'Kuchnia 1' },
-        { src: 'images/IMG02682.JPG', alt: 'Kuchnia 2' },
-        { src: 'images/IMG02688.JPG', alt: 'Kuchnia 3' }
-      ],
-      sypialnia: [
-        { src: 'images/IMG02684.JPG', alt: 'Sypialnia 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Sypialnia 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Sypialnia 3' }
-      ],
-      pokoj: [
-        { src: 'images/IMG02663.JPG', alt: 'Drugi pokój 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Drugi pokój 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Drugi pokój 3' }
-      ],
-      lazienka: [
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Łazienka 1' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Łazienka 2' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Łazienka 3' }
-      ],
-      balkon: [
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Balkon 1' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Balkon 2' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Balkon 3' }
-      ],
-      przedpokoj: [
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Przedpokój 1' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Przedpokój 2' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Przedpokój 3' }
-      ]
-    };
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxMeta = document.getElementById('lightboxMeta');
-    const lightboxThumbs = document.getElementById('lightboxThumbs');
-    const closeBtn = document.getElementById('lightboxClose');
-    const prevBtn = document.getElementById('lightboxPrev');
-    const nextBtn = document.getElementById('lightboxNext');
-    const backToTop = document.getElementById('backToTop');
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeToggleIcon = document.getElementById('themeToggleIcon');
-    const themeToggleText = document.getElementById('themeToggleText');
-    let activeGallery = 'main';
-    let activeIndex = 0;
-    let lastTrigger = null;
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    function setTheme(theme) {
-      root.setAttribute('data-theme', theme);
-      if (theme === 'light') {
-        themeToggleIcon.textContent = '☾';
-        themeToggleText.textContent = 'Ciemny tryb';
-      } else {
-        themeToggleIcon.textContent = '☀';
-        themeToggleText.textContent = 'Jasny tryb';
-      }
-    }
-    setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    themeToggle.addEventListener('click', () => setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
-
-    function renderThumbs() {
-      const items = galleries[activeGallery];
-      lightboxThumbs.innerHTML = '';
-      items.forEach((item, index) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'lightbox-thumb' + (index === activeIndex ? ' active' : '');
-        btn.setAttribute('aria-label', `Pokaż ${item.alt}`);
-        btn.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
-        btn.addEventListener('click', () => {
-          activeIndex = index;
-          renderLightbox();
-        });
-        lightboxThumbs.appendChild(btn);
-      });
-    }
-    function renderLightbox() {
-      const items = galleries[activeGallery];
-      const item = items[activeIndex];
-      lightboxImage.src = item.src;
-      lightboxImage.alt = item.alt;
-      lightboxMeta.textContent = `${item.alt} • ${activeIndex + 1} / ${items.length}`;
-      renderThumbs();
-    }
-    function openLightbox(galleryName, index, trigger) {
-      activeGallery = galleryName;
-      activeIndex = index;
-      lastTrigger = trigger || null;
-      renderLightbox();
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (lastTrigger) lastTrigger.focus();
-    }
-    function showNext() {
-      const items = galleries[activeGallery];
-      activeIndex = (activeIndex + 1) % items.length;
-      renderLightbox();
-    }
-    function showPrev() {
-      const items = galleries[activeGallery];
-      activeIndex = (activeIndex - 1 + items.length) % items.length;
-      renderLightbox();
-    }
-    function trapFocus(event) {
-      if (event.key !== 'Tab' || !lightbox.classList.contains('open')) return;
-      const focusables = [...lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
-      if (!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-    function toggleBackToTop() {
-      if (window.innerWidth <= 768 && window.scrollY > 700) backToTop.classList.add('is-visible');
-      else backToTop.classList.remove('is-visible');
-    }
-
-    document.querySelectorAll('[data-gallery]').forEach((item) =>
-      item.addEventListener('click', () => openLightbox(item.dataset.gallery, Number(item.dataset.index || 0), item))
-    );
-    closeBtn.addEventListener('click', closeLightbox);
-    nextBtn.addEventListener('click', showNext);
-    prevBtn.addEventListener('click', showPrev);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      trapFocus(e);
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-    });
-    lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-    lightbox.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchEndX - touchStartX;
-      if (Math.abs(diff) < 40) return;
-      if (diff < 0) showNext();
-      if (diff > 0) showPrev();
-    }, { passive: true });
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    window.addEventListener('resize', toggleBackToTop);
-    toggleBackToTop();
-  </script>
-</body>
-</html>
