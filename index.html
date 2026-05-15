@@ -3,419 +3,662 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galeria mieszkania</title>
+  <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --panel: #171a21;
-      --panel-2: #1f2430;
-      --text: #f5f7fb;
-      --muted: #a8b0bf;
-      --accent: #6ee7b7;
-      --border: rgba(255,255,255,.08);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-      --maxw: 1180px;
+      --bg: #f5f7fb;
+      --panel: rgba(255,255,255,0.9);
+      --panel-solid: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #0f766e;
+      --accent-dark: #0b5e58;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(110,231,183,.12), transparent 25%),
-        linear-gradient(180deg, #0b0d12 0%, #121621 100%);
+      font-family: Inter, Arial, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, #ffffff 0%, #f7f9fc 35%, #eef2f7 100%);
     }
 
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a { color: inherit; }
+
     .wrap {
-      width: min(calc(100% - 32px), var(--maxw));
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    header {
-      padding: 56px 0 28px;
+    .panel {
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(229,231,235,0.95);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .hero {
+      padding: 24px 0 18px;
+    }
+
+    .hero-grid {
       display: grid;
-      gap: 18px;
-      grid-template-columns: 1.2fr .8fr;
-      align-items: stretch;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
     }
 
-    .card {
-      background: rgba(23,26,33,.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .intro {
-      padding: 32px;
+    .hero-main {
+      padding: 34px;
     }
 
     .eyebrow {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(110,231,183,.1);
+      background: #ecfdf5;
       color: var(--accent);
+      border-radius: 999px;
       font-size: 13px;
-      letter-spacing: .04em;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
     }
 
     h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(34px, 5vw, 62px);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
     }
 
     .lead {
-      margin: 0 0 18px;
-      max-width: 58ch;
+      margin: 0;
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.65;
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 64ch;
     }
 
     .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .meta span {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      color: #d8dfeb;
+    .meta-card {
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-bottom: 6px;
       font-size: 14px;
     }
 
-    .hero-photo {
-      overflow: hidden;
-      min-height: 320px;
+    .meta-card span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
     }
 
-    .hero-photo img,
-    .gallery a img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    main {
-      padding: 10px 0 64px;
-    }
-
-    .section-head {
+    .hero-side {
+      padding: 24px;
       display: flex;
-      align-items: end;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .big-box {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .price {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
+
+    .phone {
+      margin: 0;
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    .subtext {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .section {
+      padding: 16px 0 18px;
+    }
+
+    .section-header {
+      display: flex;
       justify-content: space-between;
       gap: 16px;
-      margin: 14px 0 20px;
+      align-items: end;
+      margin-bottom: 16px;
     }
 
-    .section-head h2 {
+    .section-header h2 {
       margin: 0;
       font-size: clamp(24px, 3vw, 34px);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
-    .section-head p {
+    .section-header p {
       margin: 0;
       color: var(--muted);
-      max-width: 56ch;
+      line-height: 1.7;
+      max-width: 62ch;
     }
 
-    .gallery {
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 8px 0 16px;
+      padding: 10px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      overflow-x: auto;
+    }
+
+    .sticky-nav .nav-row {
+      display: flex;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .sticky-nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .sticky-nav a:hover {
+      color: var(--text);
+      border-color: #d8dee8;
+    }
+
+    .main-gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
     }
 
-    .gallery a {
-      position: relative;
+    .main-gallery a,
+    .room-gallery a {
       display: block;
       overflow: hidden;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      min-height: 220px;
-      text-decoration: none;
-      box-shadow: var(--shadow);
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--panel-solid);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
     }
 
-    .gallery a::after {
-      content: "Powiększ";
-      position: absolute;
-      right: 12px;
-      bottom: 12px;
-      padding: 8px 10px;
+    .main-gallery img,
+    .room-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .main-gallery a:hover img,
+    .room-gallery a:hover img {
+      transform: scale(1.02);
+    }
+
+    .main-gallery .wide {
+      grid-column: span 7;
+      aspect-ratio: 4 / 3;
+    }
+
+    .main-gallery .half {
+      grid-column: span 5;
+      aspect-ratio: 4 / 3;
+    }
+
+    .main-gallery .small {
+      grid-column: span 4;
+      aspect-ratio: 4 / 3;
+    }
+
+    .room-section {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+      padding: 22px;
+    }
+
+    .room-info h3 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.5vw, 30px);
+      letter-spacing: -0.03em;
+    }
+
+    .room-info p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .room-note {
+      display: inline-block;
+      padding: 8px 12px;
       border-radius: 999px;
-      font-size: 12px;
-      color: white;
-      background: rgba(0,0,0,.48);
-      border: 1px solid rgba(255,255,255,.16);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: .2s ease;
+      background: #f3f7fb;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .gallery a:hover::after,
-    .gallery a:focus-visible::after {
-      opacity: 1;
-      transform: translateY(0);
+    .room-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    .gallery a img {
-      transition: transform .35s ease, filter .35s ease;
-      filter: saturate(1.02);
+    .room-gallery a {
+      aspect-ratio: 4 / 3;
     }
-
-    .gallery a:hover img,
-    .gallery a:focus-visible img {
-      transform: scale(1.03);
-      filter: saturate(1.08);
-    }
-
-    .span-8 { grid-column: span 8; }
-    .span-4 { grid-column: span 4; }
-    .span-6 { grid-column: span 6; }
 
     footer {
-      padding: 10px 0 48px;
+      padding: 28px 0 40px;
+      text-align: center;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      padding: 20px;
-      background: rgba(7, 10, 16, .82);
-      backdrop-filter: blur(10px);
-      z-index: 999;
+    @media (max-width: 980px) {
+      .hero-grid,
+      .room-section {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .main-gallery .wide,
+      .main-gallery .half,
+      .main-gallery .small {
+        grid-column: span 6;
+      }
     }
 
-    .lightbox.open { display: grid; }
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 20px));
+      }
 
-    .lightbox-inner {
-      position: relative;
-      width: min(1100px, 100%);
-      max-height: 90vh;
-    }
+      .hero-main,
+      .hero-side,
+      .room-section {
+        padding: 20px;
+      }
 
-    .lightbox img {
-      width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.1);
-      background: #0b0d12;
-      box-shadow: var(--shadow);
-    }
+      .meta {
+        grid-template-columns: 1fr;
+      }
 
-    .close,
-    .nav-btn {
-      position: absolute;
-      border: 0;
-      background: rgba(17, 20, 27, .82);
-      color: white;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-    }
+      .actions {
+        flex-direction: column;
+      }
 
-    .close {
-      top: 14px;
-      right: 14px;
-      font-size: 24px;
-      line-height: 1;
-    }
+      .btn {
+        width: 100%;
+      }
 
-    .nav-btn {
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 24px;
-    }
+      .main-gallery {
+        grid-template-columns: 1fr;
+      }
 
-    .prev { left: 14px; }
-    .next { right: 14px; }
+      .main-gallery .wide,
+      .main-gallery .half,
+      .main-gallery .small {
+        grid-column: auto;
+        aspect-ratio: 4 / 3;
+      }
 
-    .caption {
-      margin-top: 12px;
-      color: #d5dceb;
-      text-align: center;
-      font-size: 14px;
-    }
+      .room-gallery {
+        grid-template-columns: 1fr;
+      }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .span-8, .span-6, .span-4 { grid-column: span 1; }
-      .gallery a { min-height: 180px; }
-      .intro { padding: 24px; }
-      .section-head { align-items: start; flex-direction: column; }
-    }
-
-    @media (max-width: 560px) {
-      .gallery { grid-template-columns: 1fr; }
-      header { padding-top: 28px; }
-      .lead { font-size: 16px; }
-      .close { top: 8px; right: 8px; }
-      .prev { left: 8px; }
-      .next { right: 8px; }
+      .sticky-nav {
+        top: 8px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <section class="hero">
-        <div class="card intro">
-          <span class="eyebrow">Oferta mieszkania</span>
-          <h1>Nowoczesna galeria mieszkania</h1>
-          <p class="lead">
-            Minimalny szablon w jednym pliku HTML do szybkiego podmiany zdjęć i wystawienia na GitHub Pages.
-            Kliknij dowolne zdjęcie, aby otworzyć powiększenie.
-          </p>
-          <div class="meta">
-            <span>1 plik HTML</span>
-            <span>GitHub Pages</span>
-            <span>Lightbox</span>
-            <span>Responsywny układ</span>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <section class="panel hero-main">
+        <span class="eyebrow">Sprzedaż bezpośrednia</span>
+        <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
+        <p class="lead">
+          3-pokojowe mieszkanie w spokojnej części Siedlec, na 3. i ostatnim piętrze bloku z 2013 roku.
+          Salon z kuchnią i miejscem na stół, osobna łazienka, osobne WC oraz balkon tworzą wygodny i funkcjonalny układ do codziennego życia. [cite:15][cite:371]
+        </p>
+
+        <div class="meta">
+          <div class="meta-card">
+            <strong>Powierzchnia</strong>
+            <span>64,4 m² [cite:371]</span>
+          </div>
+          <div class="meta-card">
+            <strong>Układ</strong>
+            <span>3 pokoje, salon z kuchnią [cite:15]</span>
+          </div>
+          <div class="meta-card">
+            <strong>Piętro</strong>
+            <span>3 / ostatnie [cite:366]</span>
+          </div>
+          <div class="meta-card">
+            <strong>Budynek</strong>
+            <span>Rok budowy 2013 [cite:366]</span>
           </div>
         </div>
-        <div class="card hero-photo">
-          <img src="https://picsum.photos/id/1068/1200/900" alt="Zdjęcie główne mieszkania" />
-        </div>
       </section>
-    </header>
 
-    <main>
-      <section>
-        <div class="section-head">
-          <div>
-            <h2>Galeria zdjęć</h2>
-          </div>
-          <p>
-            Zamień poniższe adresy obrazów na własne zdjęcia, np. salon, kuchnia, sypialnia, łazienka i balkon.
-          </p>
+      <aside class="panel hero-side">
+        <div class="big-box">
+          <span class="label">Cena</span>
+          <p class="price">800 000 zł</p>
+          <div class="subtext">Cena zewnętrznie widoczna w publicznym ogłoszeniu. [web:373]</div>
         </div>
 
-        <div class="gallery" id="gallery">
-          <a href="https://picsum.photos/id/1048/1800/1200" class="span-8" data-caption="Salon z częścią wypoczynkową">
-            <img src="https://picsum.photos/id/1048/1200/800" alt="Salon z częścią wypoczynkową" loading="lazy" />
+        <div class="big-box">
+          <span class="label">Telefon</span>
+          <p class="phone">TU_WPISZ_NUMER</p>
+          <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS. [web:373]</div>
+        </div>
+
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ogłoszenie OTODOM
           </a>
-          <a href="https://picsum.photos/id/1067/1800/1200" class="span-4" data-caption="Kuchnia i jadalnia">
-            <img src="https://picsum.photos/id/1067/900/1200" alt="Kuchnia i jadalnia" loading="lazy" />
-          </a>
-          <a href="https://picsum.photos/id/1031/1800/1200" class="span-4" data-caption="Sypialnia">
-            <img src="https://picsum.photos/id/1031/900/900" alt="Sypialnia" loading="lazy" />
-          </a>
-          <a href="https://picsum.photos/id/1018/1800/1200" class="span-4" data-caption="Łazienka">
-            <img src="https://picsum.photos/id/1018/900/900" alt="Łazienka" loading="lazy" />
-          </a>
-          <a href="https://picsum.photos/id/1015/1800/1200" class="span-4" data-caption="Balkon i widok">
-            <img src="https://picsum.photos/id/1015/900/900" alt="Balkon i widok" loading="lazy" />
-          </a>
-          <a href="https://picsum.photos/id/1040/1800/1200" class="span-6" data-caption="Drugi pokój">
-            <img src="https://picsum.photos/id/1040/1200/900" alt="Drugi pokój" loading="lazy" />
-          </a>
-          <a href="https://picsum.photos/id/1025/1800/1200" class="span-6" data-caption="Detal wnętrza lub okolica">
-            <img src="https://picsum.photos/id/1025/1200/900" alt="Detal wnętrza lub okolica" loading="lazy" />
+          <a class="btn btn-secondary" href="#galeria-glowna">
+            Zobacz zdjęcia
           </a>
         </div>
-      </section>
-    </main>
-
-    <footer>
-      Podmień tytuł, opis i linki do zdjęć na własne materiały — plik jest gotowy do publikacji na GitHub Pages.
-    </footer>
-  </div>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-inner">
-      <button class="close" id="closeBtn" aria-label="Zamknij">×</button>
-      <button class="nav-btn prev" id="prevBtn" aria-label="Poprzednie zdjęcie">‹</button>
-      <button class="nav-btn next" id="nextBtn" aria-label="Następne zdjęcie">›</button>
-      <img id="lightboxImg" src="" alt="Powiększone zdjęcie" />
-      <div class="caption" id="caption"></div>
+      </aside>
     </div>
-  </div>
+  </header>
 
-  <script>
-    const items = [...document.querySelectorAll('#gallery a')];
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const caption = document.getElementById('caption');
-    const closeBtn = document.getElementById('closeBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentIndex = 0;
+  <main class="wrap">
+    <nav class="sticky-nav">
+      <div class="nav-row">
+        <a href="#galeria-glowna">Galeria główna</a>
+        <a href="#salon">Salon</a>
+        <a href="#kuchnia">Kuchnia</a>
+        <a href="#sypialnia">Sypialnia</a>
+        <a href="#pokoj">Drugi pokój</a>
+        <a href="#lazienka">Łazienka</a>
+        <a href="#balkon">Balkon</a>
+        <a href="#przedpokoj">Przedpokój</a>
+      </div>
+    </nav>
 
-    function openLightbox(index) {
-      currentIndex = index;
-      const item = items[index];
-      lightboxImg.src = item.href;
-      lightboxImg.alt = item.querySelector('img').alt;
-      caption.textContent = item.dataset.caption || item.querySelector('img').alt || '';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
+    <section class="section" id="galeria-glowna">
+      <div class="section-header">
+        <div>
+          <h2>Galeria główna</h2>
+          <p>
+            Na górze zostawiłem obecną galerię zbiorczą z aktualnymi zdjęciami, a niżej osobne sekcje dla pomieszczeń,
+            które później łatwo podmienisz na zdjęcia nazwane już według pokoi. [cite:365]
+          </p>
+        </div>
+      </div>
 
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
+      <div class="main-gallery">
+        <a class="wide" href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Zdjęcie mieszkania 1"></a>
+        <a class="half" href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Zdjęcie mieszkania 2"></a>
 
-    function showNext(step) {
-      currentIndex = (currentIndex + step + items.length) % items.length;
-      openLightbox(currentIndex);
-    }
+        <a class="small" href="images/IMG02657.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></a>
+        <a class="small" href="images/IMG02663.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></a>
+        <a class="small" href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></a>
 
-    items.forEach((item, index) => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLightbox(index);
-      });
-    });
+        <a class="small" href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></a>
+        <a class="small" href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></a>
+        <a class="small" href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></a>
 
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', () => showNext(-1));
-    nextBtn.addEventListener('click', () => showNext(1));
+        <a class="small" href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></a>
+        <a class="small" href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></a>
+        <a class="small" href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></a>
 
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
+        <a class="small" href="images/IMG_20260411_160649[1].jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649[1].jpg" alt="Zdjęcie mieszkania 12"></a>
+        <a class="small" href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 13"></a>
+        <a class="small" href="images/IMG_20260411_161208.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 14"></a>
 
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showNext(-1);
-      if (e.key === 'ArrowRight') showNext(1);
-    });
-  </script>
+        <a class="small" href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 15"></a>
+        <a class="small" href="images/IMG_20260411_181542.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 16"></a>
+        <a class="small" href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 17"></a>
+
+        <a class="small" href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 18"></a>
+        <a class="small" href="images/IMG_20260412_195053.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 19"></a>
+        <a class="small" href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 20"></a>
+
+        <a class="small" href="images/IMG_20260412_200118.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 21"></a>
+      </div>
+    </section>
+
+    <section class="section" id="salon">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Salon</h3>
+          <p>
+            Tu później możesz podpiąć zdjęcia strefy dziennej. W opisie warto podkreślić połączenie z kuchnią,
+            miejsce na stół i zachodnie światło w salonie. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Salon 1"></a>
+          <a href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Salon 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kuchnia">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Kuchnia</h3>
+          <p>
+            Sekcja pod zdjęcia kuchni lub kuchni otwartej na salon. Później możesz nazwać pliki np. `kuchnia-1.jpg`
+            i podmienić same ścieżki bez ruszania układu strony. [cite:365][cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Kuchnia 1"></a>
+          <a href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Kuchnia 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sypialnia">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Sypialnia</h3>
+          <p>
+            Miejsce na zdjęcia pokoju głównego. Możesz później pokazać ustawność, miejsce na łóżko i szafę
+            oraz bardziej prywatny charakter tej części mieszkania. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></a>
+          <a href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Sypialnia 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pokoj">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Drugi pokój</h3>
+          <p>
+            Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny,
+            zależnie od tego, jak chcesz prowadzić narrację ogłoszenia. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Drugi pokój 1"></a>
+          <a href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Drugi pokój 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lazienka">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Łazienka</h3>
+          <p>
+            Tu warto później wyeksponować osobną łazienkę z wanną, funkcją prysznica i miejscem na pralkę,
+            bo to ważny element funkcjonalny mieszkania. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></a>
+          <a href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="balkon">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Balkon</h3>
+          <p>
+            Balkon jest mocnym elementem oferty, szczególnie gdy pokazuje światło i kierunek na południe.
+            Możesz tu później dodać widok i zdjęcia popołudniowego słońca. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Balkon 1"></a>
+          <a href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Balkon 2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="przedpokoj">
+      <div class="panel room-section">
+        <div class="room-info">
+          <h3>Przedpokój</h3>
+          <p>
+            Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem
+            i ogólnego wrażenia uporządkowanego układu. [cite:15]
+          </p>
+          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
+        </div>
+        <div class="room-gallery">
+          <a href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój 1"></a>
+          <a href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Przedpokój 2"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Układ strony jest przygotowany tak, żebyś mógł później łatwo zamienić obecne pliki na zdjęcia nazwane pod konkretne pomieszczenia. [cite:365]
+  </footer>
 </body>
 </html>
