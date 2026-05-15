@@ -223,15 +223,24 @@
     .hero-otodom { display: flex; flex-direction: column; gap: 10px; }
     .hero-otodom-thumb {
       display: block;
+      position: relative;
       width: 100%;
-      max-width: 220px;
+      max-width: 244px;
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid var(--divider);
-      box-shadow: var(--shadow-md);
+      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.10);
       background: var(--gallery-bg);
+      aspect-ratio: 4 / 3;
     }
-    .hero-otodom-thumb img { aspect-ratio: 4 / 3; object-fit: cover; }
+    .hero-otodom-thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; }
+    .hero-otodom-fade {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 22px;
+      background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 20%, transparent) 100%);
+      pointer-events: none;
+    }
 
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
     .btn {
@@ -471,8 +480,9 @@
 
           <div class="hero-otodom">
             <span class="label">Ogłoszenie OTODOM</span>
-            <a class="hero-otodom-thumb" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">
+            <a class="hero-otodom-thumb" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer" aria-label="Otwórz ogłoszenie OTODOM">
               <img src="images/cover2.png" alt="Miniatura ogłoszenia OTODOM">
+              <span class="hero-otodom-fade"></span>
             </a>
           </div>
 
@@ -628,7 +638,7 @@
 
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Powrót na górę">↑ <span>Na górę</span></a>
 
-  <footer class="wrap">Wersja z główną galerią podzieloną na pomieszczenia oraz skróconą galerią zbiorczą na końcu strony.</footer>
+  <footer class="wrap">Wersja z jasnym stylem inspirowanym układem Homeverse.</footer>
 
   <script>
     const galleries = {
