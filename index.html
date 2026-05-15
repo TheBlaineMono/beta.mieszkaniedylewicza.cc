@@ -6,21 +6,30 @@
   <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --panel: rgba(255,255,255,0.9);
-      --panel-solid: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --accent: #0f766e;
-      --accent-dark: #0b5e58;
-      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-      --radius: 24px;
-      --radius-sm: 18px;
+      --bg: #f7f6f2;
+      --surface: #f9f8f5;
+      --surface-2: #fbfbf9;
+      --surface-offset: #f3f0ec;
+      --text: #28251d;
+      --muted: #7a7974;
+      --faint: #bab9b4;
+      --border: #d4d1ca;
+      --divider: #dcd9d5;
+      --accent: #01696f;
+      --accent-hover: #0c4e54;
+      --accent-soft: #cedcd8;
+      --shadow-sm: 0 1px 2px rgba(40, 37, 29, 0.06);
+      --shadow-md: 0 4px 12px rgba(40, 37, 29, 0.08);
+      --shadow-lg: 0 12px 32px rgba(40, 37, 29, 0.12);
+      --radius-sm: 14px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-full: 999px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -28,7 +37,7 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, #ffffff 0%, #f7f9fc 35%, #eef2f7 100%);
+        radial-gradient(circle at top left, #ffffff 0%, #f7f6f2 35%, #efece6 100%);
     }
 
     img {
@@ -37,7 +46,17 @@
       height: auto;
     }
 
-    a { color: inherit; }
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .wrap {
       width: min(var(--max), calc(100% - 32px));
@@ -45,11 +64,11 @@
     }
 
     .panel {
-      background: var(--panel);
+      background: rgba(249, 248, 245, 0.92);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(229,231,235,0.95);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
     }
 
     .hero {
@@ -71,9 +90,9 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      background: #ecfdf5;
+      background: #ecf7f6;
       color: var(--accent);
-      border-radius: 999px;
+      border-radius: var(--radius-full);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -104,9 +123,9 @@
     }
 
     .meta-card {
-      background: #fbfcfe;
-      border: 1px solid var(--line);
-      border-radius: 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-md);
       padding: 16px;
     }
 
@@ -130,8 +149,8 @@
     }
 
     .big-box {
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, var(--surface-2) 100%);
+      border: 1px solid var(--divider);
       border-radius: 20px;
       padding: 22px;
     }
@@ -181,13 +200,14 @@
       justify-content: center;
       min-height: 48px;
       padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
+      border-radius: var(--radius-full);
       font-weight: 700;
-      transition: transform .18s ease, background .18s ease;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
 
     .btn-primary {
       background: var(--accent);
@@ -195,12 +215,13 @@
     }
 
     .btn-primary:hover {
-      background: var(--accent-dark);
+      background: var(--accent-hover);
     }
 
     .btn-secondary {
       background: #fff;
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
+      color: var(--text);
     }
 
     .section {
@@ -234,11 +255,11 @@
       z-index: 20;
       margin: 8px 0 16px;
       padding: 10px;
-      background: rgba(255,255,255,0.82);
-      border: 1px solid var(--line);
+      background: rgba(249, 248, 245, 0.92);
+      border: 1px solid var(--border);
       border-radius: 18px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      box-shadow: var(--shadow-md);
       overflow-x: auto;
     }
 
@@ -250,14 +271,18 @@
 
     .sticky-nav a {
       white-space: nowrap;
-      text-decoration: none;
       padding: 10px 14px;
-      border-radius: 999px;
+      border-radius: var(--radius-full);
       background: #fff;
-      border: 1px solid var(--line);
+      border: 1px solid var(--divider);
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
+    }
+
+    .sticky-nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
     }
 
     .main-gallery {
@@ -266,26 +291,28 @@
       gap: 14px;
     }
 
-    .main-gallery a,
-    .room-gallery a {
+    .gallery-item,
+    .room-thumb {
+      position: relative;
       display: block;
       overflow: hidden;
       border-radius: 20px;
-      border: 1px solid var(--line);
-      background: var(--panel-solid);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--divider);
+      background: #fff;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
     }
 
-    .main-gallery img,
-    .room-gallery img {
+    .gallery-item img,
+    .room-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .35s ease;
     }
 
-    .main-gallery a:hover img,
-    .room-gallery a:hover img {
+    .gallery-item:hover img,
+    .room-thumb:hover img {
       transform: scale(1.02);
     }
 
@@ -304,105 +331,209 @@
       aspect-ratio: 4 / 3;
     }
 
-    .accordion {
+    .subgallery-list {
       display: grid;
-      gap: 14px;
+      gap: 16px;
       margin-top: 8px;
     }
 
-    details.room-accordion {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-      overflow: hidden;
+    .room-section {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      padding: 22px;
+      align-items: center;
       scroll-margin-top: 90px;
     }
 
-    details.room-accordion[open] {
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
-    }
-
-    summary.room-summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 20px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    summary.room-summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .summary-text strong {
-      display: block;
-      font-size: 22px;
+    .room-copy h3 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.5vw, 30px);
       letter-spacing: -0.03em;
-      margin-bottom: 5px;
     }
 
-    .summary-text span {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .summary-icon {
-      width: 40px;
-      height: 40px;
-      flex: 0 0 auto;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      background: #fff;
-      transition: transform .2s ease, color .2s ease;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    details[open] .summary-icon {
-      transform: rotate(45deg);
-      color: var(--accent);
-    }
-
-    .room-content {
-      padding: 0 22px 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .room-copy {
-      padding: 18px 0 14px;
+    .room-copy p {
+      margin: 0 0 12px;
       color: var(--muted);
       line-height: 1.75;
       font-size: 16px;
-      max-width: 72ch;
+      max-width: 68ch;
     }
 
-    .room-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .room-gallery a {
-      aspect-ratio: 4 / 3;
-    }
-
-    .room-tag {
+    .room-note,
+    .room-caption {
       display: inline-flex;
-      margin-top: 4px;
       padding: 8px 12px;
-      border-radius: 999px;
+      border-radius: var(--radius-full);
       background: #f3f7fb;
-      border: 1px solid var(--line);
+      border: 1px solid var(--divider);
       color: var(--muted);
       font-size: 13px;
       font-weight: 600;
+    }
+
+    .room-caption {
+      margin-top: 10px;
+      background: #faf9f7;
+    }
+
+    .room-thumb {
+      aspect-ratio: 4 / 3;
+      min-height: 220px;
+    }
+
+    .thumb-overlay {
+      position: absolute;
+      inset: auto 12px 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(24, 24, 24, 0.55);
+      color: #fff;
+      backdrop-filter: blur(6px);
+    }
+
+    .thumb-overlay span {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .thumb-count {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 22, 20, 0.94);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox[aria-hidden="false"] {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(1220px, 100%);
+      height: min(88vh, 900px);
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .lightbox-stage {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+    }
+
+    .lightbox-stage img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      object-fit: contain;
+      background: #111827;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background .18s ease, transform .18s ease;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-1px);
+    }
+
+    .lightbox-close {
+      top: 0;
+      right: 0;
+      width: 46px;
+      height: 46px;
+      font-size: 26px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      font-size: 28px;
+    }
+
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+
+    .lightbox-toolbar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .lightbox-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
     }
 
     footer {
@@ -413,7 +544,8 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid {
+      .hero-grid,
+      .room-section {
         grid-template-columns: 1fr;
       }
 
@@ -434,7 +566,8 @@
       }
 
       .hero-main,
-      .hero-side {
+      .hero-side,
+      .room-section {
         padding: 20px;
       }
 
@@ -461,24 +594,35 @@
         aspect-ratio: 4 / 3;
       }
 
-      .room-gallery {
-        grid-template-columns: 1fr;
-      }
-
       .sticky-nav {
         top: 8px;
       }
 
-      summary.room-summary {
-        padding: 18px;
+      .room-thumb {
+        min-height: 0;
       }
 
-      .room-content {
-        padding: 0 18px 18px;
+      .lightbox {
+        padding: 12px;
       }
 
-      .summary-text strong {
-        font-size: 20px;
+      .lightbox-prev,
+      .lightbox-next {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+      }
+
+      .lightbox-prev { left: 0; }
+      .lightbox-next { right: 0; }
+
+      .lightbox-close {
+        top: -4px;
+        right: -2px;
+      }
+
+      .thumb-overlay {
+        inset: auto 10px 10px 10px;
       }
     }
   </style>
@@ -491,25 +635,25 @@
         <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
         <p class="lead">
           3-pokojowe mieszkanie w spokojnej części Siedlec, na 3. i ostatnim piętrze bloku z 2013 roku.
-          Salon z kuchnią i miejscem na stół, osobna łazienka, osobne WC oraz balkon tworzą wygodny i funkcjonalny układ do codziennego życia. [cite:15][cite:371]
+          Salon z kuchnią i miejscem na stół, osobna łazienka, osobne WC oraz balkon tworzą wygodny i funkcjonalny układ do codziennego życia.
         </p>
 
         <div class="meta">
           <div class="meta-card">
             <strong>Powierzchnia</strong>
-            <span>64,4 m² [cite:371]</span>
+            <span>64,4 m²</span>
           </div>
           <div class="meta-card">
             <strong>Układ</strong>
-            <span>3 pokoje, salon z kuchnią [cite:15]</span>
+            <span>3 pokoje, salon z kuchnią</span>
           </div>
           <div class="meta-card">
             <strong>Piętro</strong>
-            <span>3 / ostatnie [cite:366]</span>
+            <span>3 / ostatnie</span>
           </div>
           <div class="meta-card">
             <strong>Budynek</strong>
-            <span>Rok budowy 2013 [cite:366]</span>
+            <span>Rok budowy 2013</span>
           </div>
         </div>
       </section>
@@ -518,13 +662,13 @@
         <div class="big-box">
           <span class="label">Cena</span>
           <p class="price">800 000 zł</p>
-          <div class="subtext">Cena zewnętrznie widoczna w publicznym ogłoszeniu. [web:373]</div>
+          <div class="subtext">Cena widoczna w publicznym ogłoszeniu.</div>
         </div>
 
         <div class="big-box">
           <span class="label">Telefon</span>
           <p class="phone">TU_WPISZ_NUMER</p>
-          <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS. [web:373]</div>
+          <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
         </div>
 
         <div class="actions">
@@ -548,7 +692,13 @@
     <nav class="sticky-nav">
       <div class="nav-row">
         <a href="#galeria-glowna">Galeria główna</a>
-        <a href="#sekcje-pokoi">Pokoje</a>
+        <a href="#salon">Salon</a>
+        <a href="#kuchnia">Kuchnia</a>
+        <a href="#sypialnia">Sypialnia</a>
+        <a href="#pokoj">Drugi pokój</a>
+        <a href="#lazienka">Łazienka</a>
+        <a href="#balkon">Balkon</a>
+        <a href="#przedpokoj">Przedpokój</a>
       </div>
     </nav>
 
@@ -557,193 +707,398 @@
         <div>
           <h2>Galeria główna</h2>
           <p>
-            Tu zostaje obecna zbiorcza galeria zdjęć. Niżej zobaczysz tę samą stronę w bardziej mobilnej wersji z rozwijanymi sekcjami pomieszczeń. [cite:365]
+            Kliknij zdjęcie, aby otworzyć pełnoekranową galerię z przewijaniem zdjęć strzałkami, klawiaturą i palcem.
           </p>
         </div>
       </div>
 
       <div class="main-gallery">
-        <a class="wide" href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Zdjęcie mieszkania 1"></a>
-        <a class="half" href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Zdjęcie mieszkania 2"></a>
-        <a class="small" href="images/IMG02657.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></a>
-        <a class="small" href="images/IMG02663.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></a>
-        <a class="small" href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></a>
-        <a class="small" href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></a>
-        <a class="small" href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></a>
-        <a class="small" href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></a>
-        <a class="small" href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></a>
-        <a class="small" href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></a>
-        <a class="small" href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></a>
-        <a class="small" href="images/IMG_20260411_160649[1].jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649[1].jpg" alt="Zdjęcie mieszkania 12"></a>
-        <a class="small" href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 13"></a>
-        <a class="small" href="images/IMG_20260411_161208.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 14"></a>
-        <a class="small" href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 15"></a>
-        <a class="small" href="images/IMG_20260411_181542.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 16"></a>
-        <a class="small" href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 17"></a>
-        <a class="small" href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 18"></a>
-        <a class="small" href="images/IMG_20260412_195053.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 19"></a>
-        <a class="small" href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 20"></a>
-        <a class="small" href="images/IMG_20260412_200118.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 21"></a>
+        <button class="gallery-item wide" data-gallery="main" data-index="0" type="button"><img src="images/IMG02603.JPG" alt="Zdjęcie mieszkania 1"></button>
+        <button class="gallery-item half" data-gallery="main" data-index="1" type="button"><img src="images/IMG02625.JPG" alt="Zdjęcie mieszkania 2"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="2" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="3" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="4" type="button"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="5" type="button"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="6" type="button"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="7" type="button"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="8" type="button"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="9" type="button"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="10" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="11" type="button"><img src="images/IMG_20260411_160649[1].jpg" alt="Zdjęcie mieszkania 12"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="12" type="button"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 13"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="13" type="button"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 14"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="14" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 15"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="15" type="button"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 16"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="16" type="button"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 17"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="17" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 18"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="18" type="button"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 19"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="19" type="button"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 20"></button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="20" type="button"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 21"></button>
       </div>
     </section>
 
-    <section class="section" id="sekcje-pokoi">
-      <div class="section-header">
-        <div>
-          <h2>Sekcje pomieszczeń</h2>
+    <section class="section subgallery-list">
+      <article class="panel room-section" id="salon">
+        <div class="room-copy">
+          <h3>Salon</h3>
           <p>
-            Tutaj każda sekcja rozwija się po kliknięciu. Dzięki temu strona na telefonie jest krótsza,
-            a Ty możesz później podmieniać pliki już pod konkretne nazwy pomieszczeń. [web:416][cite:365]
+            Tu później możesz podpiąć zdjęcia strefy dziennej. W opisie warto podkreślić połączenie z kuchnią,
+            miejsce na stół i zachodnie światło w salonie.
           </p>
+          <span class="room-note">Galeria salonu otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: jasna strefa dzienna z miejscem na stół.</div>
         </div>
-      </div>
+        <button class="room-thumb" data-gallery="salon" data-index="0" data-next="#kuchnia" type="button">
+          <img src="images/IMG02603.JPG" alt="Salon - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-      <div class="accordion">
-        <details class="room-accordion" open>
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Salon</strong>
-              <span>Strefa dzienna z miejscem na stół i połączeniem z kuchnią. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              Tu później możesz podpiąć konkretne zdjęcia salonu. Na razie sekcja pokazuje dwa przykładowe ujęcia z obecnej puli zdjęć. [cite:365]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Salon 1"></a>
-              <a href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Salon 2"></a>
-            </div>
-          </div>
-        </details>
+      <article class="panel room-section" id="kuchnia">
+        <div class="room-copy">
+          <h3>Kuchnia</h3>
+          <p>
+            Sekcja pod zdjęcia kuchni lub kuchni otwartej na salon. Później możesz nazwać pliki np. `kuchnia-1.jpg`
+            i podmienić same ścieżki bez ruszania układu strony.
+          </p>
+          <span class="room-note">Galeria kuchni otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: funkcjonalna kuchnia z dobrym blatem roboczym.</div>
+        </div>
+        <button class="room-thumb" data-gallery="kuchnia" data-index="0" data-next="#sypialnia" type="button">
+          <img src="images/IMG02625.JPG" alt="Kuchnia - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Kuchnia</strong>
-              <span>Sekcja pod zdjęcia kuchni albo aneksu kuchennego. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              Po zmianie nazw plików łatwo podmienisz tę sekcję na finalne zdjęcia kuchni bez ruszania całego układu strony. [cite:365]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Kuchnia 1"></a>
-              <a href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Kuchnia 2"></a>
-            </div>
-          </div>
-        </details>
+      <article class="panel room-section" id="sypialnia">
+        <div class="room-copy">
+          <h3>Sypialnia</h3>
+          <p>
+            Miejsce na zdjęcia pokoju głównego. Możesz później pokazać ustawność, miejsce na łóżko i szafę
+            oraz bardziej prywatny charakter tej części mieszkania.
+          </p>
+          <span class="room-note">Galeria sypialni otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: spokojna część prywatna z miejscem na przechowywanie.</div>
+        </div>
+        <button class="room-thumb" data-gallery="sypialnia" data-index="0" data-next="#pokoj" type="button">
+          <img src="images/IMG02684.JPG" alt="Sypialnia - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Sypialnia</strong>
-              <span>Miejsce na prywatną część mieszkania i zdjęcia pokoju głównego. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              Tu możesz później pokazać ustawność, miejsce na duże łóżko i przechowywanie. [cite:15]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></a>
-              <a href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Sypialnia 2"></a>
-            </div>
-          </div>
-        </details>
+      <article class="panel room-section" id="pokoj">
+        <div class="room-copy">
+          <h3>Drugi pokój</h3>
+          <p>
+            Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny,
+            zależnie od tego, jak chcesz prowadzić narrację ogłoszenia.
+          </p>
+          <span class="room-note">Galeria drugiego pokoju otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: elastyczny pokój pod gabinet, dziecięcy lub gościnny.</div>
+        </div>
+        <button class="room-thumb" data-gallery="pokoj" data-index="0" data-next="#lazienka" type="button">
+          <img src="images/IMG02700.JPG" alt="Drugi pokój - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Drugi pokój</strong>
-              <span>Może pełnić rolę gabinetu, pokoju dziecka albo dodatkowej sypialni. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              To dobra sekcja na pokazanie elastyczności układu mieszkania. [cite:15]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Drugi pokój 1"></a>
-              <a href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Drugi pokój 2"></a>
-            </div>
-          </div>
-        </details>
+      <article class="panel room-section" id="lazienka">
+        <div class="room-copy">
+          <h3>Łazienka</h3>
+          <p>
+            Tu warto później wyeksponować osobną łazienkę z wanną, funkcją prysznica i miejscem na pralkę,
+            bo to ważny element funkcjonalny mieszkania.
+          </p>
+          <span class="room-note">Galeria łazienki otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: osobna łazienka z praktycznym układem i miejscem na pralkę.</div>
+        </div>
+        <button class="room-thumb" data-gallery="lazienka" data-index="0" data-next="#balkon" type="button">
+          <img src="images/IMG_20260411_160649.jpg" alt="Łazienka - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Łazienka</strong>
-              <span>Osobna łazienka z wanną, funkcją prysznica i miejscem na pralkę. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              To jeden z ważniejszych praktycznych atutów układu, więc warto później pokazać go wyraźnie na zdjęciach. [cite:15]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></a>
-              <a href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></a>
-            </div>
-          </div>
-        </details>
+      <article class="panel room-section" id="balkon">
+        <div class="room-copy">
+          <h3>Balkon</h3>
+          <p>
+            Balkon jest mocnym elementem oferty, szczególnie gdy pokazuje światło i kierunek na południe.
+            Możesz tu później dodać widok i zdjęcia popołudniowego słońca.
+          </p>
+          <span class="room-note">Galeria balkonu otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: balkon z przyjemnym światłem i miejscem na poranną kawę.</div>
+        </div>
+        <button class="room-thumb" data-gallery="balkon" data-index="0" data-next="#przedpokoj" type="button">
+          <img src="images/IMG_20260411_181457.jpg" alt="Balkon - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
 
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Balkon</strong>
-              <span>Silny punkt oferty z korzystną ekspozycją i światłem. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              W tej sekcji możesz później podpiąć kadry pokazujące widok i popołudniowe słońce. [cite:15]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Balkon 1"></a>
-              <a href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Balkon 2"></a>
-            </div>
-          </div>
-        </details>
-
-        <details class="room-accordion">
-          <summary class="room-summary">
-            <div class="summary-text">
-              <strong>Przedpokój</strong>
-              <span>Sekcja pod wejście, komunikację i zabudowę przy drzwiach. [cite:15]</span>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="room-content">
-            <div class="room-copy">
-              Tu dobrze pokażesz pierwsze wrażenie po wejściu do mieszkania i ewentualną szafę z lustrem. [cite:15]
-              <div class="room-tag">Sekcja testowa</div>
-            </div>
-            <div class="room-gallery">
-              <a href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój 1"></a>
-              <a href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Przedpokój 2"></a>
-            </div>
-          </div>
-        </details>
-      </div>
+      <article class="panel room-section" id="przedpokoj">
+        <div class="room-copy">
+          <h3>Przedpokój</h3>
+          <p>
+            Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem
+            i ogólnego wrażenia uporządkowanego układu.
+          </p>
+          <span class="room-note">Galeria przedpokoju otwiera się w popupie</span>
+          <div class="room-caption">Przykładowy podpis: funkcjonalne wejście z miejscem na przechowywanie.</div>
+        </div>
+        <button class="room-thumb" data-gallery="przedpokoj" data-index="0" type="button">
+          <img src="images/IMG_20260412_190903.jpg" alt="Przedpokój - zdjęcie podglądowe">
+          <span class="thumb-overlay">
+            <span>Otwórz galerię</span>
+            <span class="thumb-count">2 zdjęcia</span>
+          </span>
+        </button>
+      </article>
     </section>
   </main>
 
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-label="Galeria zdjęć mieszkania"
+  >
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij galerię">×</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">‹</button>
+
+      <div class="lightbox-stage" id="lightboxStage">
+        <img id="lightboxImage" src="" alt="">
+      </div>
+
+      <button class="lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">›</button>
+
+      <div class="lightbox-toolbar">
+        <div class="lightbox-meta" id="lightboxMeta"></div>
+      </div>
+    </div>
+  </div>
+
   <footer class="wrap">
-    Rozwijane sekcje porządkują stronę na telefonie i ułatwiają późniejsze przypisywanie zdjęć do konkretnych pomieszczeń. [web:423][cite:365]
+    Wersja premium dodaje liczniki zdjęć, podpisy sekcji i wygodniejszą nawigację między galeriami.
   </footer>
+
+  <script>
+    const galleries = {
+      main: [
+        { src: 'images/IMG02603.JPG', alt: 'Zdjęcie mieszkania 1' },
+        { src: 'images/IMG02625.JPG', alt: 'Zdjęcie mieszkania 2' },
+        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 3' },
+        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 4' },
+        { src: 'images/IMG02664.JPG', alt: 'Zdjęcie mieszkania 5' },
+        { src: 'images/IMG02682.JPG', alt: 'Zdjęcie mieszkania 6' },
+        { src: 'images/IMG02684.JPG', alt: 'Zdjęcie mieszkania 7' },
+        { src: 'images/IMG02688.JPG', alt: 'Zdjęcie mieszkania 8' },
+        { src: 'images/IMG02700.JPG', alt: 'Zdjęcie mieszkania 9' },
+        { src: 'images/IMG02708.JPG', alt: 'Zdjęcie mieszkania 10' },
+        { src: 'images/IMG_20260411_160649.jpg', alt: 'Zdjęcie mieszkania 11' },
+        { src: 'images/IMG_20260411_160649[1].jpg', alt: 'Zdjęcie mieszkania 12' },
+        { src: 'images/IMG_20260411_160936.jpg', alt: 'Zdjęcie mieszkania 13' },
+        { src: 'images/IMG_20260411_161208.jpg', alt: 'Zdjęcie mieszkania 14' },
+        { src: 'images/IMG_20260411_181457.jpg', alt: 'Zdjęcie mieszkania 15' },
+        { src: 'images/IMG_20260411_181542.jpg', alt: 'Zdjęcie mieszkania 16' },
+        { src: 'images/IMG_20260411_181724.jpg', alt: 'Zdjęcie mieszkania 17' },
+        { src: 'images/IMG_20260412_190903.jpg', alt: 'Zdjęcie mieszkania 18' },
+        { src: 'images/IMG_20260412_195053.jpg', alt: 'Zdjęcie mieszkania 19' },
+        { src: 'images/IMG_20260412_195145.jpg', alt: 'Zdjęcie mieszkania 20' },
+        { src: 'images/IMG_20260412_200118.jpg', alt: 'Zdjęcie mieszkania 21' }
+      ],
+      salon: [
+        { src: 'images/IMG02603.JPG', alt: 'Salon 1' },
+        { src: 'images/IMG02664.JPG', alt: 'Salon 2' }
+      ],
+      kuchnia: [
+        { src: 'images/IMG02625.JPG', alt: 'Kuchnia 1' },
+        { src: 'images/IMG02682.JPG', alt: 'Kuchnia 2' }
+      ],
+      sypialnia: [
+        { src: 'images/IMG02684.JPG', alt: 'Sypialnia 1' },
+        { src: 'images/IMG02688.JPG', alt: 'Sypialnia 2' }
+      ],
+      pokoj: [
+        { src: 'images/IMG02700.JPG', alt: 'Drugi pokój 1' },
+        { src: 'images/IMG02708.JPG', alt: 'Drugi pokój 2' }
+      ],
+      lazienka: [
+        { src: 'images/IMG_20260411_160649.jpg', alt: 'Łazienka 1' },
+        { src: 'images/IMG_20260411_160936.jpg', alt: 'Łazienka 2' }
+      ],
+      balkon: [
+        { src: 'images/IMG_20260411_181457.jpg', alt: 'Balkon 1' },
+        { src: 'images/IMG_20260411_181724.jpg', alt: 'Balkon 2' }
+      ],
+      przedpokoj: [
+        { src: 'images/IMG_20260412_190903.jpg', alt: 'Przedpokój 1' },
+        { src: 'images/IMG_20260412_195145.jpg', alt: 'Przedpokój 2' }
+      ]
+    };
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxMeta = document.getElementById('lightboxMeta');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+
+    let activeGallery = 'main';
+    let activeIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let lastTrigger = null;
+    let nextSectionSelector = null;
+
+    function renderLightbox() {
+      const items = galleries[activeGallery];
+      const item = items[activeIndex];
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.alt;
+      lightboxMeta.textContent = `${item.alt} • ${activeIndex + 1} / ${items.length}`;
+    }
+
+    function getFocusableElements() {
+      return lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    }
+
+    function trapFocus(event) {
+      if (event.key !== 'Tab' || !lightbox.classList.contains('open')) return;
+      const focusables = [...getFocusableElements()].filter(el => !el.disabled);
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    function openLightbox(galleryName, index, trigger, nextTarget) {
+      activeGallery = galleryName;
+      activeIndex = index;
+      lastTrigger = trigger || null;
+      nextSectionSelector = nextTarget || null;
+      renderLightbox();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeLightbox(scrollNext = false) {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastTrigger) lastTrigger.focus();
+
+      if (scrollNext && nextSectionSelector) {
+        const nextSection = document.querySelector(nextSectionSelector);
+        if (nextSection) {
+          setTimeout(() => {
+            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 120);
+        }
+      }
+    }
+
+    function showNext() {
+      const items = galleries[activeGallery];
+      activeIndex = (activeIndex + 1) % items.length;
+      renderLightbox();
+    }
+
+    function showPrev() {
+      const items = galleries[activeGallery];
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      renderLightbox();
+    }
+
+    document.querySelectorAll('[data-gallery]').forEach((item) => {
+      item.addEventListener('click', () => {
+        openLightbox(
+          item.dataset.gallery,
+          Number(item.dataset.index || 0),
+          item,
+          item.dataset.next || null
+        );
+      });
+    });
+
+    closeBtn.addEventListener('click', () => closeLightbox(false));
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      trapFocus(e);
+      if (e.key === 'Escape') closeLightbox(false);
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) < 40) return;
+      if (diff < 0) showNext();
+      if (diff > 0) showPrev();
+    }, { passive: true });
+
+    document.querySelectorAll('.room-thumb').forEach((thumb) => {
+      thumb.addEventListener('dblclick', () => {
+        const nextTarget = thumb.dataset.next || null;
+        if (nextTarget) {
+          closeLightbox(true);
+        }
+      });
+    });
+
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && activeGallery !== 'main' && nextSectionSelector) {
+        closeLightbox(true);
+      }
+    });
+  </script>
 </body>
 </html>
