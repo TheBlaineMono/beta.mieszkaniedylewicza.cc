@@ -6,24 +6,24 @@
   <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
     :root {
-      --bg: #12100e;
-      --bg-soft: #181614;
-      --panel: rgba(28, 27, 25, 0.94);
-      --panel-2: rgba(34, 33, 31, 0.96);
-      --surface: #1f1d1a;
-      --surface-2: #252320;
-      --text: #ece7df;
-      --muted: #b5aea4;
-      --faint: #7f7a72;
-      --border: rgba(236, 231, 223, 0.12);
-      --divider: rgba(236, 231, 223, 0.08);
-      --accent: #c6a972;
-      --accent-hover: #d8bb83;
-      --accent-2: #8f7751;
-      --success: #6c9474;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.20);
-      --shadow-md: 0 10px 30px rgba(0,0,0,0.24);
-      --shadow-lg: 0 24px 60px rgba(0,0,0,0.34);
+      --bg: #0b1020;
+      --bg-2: #0f172a;
+      --panel: rgba(15, 23, 42, 0.78);
+      --panel-2: rgba(17, 25, 44, 0.88);
+      --surface: rgba(255,255,255,0.04);
+      --surface-2: rgba(255,255,255,0.06);
+      --text: #e5eefb;
+      --muted: #9fb0cb;
+      --faint: #6f7f99;
+      --border: rgba(255,255,255,0.11);
+      --divider: rgba(255,255,255,0.08);
+      --accent: #6ee7f9;
+      --accent-2: #8b5cf6;
+      --accent-3: #38bdf8;
+      --accent-hover: #a5f3fc;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.28);
+      --shadow-lg: 0 30px 80px rgba(2, 6, 23, 0.48);
       --radius-sm: 14px;
       --radius-md: 18px;
       --radius-lg: 28px;
@@ -40,9 +40,38 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(198,169,114,0.08) 0%, rgba(18,16,14,0) 28%),
-        radial-gradient(circle at top right, rgba(198,169,114,0.06) 0%, rgba(18,16,14,0) 24%),
-        linear-gradient(180deg, #151311 0%, #12100e 100%);
+        radial-gradient(circle at 12% 16%, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0) 26%),
+        radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.16) 0%, rgba(139, 92, 246, 0) 24%),
+        radial-gradient(circle at 50% 100%, rgba(110, 231, 249, 0.08) 0%, rgba(110, 231, 249, 0) 34%),
+        linear-gradient(180deg, #09111f 0%, #0b1020 40%, #0f172a 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: .28;
+    }
+
+    body::before {
+      top: 120px;
+      left: -60px;
+      background: rgba(110, 231, 249, 0.22);
+    }
+
+    body::after {
+      right: -40px;
+      bottom: 80px;
+      background: rgba(139, 92, 246, 0.22);
     }
 
     img {
@@ -77,11 +106,23 @@
     }
 
     .panel {
-      background: var(--panel);
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.025) 100%);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 32%),
+        linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+      pointer-events: none;
     }
 
     .hero {
@@ -90,16 +131,19 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 22px;
       align-items: stretch;
     }
 
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
     .hero-main {
       padding: 38px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%),
-        var(--panel);
     }
 
     .eyebrow {
@@ -107,45 +151,115 @@
       align-items: center;
       gap: 8px;
       padding: 9px 13px;
-      background: rgba(198,169,114,0.12);
+      background: rgba(110, 231, 249, 0.10);
       color: var(--accent-hover);
-      border: 1px solid rgba(198,169,114,0.24);
+      border: 1px solid rgba(110, 231, 249, 0.18);
       border-radius: var(--radius-full);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.04em;
       margin-bottom: 18px;
       text-transform: uppercase;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(38px, 5vw, 66px);
-      line-height: 0.95;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 0.94;
       letter-spacing: -0.05em;
       max-width: 11ch;
     }
 
     .lead {
-      margin: 0;
+      margin: 0 0 18px;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.8;
       max-width: 62ch;
     }
 
+    details.description-box {
+      margin: 0 0 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(110, 231, 249, 0.12);
+      background:
+        linear-gradient(180deg, rgba(110, 231, 249, 0.07) 0%, rgba(139, 92, 246, 0.04) 100%);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    details.description-box summary {
+      list-style: none;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    details.description-box summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-title strong {
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .summary-title span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .summary-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--accent-hover);
+      font-size: 20px;
+      font-weight: 700;
+      flex: 0 0 auto;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    details[open] .summary-icon {
+      transform: rotate(45deg);
+      background: rgba(110, 231, 249, 0.12);
+    }
+
+    .description-content {
+      padding: 0 20px 20px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
     .meta {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 26px;
     }
 
     .meta-card {
       padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.04);
       border: 1px solid var(--divider);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
     .meta-card strong {
@@ -169,14 +283,13 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      background: var(--panel-2);
     }
 
     .info-box {
       padding: 22px;
       border-radius: 22px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+        linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
       border: 1px solid var(--divider);
       box-shadow: var(--shadow-sm);
     }
@@ -197,7 +310,10 @@
       line-height: 1;
       letter-spacing: -0.05em;
       font-weight: 800;
-      color: var(--accent-hover);
+      background: linear-gradient(90deg, #dff7ff 0%, #8be9ff 38%, #b59bff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .phone {
@@ -229,7 +345,7 @@
       padding: 0 18px;
       border-radius: var(--radius-full);
       font-weight: 700;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
     }
 
     .btn:hover {
@@ -237,83 +353,19 @@
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #1b1612;
+      background: linear-gradient(135deg, #8b5cf6 0%, #38bdf8 100%);
+      color: white;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.20);
     }
 
     .btn-primary:hover {
-      background: var(--accent-hover);
+      box-shadow: 0 18px 34px rgba(56, 189, 248, 0.26);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.04);
       color: var(--text);
       border: 1px solid var(--border);
-    }
-
-    details.description-box {
-      border-radius: 18px;
-      border: 1px solid var(--divider);
-      background: rgba(255,255,255,0.02);
-      overflow: hidden;
-    }
-
-    details.description-box summary {
-      list-style: none;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      cursor: pointer;
-    }
-
-    details.description-box summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .summary-title {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .summary-title strong {
-      font-size: 15px;
-      letter-spacing: -0.02em;
-    }
-
-    .summary-title span {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .summary-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--divider);
-      color: var(--accent-hover);
-      font-size: 20px;
-      font-weight: 700;
-      flex: 0 0 auto;
-      transition: transform .18s ease;
-    }
-
-    details[open] .summary-icon {
-      transform: rotate(45deg);
-    }
-
-    .description-content {
-      padding: 0 18px 18px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-      border-top: 1px solid var(--divider);
     }
 
     .section {
@@ -347,10 +399,10 @@
       z-index: 30;
       margin: 8px 0 18px;
       padding: 10px;
-      background: rgba(24,22,20,0.88);
+      background: rgba(10, 16, 32, 0.72);
       border: 1px solid var(--border);
       border-radius: 18px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       box-shadow: var(--shadow-md);
       overflow-x: auto;
     }
@@ -374,7 +426,8 @@
 
     .sticky-nav a:hover {
       color: var(--text);
-      border-color: var(--border);
+      border-color: rgba(110, 231, 249, 0.18);
+      background: rgba(110, 231, 249, 0.08);
     }
 
     .main-gallery {
@@ -389,10 +442,19 @@
       position: relative;
       display: block;
       overflow: hidden;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 1px solid var(--divider);
-      background: #0f0e0c;
+      background: #090d18;
       box-shadow: var(--shadow-md);
+    }
+
+    .gallery-item::after,
+    .room-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 30%, rgba(3,7,18,0.14) 100%);
+      pointer-events: none;
     }
 
     .gallery-item img,
@@ -432,13 +494,14 @@
       bottom: 12px;
       padding: 7px 10px;
       border-radius: var(--radius-full);
-      background: rgba(18,16,14,0.72);
+      background: rgba(9, 15, 30, 0.72);
       border: 1px solid rgba(255,255,255,0.08);
       color: #fff;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.03em;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      z-index: 1;
     }
 
     .subgallery-list {
@@ -454,7 +517,7 @@
       align-items: center;
       padding: 24px;
       scroll-margin-top: 88px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.018) 100%);
     }
 
     .room-copy h3 {
@@ -482,13 +545,13 @@
     }
 
     .room-note {
-      background: rgba(198,169,114,0.08);
+      background: rgba(110, 231, 249, 0.08);
       color: var(--accent-hover);
     }
 
     .room-caption {
       margin-top: 10px;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.03);
       color: var(--muted);
     }
 
@@ -506,10 +569,11 @@
       gap: 12px;
       padding: 10px 12px;
       border-radius: var(--radius-full);
-      background: rgba(18,16,14,0.7);
+      background: rgba(9, 15, 30, 0.72);
       color: #fff;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.08);
+      z-index: 1;
     }
 
     .thumb-overlay span {
@@ -520,7 +584,7 @@
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(10, 9, 8, 0.95);
+      background: rgba(2, 6, 23, 0.94);
       display: none;
       align-items: center;
       justify-content: center;
@@ -546,7 +610,10 @@
       min-height: 0;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.02);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 28%),
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0) 24%),
+        rgba(255,255,255,0.03);
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.08);
       overflow: hidden;
@@ -558,7 +625,7 @@
       width: auto;
       height: auto;
       object-fit: contain;
-      background: #111;
+      background: #0b1120;
     }
 
     .lightbox-close,
@@ -582,7 +649,7 @@
     .lightbox-close:hover,
     .lightbox-prev:hover,
     .lightbox-next:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.20);
       transform: translateY(-1px);
     }
 
@@ -635,25 +702,13 @@
 
     .lightbox-thumb.active {
       opacity: 1;
-      border-color: rgba(198,169,114,0.72);
+      border-color: rgba(110, 231, 249, 0.66);
       transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(198,169,114,0.24);
+      box-shadow: 0 0 0 1px rgba(110, 231, 249, 0.22);
     }
 
     .lightbox-thumb img {
       height: 100%;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
     }
 
     footer {
@@ -728,7 +783,6 @@
 
       .lightbox-inner {
         height: min(94vh, 980px);
-        grid-template-rows: minmax(0, 1fr) auto auto;
       }
 
       .lightbox-prev,
@@ -763,6 +817,20 @@
           3-pokojowe mieszkanie w spokojnej części Siedlec, na 3. i ostatnim piętrze bloku z 2013 roku.
           Salon z kuchnią i miejscem na stół, osobna łazienka, osobne WC oraz balkon tworzą wygodny i funkcjonalny układ do codziennego życia.
         </p>
+
+        <details class="description-box">
+          <summary>
+            <span class="summary-title">
+              <strong>Opis mieszkania</strong>
+              <span>Rozwiń pełniejszy opis oferty bez wydłużania wejścia na stronę.</span>
+            </span>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="description-content">
+            Mieszkanie o funkcjonalnym układzie, odpowiednie dla rodziny, pary lub osób szukających wygodnej przestrzeni z wyraźnym podziałem na strefę dzienną i prywatną.
+            W tej sekcji możesz później wkleić pełny opis z ogłoszenia, informacje o ekspozycji, stanie wykończenia, wyposażeniu, otoczeniu, komunikacji i najmocniejszych atutach lokalizacji.
+          </div>
+        </details>
 
         <div class="meta">
           <div class="meta-card">
@@ -810,20 +878,6 @@
             Zobacz galerię
           </a>
         </div>
-
-        <details class="description-box">
-          <summary>
-            <span class="summary-title">
-              <strong>Opis mieszkania</strong>
-              <span>Rozwiń pełniejszy opis oferty bez wydłużania górnej sekcji.</span>
-            </span>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="description-content">
-            Mieszkanie o funkcjonalnym układzie, odpowiednie dla rodziny, pary lub osób szukających wygodnej przestrzeni z osobną strefą dzienną i prywatną.
-            W tej sekcji możesz później wkleić pełny opis z ogłoszenia, informacje o ekspozycji, stanie wykończenia, wyposażeniu, sąsiedztwie, komunikacji oraz atutach lokalizacji.
-          </div>
-        </details>
       </aside>
     </div>
   </header>
@@ -847,8 +901,8 @@
         <div>
           <h2>Galeria główna</h2>
           <p>
-            Kliknij dowolne zdjęcie, aby otworzyć pełnoekranową galerię z przewijaniem strzałkami, klawiaturą,
-            gestem swipe na telefonie oraz miniaturami pod głównym zdjęciem.
+            Kliknij dowolne zdjęcie, aby otworzyć pełnoekranową galerię z przewijaniem strzałkami,
+            klawiaturą, gestem swipe oraz miniaturami pod głównym zdjęciem.
           </p>
         </div>
       </div>
@@ -888,10 +942,7 @@
       <article class="panel room-section" id="salon">
         <div class="room-copy">
           <h3>Salon</h3>
-          <p>
-            Tu później możesz podpiąć docelowe zdjęcia strefy dziennej. W opisie warto podkreślić połączenie z kuchnią,
-            miejsce na stół oraz charakter części wspólnej mieszkania.
-          </p>
+          <p>Tu później możesz podpiąć docelowe zdjęcia strefy dziennej oraz podkreślić jej otwarty, nowoczesny charakter.</p>
           <span class="room-note">Podgląd otwiera osobną galerię salonu</span>
           <div class="room-caption">Przykładowy podpis: jasna strefa dzienna z miejscem na wspólne spędzanie czasu.</div>
         </div>
@@ -907,10 +958,7 @@
       <article class="panel room-section" id="kuchnia">
         <div class="room-copy">
           <h3>Kuchnia</h3>
-          <p>
-            Sekcja pod zdjęcia kuchni lub aneksu kuchennego. Później podmienisz pliki na uproszczone nazwy
-            i zachowasz ten sam układ.
-          </p>
+          <p>Sekcja pod zdjęcia kuchni lub aneksu kuchennego. Docelowo możesz tu pokazać funkcjonalność i ergonomię układu.</p>
           <span class="room-note">Podgląd otwiera osobną galerię kuchni</span>
           <div class="room-caption">Przykładowy podpis: funkcjonalna kuchnia z wygodnym blatem roboczym.</div>
         </div>
@@ -926,10 +974,7 @@
       <article class="panel room-section" id="sypialnia">
         <div class="room-copy">
           <h3>Sypialnia</h3>
-          <p>
-            Miejsce na zdjęcia pokoju głównego. Tu możesz później pokazać ustawność, miejsce na łóżko i szafę
-            oraz spokojniejszy charakter części prywatnej.
-          </p>
+          <p>Miejsce na zdjęcia pokoju głównego. Tu możesz później pokazać ustawność, spokój i bardziej prywatny charakter tej części mieszkania.</p>
           <span class="room-note">Podgląd otwiera osobną galerię sypialni</span>
           <div class="room-caption">Przykładowy podpis: kameralna sypialnia z miejscem na przechowywanie.</div>
         </div>
@@ -945,10 +990,7 @@
       <article class="panel room-section" id="pokoj">
         <div class="room-copy">
           <h3>Drugi pokój</h3>
-          <p>
-            Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny,
-            zależnie od finalnej narracji oferty.
-          </p>
+          <p>Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny, zależnie od finalnej narracji oferty.</p>
           <span class="room-note">Podgląd otwiera osobną galerię drugiego pokoju</span>
           <div class="room-caption">Przykładowy podpis: elastyczny pokój pod gabinet, dziecięcy lub gościnny.</div>
         </div>
@@ -964,9 +1006,7 @@
       <article class="panel room-section" id="lazienka">
         <div class="room-copy">
           <h3>Łazienka</h3>
-          <p>
-            Tu warto później wyeksponować osobną łazienkę i jej praktyczny układ, zwłaszcza jeśli chcesz podkreślić funkcjonalność mieszkania.
-          </p>
+          <p>Tu warto później wyeksponować osobną łazienkę i jej praktyczny układ, zwłaszcza jeśli chcesz podkreślić funkcjonalność mieszkania.</p>
           <span class="room-note">Podgląd otwiera osobną galerię łazienki</span>
           <div class="room-caption">Przykładowy podpis: osobna łazienka z wygodnym, praktycznym układem.</div>
         </div>
@@ -982,9 +1022,7 @@
       <article class="panel room-section" id="balkon">
         <div class="room-copy">
           <h3>Balkon</h3>
-          <p>
-            Balkon może być mocnym elementem oferty, szczególnie jeśli pokazuje światło, ekspozycję i przyjemną przestrzeń na chwilę odpoczynku.
-          </p>
+          <p>Balkon może być mocnym elementem oferty, szczególnie jeśli pokazuje światło, ekspozycję i przyjemną przestrzeń na odpoczynek.</p>
           <span class="room-note">Podgląd otwiera osobną galerię balkonu</span>
           <div class="room-caption">Przykładowy podpis: balkon z przyjemnym światłem i miejscem na poranną kawę.</div>
         </div>
@@ -1000,9 +1038,7 @@
       <article class="panel room-section" id="przedpokoj">
         <div class="room-copy">
           <h3>Przedpokój</h3>
-          <p>
-            Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem i pierwszego wrażenia po wejściu do mieszkania.
-          </p>
+          <p>Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem i pierwszego wrażenia po wejściu.</p>
           <span class="room-note">Podgląd otwiera osobną galerię przedpokoju</span>
           <div class="room-caption">Przykładowy podpis: uporządkowane wejście z miejscem na przechowywanie.</div>
         </div>
@@ -1026,7 +1062,7 @@
     aria-label="Galeria zdjęć mieszkania"
   >
     <div class="lightbox-inner">
-      <div class="lightbox-stage" id="lightboxStage">
+      <div class="lightbox-stage">
         <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij galerię">×</button>
         <button class="lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">‹</button>
         <img id="lightboxImage" src="" alt="">
@@ -1034,13 +1070,12 @@
       </div>
 
       <div class="lightbox-meta" id="lightboxMeta"></div>
-
       <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Miniatury zdjęć"></div>
     </div>
   </div>
 
   <footer class="wrap">
-    Tymczasowa wersja działa na bezpiecznych nazwach plików; później wystarczy podmienić ścieżki w galeriach na docelowe nazwy zdjęć.
+    Tymczasowa wersja działa na bezpiecznych nazwach plików i ma bardziej nowoczesny, chłodniejszy styl wizualny.
   </footer>
 
   <script>
