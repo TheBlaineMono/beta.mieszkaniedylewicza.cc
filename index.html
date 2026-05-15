@@ -43,28 +43,28 @@
 
     html[data-theme="dark"] {
       --bg: #0b1020;
-      --bg-2: #0f172a;
-      --hero-bg: rgba(15, 23, 42, 0.84);
-      --panel: rgba(15, 23, 42, 0.80);
-      --panel-2: rgba(17, 25, 44, 0.90);
-      --surface: rgba(255,255,255,0.04);
-      --surface-2: rgba(255,255,255,0.06);
-      --text: #e5eefb;
-      --muted: #9fb0cb;
-      --faint: #6f7f99;
-      --border: rgba(255,255,255,0.11);
-      --divider: rgba(255,255,255,0.08);
-      --accent: #6ee7f9;
-      --accent-2: #8b5cf6;
-      --accent-3: #38bdf8;
-      --accent-hover: #a5f3fc;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
-      --shadow-md: 0 12px 30px rgba(0,0,0,0.28);
-      --shadow-lg: 0 30px 80px rgba(2, 6, 23, 0.48);
-      --thumb-overlay: rgba(9, 15, 30, 0.78);
+      --bg-2: #111a2e;
+      --hero-bg: rgba(19, 28, 48, 0.96);
+      --panel: rgba(15, 23, 42, 0.92);
+      --panel-2: rgba(26, 36, 60, 0.96);
+      --surface: rgba(148, 163, 184, 0.08);
+      --surface-2: rgba(148, 163, 184, 0.12);
+      --text: #f4f8ff;
+      --muted: #d2dced;
+      --faint: #9fb0c9;
+      --border: rgba(255,255,255,0.14);
+      --divider: rgba(255,255,255,0.11);
+      --accent: #7dd3fc;
+      --accent-2: #60a5fa;
+      --accent-3: #93c5fd;
+      --accent-hover: #dbeafe;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.22);
+      --shadow-md: 0 14px 34px rgba(0,0,0,0.34);
+      --shadow-lg: 0 34px 90px rgba(2, 6, 23, 0.56);
+      --thumb-overlay: rgba(9, 15, 30, 0.88);
       --thumb-text: #ffffff;
-      --gallery-bg: #090d18;
-      --price-gradient: linear-gradient(90deg, #dff7ff 0%, #8be9ff 38%, #b59bff 100%);
+      --gallery-bg: #0c1426;
+      --price-gradient: linear-gradient(90deg, #f8fbff 0%, #bfdbfe 48%, #7dd3fc 100%);
     }
 
     * { box-sizing: border-box; }
@@ -135,6 +135,10 @@
       flex-direction: column;
       gap: 20px;
       min-height: 100%;
+    }
+
+    html[data-theme="dark"] .hero-main {
+      background: linear-gradient(180deg, rgba(21, 31, 53, 0.98) 0%, rgba(16, 24, 43, 0.96) 100%);
     }
 
     .theme-toggle {
@@ -221,6 +225,12 @@
       background: linear-gradient(180deg, color-mix(in srgb, #dbeafe 54%, transparent) 0%, color-mix(in srgb, white 68%, transparent) 100%);
       overflow: hidden;
       box-shadow: inset 0 1px 0 color-mix(in srgb, white 48%, transparent);
+    }
+
+    html[data-theme="dark"] details.description-box {
+      background: linear-gradient(180deg, rgba(25, 37, 64, 0.98) 0%, rgba(18, 28, 49, 0.98) 100%);
+      border-color: rgba(125, 211, 252, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     details.description-box summary {
@@ -332,6 +342,12 @@
       box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
     }
 
+    html[data-theme="dark"] .meta-card {
+      background: linear-gradient(180deg, rgba(30, 43, 72, 0.98) 0%, rgba(22, 32, 56, 0.98) 100%);
+      border-color: rgba(255,255,255,0.11);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
     .meta-card strong {
       display: block;
       margin-bottom: 6px;
@@ -357,6 +373,10 @@
       background: linear-gradient(180deg, color-mix(in srgb, white 56%, transparent) 0%, color-mix(in srgb, white 18%, transparent) 100%);
     }
 
+    html[data-theme="dark"] .hero-side {
+      background: linear-gradient(180deg, rgba(19, 29, 50, 0.98) 0%, rgba(14, 22, 39, 0.96) 100%);
+    }
+
     .hero-main-info {
       display: flex;
       flex-direction: column;
@@ -371,6 +391,12 @@
       background: linear-gradient(180deg, color-mix(in srgb, white 92%, transparent) 0%, color-mix(in srgb, white 70%, transparent) 100%);
       border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
       box-shadow: 0 1px 0 color-mix(in srgb, white 70%, transparent), 0 10px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    html[data-theme="dark"] .info-box {
+      background: linear-gradient(180deg, rgba(27, 39, 66, 0.98) 0%, rgba(19, 28, 48, 0.98) 100%);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 14px 28px rgba(0,0,0,0.22);
     }
 
     .label {
@@ -447,6 +473,13 @@
       color: var(--text);
       border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
       box-shadow: inset 0 1px 0 color-mix(in srgb, white 70%, transparent);
+    }
+
+    html[data-theme="dark"] .btn-secondary {
+      background: linear-gradient(180deg, rgba(31, 44, 72, 0.98) 0%, rgba(22, 32, 56, 0.98) 100%);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     .section { padding: 18px 0 20px; }
@@ -988,6 +1021,25 @@
           <a href="#balkon">Balkon</a>
           <a href="#przedpokoj">Przedpokój</a>
           <a href="#galeria-skrocona">Galeria skrócona</a>
+        </div>
+
+        <div class="meta">
+          <div class="meta-card">
+            <strong>Powierzchnia</strong>
+            <span>64,4 m²</span>
+          </div>
+          <div class="meta-card">
+            <strong>Układ</strong>
+            <span>3 pokoje</span>
+          </div>
+          <div class="meta-card">
+            <strong>Piętro</strong>
+            <span>3 / ostatnie</span>
+          </div>
+          <div class="meta-card">
+            <strong>Budynek</strong>
+            <span>Rok budowy 2013</span>
+          </div>
         </div>
 
         <details class="description-box">
