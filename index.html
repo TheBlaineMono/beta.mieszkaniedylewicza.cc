@@ -21,7 +21,6 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -261,11 +260,6 @@
       font-weight: 600;
     }
 
-    .sticky-nav a:hover {
-      color: var(--text);
-      border-color: #d8dee8;
-    }
-
     .main-gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -310,35 +304,83 @@
       aspect-ratio: 4 / 3;
     }
 
-    .room-section {
+    .accordion {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 20px;
-      padding: 22px;
+      gap: 14px;
+      margin-top: 8px;
     }
 
-    .room-info h3 {
-      margin: 0 0 10px;
-      font-size: clamp(22px, 2.5vw, 30px);
+    details.room-accordion {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+      scroll-margin-top: 90px;
+    }
+
+    details.room-accordion[open] {
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
+    }
+
+    summary.room-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    summary.room-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-text strong {
+      display: block;
+      font-size: 22px;
       letter-spacing: -0.03em;
+      margin-bottom: 5px;
     }
 
-    .room-info p {
-      margin: 0 0 12px;
+    .summary-text span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .summary-icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      background: #fff;
+      transition: transform .2s ease, color .2s ease;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    details[open] .summary-icon {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+
+    .room-content {
+      padding: 0 22px 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .room-copy {
+      padding: 18px 0 14px;
       color: var(--muted);
       line-height: 1.75;
       font-size: 16px;
-    }
-
-    .room-note {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #f3f7fb;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
+      max-width: 72ch;
     }
 
     .room-gallery {
@@ -351,6 +393,18 @@
       aspect-ratio: 4 / 3;
     }
 
+    .room-tag {
+      display: inline-flex;
+      margin-top: 4px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f7fb;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
     footer {
       padding: 28px 0 40px;
       text-align: center;
@@ -359,8 +413,7 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .room-section {
+      .hero-grid {
         grid-template-columns: 1fr;
       }
 
@@ -381,8 +434,7 @@
       }
 
       .hero-main,
-      .hero-side,
-      .room-section {
+      .hero-side {
         padding: 20px;
       }
 
@@ -415,6 +467,18 @@
 
       .sticky-nav {
         top: 8px;
+      }
+
+      summary.room-summary {
+        padding: 18px;
+      }
+
+      .room-content {
+        padding: 0 18px 18px;
+      }
+
+      .summary-text strong {
+        font-size: 20px;
       }
     }
   </style>
@@ -484,13 +548,7 @@
     <nav class="sticky-nav">
       <div class="nav-row">
         <a href="#galeria-glowna">Galeria główna</a>
-        <a href="#salon">Salon</a>
-        <a href="#kuchnia">Kuchnia</a>
-        <a href="#sypialnia">Sypialnia</a>
-        <a href="#pokoj">Drugi pokój</a>
-        <a href="#lazienka">Łazienka</a>
-        <a href="#balkon">Balkon</a>
-        <a href="#przedpokoj">Przedpokój</a>
+        <a href="#sekcje-pokoi">Pokoje</a>
       </div>
     </nav>
 
@@ -499,8 +557,7 @@
         <div>
           <h2>Galeria główna</h2>
           <p>
-            Na górze zostawiłem obecną galerię zbiorczą z aktualnymi zdjęciami, a niżej osobne sekcje dla pomieszczeń,
-            które później łatwo podmienisz na zdjęcia nazwane już według pokoi. [cite:365]
+            Tu zostaje obecna zbiorcza galeria zdjęć. Niżej zobaczysz tę samą stronę w bardziej mobilnej wersji z rozwijanymi sekcjami pomieszczeń. [cite:365]
           </p>
         </div>
       </div>
@@ -508,157 +565,185 @@
       <div class="main-gallery">
         <a class="wide" href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Zdjęcie mieszkania 1"></a>
         <a class="half" href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Zdjęcie mieszkania 2"></a>
-
         <a class="small" href="images/IMG02657.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></a>
         <a class="small" href="images/IMG02663.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></a>
         <a class="small" href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></a>
-
         <a class="small" href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></a>
         <a class="small" href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></a>
         <a class="small" href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></a>
-
         <a class="small" href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></a>
         <a class="small" href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></a>
         <a class="small" href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></a>
-
         <a class="small" href="images/IMG_20260411_160649[1].jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649[1].jpg" alt="Zdjęcie mieszkania 12"></a>
         <a class="small" href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 13"></a>
         <a class="small" href="images/IMG_20260411_161208.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 14"></a>
-
         <a class="small" href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 15"></a>
         <a class="small" href="images/IMG_20260411_181542.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 16"></a>
         <a class="small" href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 17"></a>
-
         <a class="small" href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 18"></a>
         <a class="small" href="images/IMG_20260412_195053.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 19"></a>
         <a class="small" href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 20"></a>
-
         <a class="small" href="images/IMG_20260412_200118.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 21"></a>
       </div>
     </section>
 
-    <section class="section" id="salon">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Salon</h3>
+    <section class="section" id="sekcje-pokoi">
+      <div class="section-header">
+        <div>
+          <h2>Sekcje pomieszczeń</h2>
           <p>
-            Tu później możesz podpiąć zdjęcia strefy dziennej. W opisie warto podkreślić połączenie z kuchnią,
-            miejsce na stół i zachodnie światło w salonie. [cite:15]
+            Tutaj każda sekcja rozwija się po kliknięciu. Dzięki temu strona na telefonie jest krótsza,
+            a Ty możesz później podmieniać pliki już pod konkretne nazwy pomieszczeń. [web:416][cite:365]
           </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Salon 1"></a>
-          <a href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Salon 2"></a>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="kuchnia">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Kuchnia</h3>
-          <p>
-            Sekcja pod zdjęcia kuchni lub kuchni otwartej na salon. Później możesz nazwać pliki np. `kuchnia-1.jpg`
-            i podmienić same ścieżki bez ruszania układu strony. [cite:365][cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Kuchnia 1"></a>
-          <a href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Kuchnia 2"></a>
-        </div>
-      </div>
-    </section>
+      <div class="accordion">
+        <details class="room-accordion" open>
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Salon</strong>
+              <span>Strefa dzienna z miejscem na stół i połączeniem z kuchnią. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              Tu później możesz podpiąć konkretne zdjęcia salonu. Na razie sekcja pokazuje dwa przykładowe ujęcia z obecnej puli zdjęć. [cite:365]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG02603.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02603.JPG" alt="Salon 1"></a>
+              <a href="images/IMG02664.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02664.JPG" alt="Salon 2"></a>
+            </div>
+          </div>
+        </details>
 
-    <section class="section" id="sypialnia">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Sypialnia</h3>
-          <p>
-            Miejsce na zdjęcia pokoju głównego. Możesz później pokazać ustawność, miejsce na łóżko i szafę
-            oraz bardziej prywatny charakter tej części mieszkania. [cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></a>
-          <a href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Sypialnia 2"></a>
-        </div>
-      </div>
-    </section>
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Kuchnia</strong>
+              <span>Sekcja pod zdjęcia kuchni albo aneksu kuchennego. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              Po zmianie nazw plików łatwo podmienisz tę sekcję na finalne zdjęcia kuchni bez ruszania całego układu strony. [cite:365]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG02625.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02625.JPG" alt="Kuchnia 1"></a>
+              <a href="images/IMG02682.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02682.JPG" alt="Kuchnia 2"></a>
+            </div>
+          </div>
+        </details>
 
-    <section class="section" id="pokoj">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Drugi pokój</h3>
-          <p>
-            Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny,
-            zależnie od tego, jak chcesz prowadzić narrację ogłoszenia. [cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Drugi pokój 1"></a>
-          <a href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Drugi pokój 2"></a>
-        </div>
-      </div>
-    </section>
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Sypialnia</strong>
+              <span>Miejsce na prywatną część mieszkania i zdjęcia pokoju głównego. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              Tu możesz później pokazać ustawność, miejsce na duże łóżko i przechowywanie. [cite:15]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG02684.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></a>
+              <a href="images/IMG02688.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02688.JPG" alt="Sypialnia 2"></a>
+            </div>
+          </div>
+        </details>
 
-    <section class="section" id="lazienka">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Łazienka</h3>
-          <p>
-            Tu warto później wyeksponować osobną łazienkę z wanną, funkcją prysznica i miejscem na pralkę,
-            bo to ważny element funkcjonalny mieszkania. [cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></a>
-          <a href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></a>
-        </div>
-      </div>
-    </section>
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Drugi pokój</strong>
+              <span>Może pełnić rolę gabinetu, pokoju dziecka albo dodatkowej sypialni. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              To dobra sekcja na pokazanie elastyczności układu mieszkania. [cite:15]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG02700.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02700.JPG" alt="Drugi pokój 1"></a>
+              <a href="images/IMG02708.JPG" target="_blank" rel="noopener noreferrer"><img src="images/IMG02708.JPG" alt="Drugi pokój 2"></a>
+            </div>
+          </div>
+        </details>
 
-    <section class="section" id="balkon">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Balkon</h3>
-          <p>
-            Balkon jest mocnym elementem oferty, szczególnie gdy pokazuje światło i kierunek na południe.
-            Możesz tu później dodać widok i zdjęcia popołudniowego słońca. [cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Balkon 1"></a>
-          <a href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Balkon 2"></a>
-        </div>
-      </div>
-    </section>
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Łazienka</strong>
+              <span>Osobna łazienka z wanną, funkcją prysznica i miejscem na pralkę. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              To jeden z ważniejszych praktycznych atutów układu, więc warto później pokazać go wyraźnie na zdjęciach. [cite:15]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG_20260411_160649.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></a>
+              <a href="images/IMG_20260411_160936.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></a>
+            </div>
+          </div>
+        </details>
 
-    <section class="section" id="przedpokoj">
-      <div class="panel room-section">
-        <div class="room-info">
-          <h3>Przedpokój</h3>
-          <p>
-            Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem
-            i ogólnego wrażenia uporządkowanego układu. [cite:15]
-          </p>
-          <span class="room-note">Sekcja testowa – obecnie 2 przykładowe zdjęcia</span>
-        </div>
-        <div class="room-gallery">
-          <a href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój 1"></a>
-          <a href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Przedpokój 2"></a>
-        </div>
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Balkon</strong>
+              <span>Silny punkt oferty z korzystną ekspozycją i światłem. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              W tej sekcji możesz później podpiąć kadry pokazujące widok i popołudniowe słońce. [cite:15]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG_20260411_181457.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181457.jpg" alt="Balkon 1"></a>
+              <a href="images/IMG_20260411_181724.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260411_181724.jpg" alt="Balkon 2"></a>
+            </div>
+          </div>
+        </details>
+
+        <details class="room-accordion">
+          <summary class="room-summary">
+            <div class="summary-text">
+              <strong>Przedpokój</strong>
+              <span>Sekcja pod wejście, komunikację i zabudowę przy drzwiach. [cite:15]</span>
+            </div>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="room-content">
+            <div class="room-copy">
+              Tu dobrze pokażesz pierwsze wrażenie po wejściu do mieszkania i ewentualną szafę z lustrem. [cite:15]
+              <div class="room-tag">Sekcja testowa</div>
+            </div>
+            <div class="room-gallery">
+              <a href="images/IMG_20260412_190903.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój 1"></a>
+              <a href="images/IMG_20260412_195145.jpg" target="_blank" rel="noopener noreferrer"><img src="images/IMG_20260412_195145.jpg" alt="Przedpokój 2"></a>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
   </main>
 
   <footer class="wrap">
-    Układ strony jest przygotowany tak, żebyś mógł później łatwo zamienić obecne pliki na zdjęcia nazwane pod konkretne pomieszczenia. [cite:365]
+    Rozwijane sekcje porządkują stronę na telefonie i ułatwiają późniejsze przypisywanie zdjęć do konkretnych pomieszczeń. [web:423][cite:365]
   </footer>
 </body>
 </html>
