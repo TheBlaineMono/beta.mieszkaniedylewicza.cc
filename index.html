@@ -256,6 +256,56 @@
       border-top: 1px solid var(--divider);
     }
 
+    .description-content p {
+      margin: 0 0 14px;
+    }
+
+    .description-content h4 {
+      margin: 22px 0 10px;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .description-highlight {
+      font-weight: 800;
+      color: var(--accent-hover);
+    }
+
+    .description-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 18px;
+    }
+
+    .desc-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--divider);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .description-list {
+      margin: 0 0 10px;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .description-list li + li {
+      margin-top: 8px;
+    }
+
+    .description-note {
+      margin-top: 16px;
+      color: var(--muted);
+    }
+
     .meta {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -859,48 +909,63 @@
             </span>
             <span class="summary-icon">+</span>
           </summary>
+
           <div class="description-content">
-            Sprzedaż bezpośrednia. Pośrednikom dziękujemy.
+            <p><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy.</p>
 
-Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).
+            <p>
+              Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. i ostatnim piętrze bloku z 2013 roku.
+              Lokal jest gotowy do zamieszkania od zaraz, ewentualnie do odświeżenia według własnego gustu.
+            </p>
 
-Cena do negocjacji!
+            <p class="description-highlight">Cena do negocjacji.</p>
 
-Układ i wyposażenie:
+            <div class="description-points">
+              <div class="desc-chip">64,4 m²</div>
+              <div class="desc-chip">3 pokoje</div>
+              <div class="desc-chip">3. piętro</div>
+              <div class="desc-chip">Balkon</div>
+              <div class="desc-chip">Klimatyzacja</div>
+              <div class="desc-chip">Pełna własność</div>
+            </div>
 
-    jasny salon z wieloma punktami świetlnymi (także LED RGB),
-    aneks kuchenny z miejscem na wygodny stół jadalniany,
-    balkon od strony południowo-zachodniej – idealny na popołudniowy relaks i podziwianie zachodów słońca przez cały rok,
-    Mieszkanie posiada osobną łazienkę z wanną wyposażoną w parawan, dzięki któremu można wygodnie korzystać także z funkcji prysznica, oraz oddzielne WC – co zwiększa komfort codziennego użytkowania,
-    W przedpokoju znajduje się duża szafa z lustrem przy drzwiach wejściowych, która zapewnia wygodne przechowywanie i pozwala sprawdzić, że dobrze wyglądasz przed wyjściem z mieszkania,
-    2 letnia klimatyzacja,
-    meble (oprócz kanapy i stołu) i sprzęt AGD w cenie (zmywarka, lodówka, kuchenka, piekarnik),
-    ogrzewanie miejskie, czynsz ok. 600 PLN miesięcznie,
-    brak windy,
-    brak piwnicy,
-    komórka lokatorska za dodatkową opłatą,
-    Miejsce parkingowe w hali garażowej możliwe do kupna od osób trzecich.
+            <h4>Układ i wyposażenie</h4>
+            <ul class="description-list">
+              <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
+              <li>Aneks kuchenny z miejscem na wygodny stół jadalniany.</li>
+              <li>Balkon od strony południowo-zachodniej, idealny na popołudniowy relaks i zachody słońca.</li>
+              <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
+              <li>Duża szafa z lustrem w przedpokoju przy drzwiach wejściowych.</li>
+              <li>Klimatyzacja mająca 2 lata.</li>
+              <li>Meble, z wyjątkiem kanapy i stołu, oraz sprzęt AGD w cenie: zmywarka, lodówka, kuchenka i piekarnik.</li>
+              <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
+              <li>Brak windy i brak piwnicy.</li>
+              <li>Komórka lokatorska dostępna za dodatkową opłatą.</li>
+              <li>Miejsce parkingowe w hali garażowej możliwe do kupienia od osób trzecich.</li>
+            </ul>
 
-Dodatkowe informacje:
+            <h4>Dodatkowe informacje</h4>
+            <ul class="description-list">
+              <li>Dostępne od zaraz.</li>
+              <li>Pełna własność, księga wieczysta.</li>
+            </ul>
 
-    dostępne od zaraz,
-    pełna własność (księga wieczysta)
+            <h4>Lokalizacja</h4>
+            <ul class="description-list">
+              <li>Spokojne i bezpieczne osiedle, dobre dla rodzin z dziećmi.</li>
+              <li>W pobliżu sklepy: Biedronka, Topaz, Mrówka i Arhelan.</li>
+              <li>Blisko restauracje i bary, m.in. DaGrasso i Kebab Sułtan.</li>
+              <li>W okolicy przedszkola i kościół, około 5 minut pieszo.</li>
+              <li>Zalew w odległości około 10 minut spacerem.</li>
+              <li>Stacja Siedlce Zachodnie około 2–3 minuty biegiem, co dobrze sprawdza się przy dojazdach do Warszawy.</li>
+            </ul>
 
-Lokalizacja:
+            <p class="description-note">
+              To dobry wybór dla rodziny lub pary szukającej funkcjonalnego mieszkania w spokojnej części miasta,
+              z jednoczesnym dostępem do infrastruktury i wygodnym dojazdem koleją do Warszawy.
+            </p>
 
-    Spokojne i bezpieczne osiedle idealne dla rodzin z dziećmi. W zasięgu kilku minut znajdują się:
-    sklepy: Biedronka, Topaz, Mrówka, Arhelan,
-    restauracje i bary: Pizzeria DaGrasso, Kebab Sułtan,
-    przedszkola,
-    kościół (ok. 5 min pieszo),
-    Zalew – doskonałe miejsce na spacery, tylko 10 minut pieszo,
-    stacja kolejowa Siedlce Zachodnie – zaledwie 2–3 minuty biegiem dla dojeżdżających pociągiem do pracy w Warszawie (sprawdzone empirycznie :-) ).
-
-To idealny wybór dla rodzin lub par szukających funkcjonalnego, ciepłego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do pełnej infrastruktury oraz bezproblemowy dojazd do Warszawy pociągami Kolei Mazowieckich.
-
-Zapraszam do kontaktu i obejrzenia mieszkania!
-
-Pytania można zadawać SMSem.
+            <p class="description-note">Zapraszam do kontaktu. Pytania można zadawać SMS-em.</p>
           </div>
         </details>
 
@@ -981,32 +1046,46 @@ Pytania można zadawać SMSem.
 
       <div class="main-gallery">
         <button class="gallery-item wide" data-gallery="main" data-index="0" type="button">
-          <img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 1">
-          <span class="gallery-badge">Galeria</span>
-        </button>
-        <button class="gallery-item half" data-gallery="main" data-index="1" type="button">
-          <img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 2">
+          <img
+            src="images/IMG02657.JPG"
+            srcset="images/IMG02657_mobile.JPG 768w, images/IMG02657.JPG 1600w"
+            sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 58vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            alt="Zdjęcie mieszkania 1">
           <span class="gallery-badge">Galeria</span>
         </button>
 
-        <button class="gallery-item small" data-gallery="main" data-index="2" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="3" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="4" type="button"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="5" type="button"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="6" type="button"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="7" type="button"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="8" type="button"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="9" type="button"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="10" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="11" type="button"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 12"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="12" type="button"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 13"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="13" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 14"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="14" type="button"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 15"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="15" type="button"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 16"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="16" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 17"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="17" type="button"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 18"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="18" type="button"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 19"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="19" type="button"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 20"></button>
+        <button class="gallery-item half" data-gallery="main" data-index="1" type="button">
+          <img
+            src="images/IMG02663.JPG"
+            srcset="images/IMG02663_mobile.JPG 768w, images/IMG02663.JPG 1600w"
+            sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 42vw"
+            loading="lazy"
+            decoding="async"
+            alt="Zdjęcie mieszkania 2">
+          <span class="gallery-badge">Galeria</span>
+        </button>
+
+        <button class="gallery-item small" data-gallery="main" data-index="2" type="button"><img src="images/IMG02657.JPG" srcset="images/IMG02657_mobile.JPG 768w, images/IMG02657.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 3"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="3" type="button"><img src="images/IMG02663.JPG" srcset="images/IMG02663_mobile.JPG 768w, images/IMG02663.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 4"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="4" type="button"><img src="images/IMG02664.JPG" srcset="images/IMG02664_mobile.JPG 768w, images/IMG02664.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 5"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="5" type="button"><img src="images/IMG02682.JPG" srcset="images/IMG02682_mobile.JPG 768w, images/IMG02682.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 6"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="6" type="button"><img src="images/IMG02684.JPG" srcset="images/IMG02684_mobile.JPG 768w, images/IMG02684.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 7"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="7" type="button"><img src="images/IMG02688.JPG" srcset="images/IMG02688_mobile.JPG 768w, images/IMG02688.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 8"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="8" type="button"><img src="images/IMG02700.JPG" srcset="images/IMG02700_mobile.JPG 768w, images/IMG02700.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 9"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="9" type="button"><img src="images/IMG02708.JPG" srcset="images/IMG02708_mobile.JPG 768w, images/IMG02708.JPG 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 10"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="10" type="button"><img src="images/IMG_20260411_160649.jpg" srcset="images/IMG_20260411_160649_mobile.jpg 768w, images/IMG_20260411_160649.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 11"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="11" type="button"><img src="images/IMG_20260411_160936.jpg" srcset="images/IMG_20260411_160936_mobile.jpg 768w, images/IMG_20260411_160936.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 12"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="12" type="button"><img src="images/IMG_20260411_161208.jpg" srcset="images/IMG_20260411_161208_mobile.jpg 768w, images/IMG_20260411_161208.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 13"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="13" type="button"><img src="images/IMG_20260411_181457.jpg" srcset="images/IMG_20260411_181457_mobile.jpg 768w, images/IMG_20260411_181457.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 14"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="14" type="button"><img src="images/IMG_20260411_181542.jpg" srcset="images/IMG_20260411_181542_mobile.jpg 768w, images/IMG_20260411_181542.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 15"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="15" type="button"><img src="images/IMG_20260411_181724.jpg" srcset="images/IMG_20260411_181724_mobile.jpg 768w, images/IMG_20260411_181724.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 16"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="16" type="button"><img src="images/IMG_20260412_190903.jpg" srcset="images/IMG_20260412_190903_mobile.jpg 768w, images/IMG_20260412_190903.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 17"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="17" type="button"><img src="images/IMG_20260412_195053.jpg" srcset="images/IMG_20260412_195053_mobile.jpg 768w, images/IMG_20260412_195053.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 18"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="18" type="button"><img src="images/IMG_20260412_195145.jpg" srcset="images/IMG_20260412_195145_mobile.jpg 768w, images/IMG_20260412_195145.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 19"></button>
+        <button class="gallery-item small" data-gallery="main" data-index="19" type="button"><img src="images/IMG_20260412_200118.jpg" srcset="images/IMG_20260412_200118_mobile.jpg 768w, images/IMG_20260412_200118.jpg 1600w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" loading="lazy" decoding="async" alt="Zdjęcie mieszkania 20"></button>
       </div>
     </section>
 
@@ -1019,7 +1098,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: jasna strefa dzienna z miejscem na wspólne spędzanie czasu.</div>
         </div>
         <button class="room-thumb" data-gallery="salon" data-index="0" type="button">
-          <img src="images/IMG02657.JPG" alt="Salon - zdjęcie podglądowe">
+          <img src="images/IMG02657.JPG" srcset="images/IMG02657_mobile.JPG 768w, images/IMG02657.JPG 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Salon - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1035,7 +1114,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: funkcjonalna kuchnia z wygodnym blatem roboczym.</div>
         </div>
         <button class="room-thumb" data-gallery="kuchnia" data-index="0" type="button">
-          <img src="images/IMG02663.JPG" alt="Kuchnia - zdjęcie podglądowe">
+          <img src="images/IMG02663.JPG" srcset="images/IMG02663_mobile.JPG 768w, images/IMG02663.JPG 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Kuchnia - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1051,7 +1130,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: kameralna sypialnia z miejscem na przechowywanie.</div>
         </div>
         <button class="room-thumb" data-gallery="sypialnia" data-index="0" type="button">
-          <img src="images/IMG02684.JPG" alt="Sypialnia - zdjęcie podglądowe">
+          <img src="images/IMG02684.JPG" srcset="images/IMG02684_mobile.JPG 768w, images/IMG02684.JPG 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Sypialnia - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1067,7 +1146,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: elastyczny pokój pod gabinet, dziecięcy lub gościnny.</div>
         </div>
         <button class="room-thumb" data-gallery="pokoj" data-index="0" type="button">
-          <img src="images/IMG02700.JPG" alt="Drugi pokój - zdjęcie podglądowe">
+          <img src="images/IMG02700.JPG" srcset="images/IMG02700_mobile.JPG 768w, images/IMG02700.JPG 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Drugi pokój - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1083,7 +1162,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: osobna łazienka z wygodnym, praktycznym układem.</div>
         </div>
         <button class="room-thumb" data-gallery="lazienka" data-index="0" type="button">
-          <img src="images/IMG_20260411_160649.jpg" alt="Łazienka - zdjęcie podglądowe">
+          <img src="images/IMG_20260411_160649.jpg" srcset="images/IMG_20260411_160649_mobile.jpg 768w, images/IMG_20260411_160649.jpg 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Łazienka - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1099,7 +1178,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: balkon z przyjemnym światłem i miejscem na poranną kawę.</div>
         </div>
         <button class="room-thumb" data-gallery="balkon" data-index="0" type="button">
-          <img src="images/IMG_20260411_181457.jpg" alt="Balkon - zdjęcie podglądowe">
+          <img src="images/IMG_20260411_181457.jpg" srcset="images/IMG_20260411_181457_mobile.jpg 768w, images/IMG_20260411_181457.jpg 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Balkon - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1115,7 +1194,7 @@ Pytania można zadawać SMSem.
           <div class="room-caption">Przykładowy podpis: uporządkowane wejście z miejscem na przechowywanie.</div>
         </div>
         <button class="room-thumb" data-gallery="przedpokoj" data-index="0" type="button">
-          <img src="images/IMG_20260412_190903.jpg" alt="Przedpokój - zdjęcie podglądowe">
+          <img src="images/IMG_20260412_190903.jpg" srcset="images/IMG_20260412_190903_mobile.jpg 768w, images/IMG_20260412_190903.jpg 1600w" sizes="(max-width: 980px) 100vw, 44vw" loading="lazy" decoding="async" alt="Przedpokój - zdjęcie podglądowe">
           <span class="thumb-overlay">
             <span>Otwórz galerię</span>
             <span class="thumb-count">3 zdjęcia</span>
@@ -1147,63 +1226,75 @@ Pytania można zadawać SMSem.
   </footer>
 
   <script>
+    function mobileSrc(src) {
+      return src.replace(/(\.[a-zA-Z0-9]+)$/i, '_mobile$1');
+    }
+
+    function responsiveImageData(src) {
+      return {
+        src,
+        mobile: mobileSrc(src),
+        srcset: `${mobileSrc(src)} 768w, ${src} 1600w`
+      };
+    }
+
     const galleries = {
       main: [
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 1' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 2' },
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 3' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 4' },
-        { src: 'images/IMG02664.JPG', alt: 'Zdjęcie mieszkania 5' },
-        { src: 'images/IMG02682.JPG', alt: 'Zdjęcie mieszkania 6' },
-        { src: 'images/IMG02684.JPG', alt: 'Zdjęcie mieszkania 7' },
-        { src: 'images/IMG02688.JPG', alt: 'Zdjęcie mieszkania 8' },
-        { src: 'images/IMG02700.JPG', alt: 'Zdjęcie mieszkania 9' },
-        { src: 'images/IMG02708.JPG', alt: 'Zdjęcie mieszkania 10' },
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Zdjęcie mieszkania 11' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Zdjęcie mieszkania 12' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Zdjęcie mieszkania 13' },
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Zdjęcie mieszkania 14' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Zdjęcie mieszkania 15' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Zdjęcie mieszkania 16' },
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Zdjęcie mieszkania 17' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Zdjęcie mieszkania 18' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Zdjęcie mieszkania 19' },
-        { src: 'images/IMG_20260412_200118.jpg', alt: 'Zdjęcie mieszkania 20' }
+        { ...responsiveImageData('images/IMG02657.JPG'), alt: 'Zdjęcie mieszkania 1' },
+        { ...responsiveImageData('images/IMG02663.JPG'), alt: 'Zdjęcie mieszkania 2' },
+        { ...responsiveImageData('images/IMG02657.JPG'), alt: 'Zdjęcie mieszkania 3' },
+        { ...responsiveImageData('images/IMG02663.JPG'), alt: 'Zdjęcie mieszkania 4' },
+        { ...responsiveImageData('images/IMG02664.JPG'), alt: 'Zdjęcie mieszkania 5' },
+        { ...responsiveImageData('images/IMG02682.JPG'), alt: 'Zdjęcie mieszkania 6' },
+        { ...responsiveImageData('images/IMG02684.JPG'), alt: 'Zdjęcie mieszkania 7' },
+        { ...responsiveImageData('images/IMG02688.JPG'), alt: 'Zdjęcie mieszkania 8' },
+        { ...responsiveImageData('images/IMG02700.JPG'), alt: 'Zdjęcie mieszkania 9' },
+        { ...responsiveImageData('images/IMG02708.JPG'), alt: 'Zdjęcie mieszkania 10' },
+        { ...responsiveImageData('images/IMG_20260411_160649.jpg'), alt: 'Zdjęcie mieszkania 11' },
+        { ...responsiveImageData('images/IMG_20260411_160936.jpg'), alt: 'Zdjęcie mieszkania 12' },
+        { ...responsiveImageData('images/IMG_20260411_161208.jpg'), alt: 'Zdjęcie mieszkania 13' },
+        { ...responsiveImageData('images/IMG_20260411_181457.jpg'), alt: 'Zdjęcie mieszkania 14' },
+        { ...responsiveImageData('images/IMG_20260411_181542.jpg'), alt: 'Zdjęcie mieszkania 15' },
+        { ...responsiveImageData('images/IMG_20260411_181724.jpg'), alt: 'Zdjęcie mieszkania 16' },
+        { ...responsiveImageData('images/IMG_20260412_190903.jpg'), alt: 'Zdjęcie mieszkania 17' },
+        { ...responsiveImageData('images/IMG_20260412_195053.jpg'), alt: 'Zdjęcie mieszkania 18' },
+        { ...responsiveImageData('images/IMG_20260412_195145.jpg'), alt: 'Zdjęcie mieszkania 19' },
+        { ...responsiveImageData('images/IMG_20260412_200118.jpg'), alt: 'Zdjęcie mieszkania 20' }
       ],
       salon: [
-        { src: 'images/IMG02657.JPG', alt: 'Salon 1' },
-        { src: 'images/IMG02664.JPG', alt: 'Salon 2' },
-        { src: 'images/IMG02684.JPG', alt: 'Salon 3' }
+        { ...responsiveImageData('images/IMG02657.JPG'), alt: 'Salon 1' },
+        { ...responsiveImageData('images/IMG02664.JPG'), alt: 'Salon 2' },
+        { ...responsiveImageData('images/IMG02684.JPG'), alt: 'Salon 3' }
       ],
       kuchnia: [
-        { src: 'images/IMG02663.JPG', alt: 'Kuchnia 1' },
-        { src: 'images/IMG02682.JPG', alt: 'Kuchnia 2' },
-        { src: 'images/IMG02688.JPG', alt: 'Kuchnia 3' }
+        { ...responsiveImageData('images/IMG02663.JPG'), alt: 'Kuchnia 1' },
+        { ...responsiveImageData('images/IMG02682.JPG'), alt: 'Kuchnia 2' },
+        { ...responsiveImageData('images/IMG02688.JPG'), alt: 'Kuchnia 3' }
       ],
       sypialnia: [
-        { src: 'images/IMG02684.JPG', alt: 'Sypialnia 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Sypialnia 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Sypialnia 3' }
+        { ...responsiveImageData('images/IMG02684.JPG'), alt: 'Sypialnia 1' },
+        { ...responsiveImageData('images/IMG02700.JPG'), alt: 'Sypialnia 2' },
+        { ...responsiveImageData('images/IMG02708.JPG'), alt: 'Sypialnia 3' }
       ],
       pokoj: [
-        { src: 'images/IMG02663.JPG', alt: 'Drugi pokój 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Drugi pokój 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Drugi pokój 3' }
+        { ...responsiveImageData('images/IMG02663.JPG'), alt: 'Drugi pokój 1' },
+        { ...responsiveImageData('images/IMG02700.JPG'), alt: 'Drugi pokój 2' },
+        { ...responsiveImageData('images/IMG02708.JPG'), alt: 'Drugi pokój 3' }
       ],
       lazienka: [
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Łazienka 1' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Łazienka 2' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Łazienka 3' }
+        { ...responsiveImageData('images/IMG_20260411_160649.jpg'), alt: 'Łazienka 1' },
+        { ...responsiveImageData('images/IMG_20260411_160936.jpg'), alt: 'Łazienka 2' },
+        { ...responsiveImageData('images/IMG_20260411_161208.jpg'), alt: 'Łazienka 3' }
       ],
       balkon: [
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Balkon 1' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Balkon 2' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Balkon 3' }
+        { ...responsiveImageData('images/IMG_20260411_181457.jpg'), alt: 'Balkon 1' },
+        { ...responsiveImageData('images/IMG_20260411_181542.jpg'), alt: 'Balkon 2' },
+        { ...responsiveImageData('images/IMG_20260411_181724.jpg'), alt: 'Balkon 3' }
       ],
       przedpokoj: [
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Przedpokój 1' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Przedpokój 2' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Przedpokój 3' }
+        { ...responsiveImageData('images/IMG_20260412_190903.jpg'), alt: 'Przedpokój 1' },
+        { ...responsiveImageData('images/IMG_20260412_195053.jpg'), alt: 'Przedpokój 2' },
+        { ...responsiveImageData('images/IMG_20260412_195145.jpg'), alt: 'Przedpokój 3' }
       ]
     };
 
@@ -1255,7 +1346,15 @@ Pytania można zadawać SMSem.
         btn.type = 'button';
         btn.className = 'lightbox-thumb' + (index === activeIndex ? ' active' : '');
         btn.setAttribute('aria-label', `Pokaż ${item.alt}`);
-        btn.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
+        btn.innerHTML = `
+          <img
+            src="${item.src}"
+            srcset="${item.srcset}"
+            sizes="96px"
+            loading="lazy"
+            decoding="async"
+            alt="${item.alt}">
+        `;
         btn.addEventListener('click', () => {
           activeIndex = index;
           renderLightbox();
@@ -1268,7 +1367,10 @@ Pytania można zadawać SMSem.
       const items = galleries[activeGallery];
       const item = items[activeIndex];
       lightboxImage.src = item.src;
+      lightboxImage.srcset = item.srcset;
+      lightboxImage.sizes = '100vw';
       lightboxImage.alt = item.alt;
+      lightboxImage.decoding = 'async';
       lightboxMeta.textContent = `${item.alt} • ${activeIndex + 1} / ${items.length}`;
       renderThumbs();
     }
