@@ -219,38 +219,20 @@
       color: color-mix(in srgb, var(--text) 98%, #111827 2%);
     }
     .subtext { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.72; max-width: 34ch; }
-    .hero-mini { display: flex; flex-direction: column; gap: 12px; }
-    .lead-mini { font-size: 15px; line-height: 1.65; max-width: 38ch; margin: 2px 0 0; }
-    html[data-theme="dark"] .lead-mini { color: var(--muted); }
-    .mini-features {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+
+    .hero-otodom { display: flex; flex-direction: column; gap: 10px; }
+    .hero-otodom-thumb {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      box-shadow: var(--shadow-md);
+      background: var(--gallery-bg);
     }
-    .mini-box {
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      background: linear-gradient(180deg, color-mix(in srgb, #eef2ff 84%, transparent) 0%, color-mix(in srgb, white 74%, transparent) 100%);
-      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
-    }
-    html[data-theme="dark"] .mini-box {
-      background: linear-gradient(180deg, rgba(30, 43, 72, 0.98) 0%, rgba(22, 32, 56, 0.98) 100%);
-      border-color: rgba(255,255,255,0.11);
-    }
-    .mini-box strong { font-size: clamp(18px, 2vw, 28px); line-height: 1; letter-spacing: -0.05em; }
-    .mini-box span {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+    .hero-otodom-thumb img { aspect-ratio: 4 / 3; object-fit: cover; }
+
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
     .btn {
       display: inline-flex;
@@ -308,16 +290,6 @@
       letter-spacing: -0.01em;
     }
     .description-highlight { font-weight: 800; color: var(--accent-hover); }
-    .description-points { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 18px; }
-    .desc-chip {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--divider);
-      background: color-mix(in srgb, var(--accent) 8%, transparent);
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 700;
-    }
     .description-list { margin: 0 0 10px; padding-left: 18px; color: var(--muted); line-height: 1.8; }
     .description-list li + li { margin-top: 8px; }
     .description-note { margin-top: 16px; color: var(--muted); }
@@ -361,28 +333,6 @@
       font-weight: 600;
     }
 
-    .gallery-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .gallery-link-card {
-      display: block;
-      flex: 1 1 280px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--divider);
-      background: var(--hero-bg);
-      box-shadow: var(--shadow-md);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .gallery-link-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
-    .gallery-link-card img { aspect-ratio: 16 / 9; object-fit: cover; }
-    .gallery-link-card .caption {
-      padding: 16px 18px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .gallery-link-card .caption strong { font-size: 16px; }
-    .gallery-link-card .caption span { color: var(--muted); font-size: 14px; line-height: 1.55; }
-
     .main-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
     .gallery-item, .room-thumb, .lightbox-thumb {
       position: relative;
@@ -412,11 +362,6 @@
       background: var(--thumb-overlay); border: 1px solid var(--border);
       color: var(--thumb-text); font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
       backdrop-filter: blur(10px); z-index: 1;
-    }
-    .gallery-shortcut {
-      display: inline-flex; margin-top: 8px; padding: 10px 14px; border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--text) 4%, transparent);
-      border: 1px solid var(--border); color: var(--text); font-size: 14px; font-weight: 700;
     }
     .subgallery-list { display: grid; gap: 16px; margin-top: 8px; }
     .room-section {
@@ -477,7 +422,6 @@
       .back-to-top.is-visible { display: inline-flex; }
       .mobile-room-links { display: flex; }
       .sticky-nav { display: none; }
-      .hero-mini { display: none; }
     }
     @media (min-width: 769px) { .back-to-top { display: none !important; } }
     @media (max-width: 640px) {
@@ -487,7 +431,7 @@
       h1 { font-size: clamp(34px, 11vw, 48px); max-width: 10ch; }
       .actions { flex-direction: column; }
       .btn { width: 100%; }
-      .mini-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-otodom-thumb { max-width: 100%; }
       .main-gallery { grid-template-columns: 1fr; }
       .main-gallery .wide, .main-gallery .half, .main-gallery .small { grid-column: auto; aspect-ratio: 4 / 3; }
       .room-thumb { min-height: 0; }
@@ -496,7 +440,6 @@
       .lightbox-prev, .lightbox-next { width: 46px; height: 46px; font-size: 24px; }
       .lightbox-prev { left: 8px; } .lightbox-next { right: 8px; } .lightbox-close { top: 8px; right: 8px; }
       .lightbox-thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)); max-height: 120px; }
-      .gallery-cta-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -526,14 +469,11 @@
             <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
           </div>
 
-          <div class="hero-mini">
-            <p class="lead lead-mini">3-pokojowe mieszkanie w spokojnej części Siedlec, na trzecim ostatnim piętrze bloku z 2013 roku.</p>
-            <div class="mini-features">
-              <div class="mini-box"><strong>64,4</strong><span>m²</span></div>
-              <div class="mini-box"><strong>3</strong><span>pokoje</span></div>
-              <div class="mini-box"><strong>3/</strong><span>ostatnie</span></div>
-              <div class="mini-box"><strong>2013</strong><span>rok</span></div>
-            </div>
+          <div class="hero-otodom">
+            <span class="label">Ogłoszenie OTODOM</span>
+            <a class="hero-otodom-thumb" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">
+              <img src="images/cover2.png" alt="Miniatura ogłoszenia OTODOM">
+            </a>
           </div>
 
           <div class="actions">
@@ -559,14 +499,6 @@
           <p><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy.</p>
           <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. i ostatnim piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz, ewentualnie do odświeżenia według własnego gustu.</p>
           <p class="description-highlight">Cena do negocjacji.</p>
-          <div class="description-points">
-            <div class="desc-chip">64,4 m²</div>
-            <div class="desc-chip">3 pokoje</div>
-            <div class="desc-chip">3. piętro</div>
-            <div class="desc-chip">Balkon</div>
-            <div class="desc-chip">Klimatyzacja</div>
-            <div class="desc-chip">Pełna własność</div>
-          </div>
           <h4>Układ i wyposażenie</h4>
           <ul class="description-list">
             <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
@@ -620,17 +552,6 @@
           <h2>Główna galeria</h2>
           <p>Najważniejszy podgląd mieszkania z podziałem na pomieszczenia. Kliknij dowolne zdjęcie, aby otworzyć osobną galerię wybranego wnętrza.</p>
         </div>
-      </div>
-
-      <div class="gallery-cta-row">
-        <a class="gallery-link-card" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">
-          <img src="images/cover2.png" alt="Ogłoszenie OTODOM – zdjęcie główne">
-          <div class="caption"><strong>Ogłoszenie OTODOM</strong><span>Otwórz pełną ofertę z obrazem głównym cover2.png.</span></div>
-        </a>
-        <a class="gallery-link-card" href="#galeria-skrocona">
-          <img src="images/cover2.png" alt="Galeria skrócona mieszkania">
-          <div class="caption"><strong>Galeria skrócona</strong><span>Przejdź do zbiorczego przeglądu zdjęć na końcu strony.</span></div>
-        </a>
       </div>
 
       <section class="subgallery-list">
