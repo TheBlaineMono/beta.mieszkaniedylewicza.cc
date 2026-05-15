@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
   <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
     :root {
+      color-scheme: light dark;
+      --radius-sm: 14px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 999px;
+      --max: 1220px;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f7fbff;
+      --bg-2: #eef5fb;
+      --hero-bg: #ffffff;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-2: rgba(255, 255, 255, 0.96);
+      --surface: rgba(37, 99, 235, 0.04);
+      --surface-2: rgba(37, 99, 235, 0.07);
+      --text: #0f172a;
+      --muted: #526277;
+      --faint: #7a8ba3;
+      --border: rgba(15, 23, 42, 0.10);
+      --divider: rgba(15, 23, 42, 0.08);
+      --accent: #0ea5e9;
+      --accent-2: #2563eb;
+      --accent-3: #38bdf8;
+      --accent-hover: #1d4ed8;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 12px 28px rgba(37, 99, 235, 0.09);
+      --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.10);
+      --thumb-overlay: rgba(255,255,255,0.82);
+      --thumb-text: #0f172a;
+      --gallery-bg: #edf4fb;
+      --price-gradient: linear-gradient(90deg, #0f172a 0%, #2563eb 55%, #0ea5e9 100%);
+    }
+
+    html[data-theme="dark"] {
       --bg: #0b1020;
       --bg-2: #0f172a;
-      --panel: rgba(15, 23, 42, 0.78);
-      --panel-2: rgba(17, 25, 44, 0.88);
+      --hero-bg: rgba(15, 23, 42, 0.84);
+      --panel: rgba(15, 23, 42, 0.80);
+      --panel-2: rgba(17, 25, 44, 0.90);
       --surface: rgba(255,255,255,0.04);
       --surface-2: rgba(255,255,255,0.06);
       --text: #e5eefb;
@@ -24,11 +61,10 @@
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
       --shadow-md: 0 12px 30px rgba(0,0,0,0.28);
       --shadow-lg: 0 30px 80px rgba(2, 6, 23, 0.48);
-      --radius-sm: 14px;
-      --radius-md: 18px;
-      --radius-lg: 28px;
-      --radius-full: 999px;
-      --max: 1220px;
+      --thumb-overlay: rgba(9, 15, 30, 0.78);
+      --thumb-text: #ffffff;
+      --gallery-bg: #090d18;
+      --price-gradient: linear-gradient(90deg, #dff7ff 0%, #8be9ff 38%, #b59bff 100%);
     }
 
     * { box-sizing: border-box; }
@@ -39,57 +75,18 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 16%, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0) 26%),
-        radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.16) 0%, rgba(139, 92, 246, 0) 24%),
-        radial-gradient(circle at 50% 100%, rgba(110, 231, 249, 0.08) 0%, rgba(110, 231, 249, 0) 34%),
-        linear-gradient(180deg, #09111f 0%, #0b1020 40%, #0f172a 100%);
+        radial-gradient(circle at 12% 16%, color-mix(in srgb, var(--accent-3) 14%, transparent) 0%, transparent 28%),
+        radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--accent-2) 10%, transparent) 0%, transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-      pointer-events: none;
-      opacity: .28;
-    }
-
-    body::before {
-      top: 120px;
-      left: -60px;
-      background: rgba(110, 231, 249, 0.22);
-    }
-
-    body::after {
-      right: -40px;
-      bottom: 80px;
-      background: rgba(139, 92, 246, 0.22);
+      transition: background .25s ease, color .25s ease;
     }
 
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-      color: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      border: 0;
-      background: none;
-      padding: 0;
-    }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: none; padding: 0; }
 
     .wrap {
       width: min(var(--max), calc(100% - 32px));
@@ -98,11 +95,11 @@
 
     .panel {
       position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.025) 100%);
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(14px);
       overflow: hidden;
     }
 
@@ -111,8 +108,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 32%),
-        linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+        linear-gradient(135deg, color-mix(in srgb, white 38%, transparent) 0%, transparent 34%),
+        linear-gradient(180deg, color-mix(in srgb, white 7%, transparent) 0%, transparent 100%);
       pointer-events: none;
     }
 
@@ -131,23 +128,50 @@
       z-index: 1;
     }
 
-    .hero-main { padding: 38px; }
+    .hero-main {
+      padding: 38px;
+      background: var(--hero-bg);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .theme-toggle:hover { transform: translateY(-1px); }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 13px;
-      background: rgba(110, 231, 249, 0.10);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
       color: var(--accent-hover);
-      border: 1px solid rgba(110, 231, 249, 0.18);
+      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
       border-radius: var(--radius-full);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.04em;
       margin-bottom: 18px;
+      margin-top: 18px;
       text-transform: uppercase;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
     }
 
     h1 {
@@ -169,10 +193,10 @@
     details.description-box {
       margin: 0 0 22px;
       border-radius: 22px;
-      border: 1px solid rgba(110, 231, 249, 0.12);
-      background: linear-gradient(180deg, rgba(110, 231, 249, 0.07) 0%, rgba(139, 92, 246, 0.04) 100%);
+      border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, transparent) 0%, color-mix(in srgb, var(--accent-2) 4%, transparent) 100%);
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      box-shadow: inset 0 1px 0 color-mix(in srgb, white 24%, transparent);
     }
 
     details.description-box summary {
@@ -210,8 +234,8 @@
       border-radius: 999px;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+      background: color-mix(in srgb, var(--text) 7%, transparent);
+      border: 1px solid var(--border);
       color: var(--accent-hover);
       font-size: 20px;
       font-weight: 700;
@@ -221,7 +245,7 @@
 
     details[open] .summary-icon {
       transform: rotate(45deg);
-      background: rgba(110, 231, 249, 0.12);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     .description-content {
@@ -229,7 +253,7 @@
       color: var(--muted);
       line-height: 1.8;
       font-size: 15px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--divider);
     }
 
     .meta {
@@ -241,9 +265,9 @@
     .meta-card {
       padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.04);
+      background: color-mix(in srgb, var(--surface-2) 100%, transparent);
       border: 1px solid var(--divider);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 color-mix(in srgb, white 20%, transparent);
     }
 
     .meta-card strong {
@@ -272,7 +296,7 @@
     .info-box {
       padding: 22px;
       border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+      background: linear-gradient(180deg, color-mix(in srgb, white 10%, transparent) 0%, color-mix(in srgb, white 3%, transparent) 100%);
       border: 1px solid var(--divider);
       box-shadow: var(--shadow-sm);
     }
@@ -293,7 +317,7 @@
       line-height: 1;
       letter-spacing: -0.05em;
       font-weight: 800;
-      background: linear-gradient(90deg, #dff7ff 0%, #8be9ff 38%, #b59bff 100%);
+      background: var(--price-gradient);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -334,15 +358,17 @@
     .btn:hover { transform: translateY(-1px); }
 
     .btn-primary {
-      background: linear-gradient(135deg, #8b5cf6 0%, #38bdf8 100%);
+      background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
       color: white;
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.20);
+      box-shadow: 0 12px 30px color-mix(in srgb, var(--accent-2) 22%, transparent);
     }
 
-    .btn-primary:hover { box-shadow: 0 18px 34px rgba(56, 189, 248, 0.26); }
+    .btn-primary:hover {
+      box-shadow: 0 18px 34px color-mix(in srgb, var(--accent-2) 28%, transparent);
+    }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.04);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
       color: var(--text);
       border: 1px solid var(--border);
     }
@@ -376,7 +402,7 @@
       z-index: 30;
       margin: 8px 0 18px;
       padding: 10px;
-      background: rgba(10, 16, 32, 0.72);
+      background: color-mix(in srgb, var(--panel) 96%, transparent);
       border: 1px solid var(--border);
       border-radius: 18px;
       backdrop-filter: blur(16px);
@@ -394,7 +420,7 @@
       white-space: nowrap;
       padding: 10px 14px;
       border-radius: var(--radius-full);
-      background: rgba(255,255,255,0.03);
+      background: color-mix(in srgb, var(--text) 3%, transparent);
       border: 1px solid var(--divider);
       color: var(--muted);
       font-size: 14px;
@@ -403,8 +429,8 @@
 
     .sticky-nav a:hover {
       color: var(--text);
-      border-color: rgba(110, 231, 249, 0.18);
-      background: rgba(110, 231, 249, 0.08);
+      border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
     }
 
     .main-gallery {
@@ -421,7 +447,7 @@
       overflow: hidden;
       border-radius: 22px;
       border: 1px solid var(--divider);
-      background: #090d18;
+      background: var(--gallery-bg);
       box-shadow: var(--shadow-md);
     }
 
@@ -430,7 +456,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 30%, rgba(3,7,18,0.14) 100%);
+      background: linear-gradient(180deg, color-mix(in srgb, white 8%, transparent) 0%, transparent 34%, color-mix(in srgb, black 12%, transparent) 100%);
       pointer-events: none;
     }
 
@@ -471,9 +497,9 @@
       bottom: 12px;
       padding: 7px 10px;
       border-radius: var(--radius-full);
-      background: rgba(9, 15, 30, 0.72);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #fff;
+      background: var(--thumb-overlay);
+      border: 1px solid var(--border);
+      color: var(--thumb-text);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.03em;
@@ -494,7 +520,7 @@
       align-items: center;
       padding: 24px;
       scroll-margin-top: 88px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.018) 100%);
+      background: linear-gradient(180deg, color-mix(in srgb, white 5%, transparent) 0%, color-mix(in srgb, white 2%, transparent) 100%);
     }
 
     .room-copy h3 {
@@ -522,13 +548,13 @@
     }
 
     .room-note {
-      background: rgba(110, 231, 249, 0.08);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
       color: var(--accent-hover);
     }
 
     .room-caption {
       margin-top: 10px;
-      background: rgba(255,255,255,0.03);
+      background: color-mix(in srgb, var(--text) 3%, transparent);
       color: var(--muted);
     }
 
@@ -546,10 +572,10 @@
       gap: 12px;
       padding: 10px 12px;
       border-radius: var(--radius-full);
-      background: rgba(9, 15, 30, 0.72);
-      color: #fff;
+      background: var(--thumb-overlay);
+      color: var(--thumb-text);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
       z-index: 1;
     }
 
@@ -587,7 +613,7 @@
       place-items: center;
       background:
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 28%),
-        radial-gradient(circle at top right, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0) 24%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 24%),
         rgba(255,255,255,0.03);
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.08);
@@ -695,11 +721,11 @@
       min-height: 46px;
       padding: 0 14px;
       border-radius: 999px;
-      background: rgba(9, 15, 30, 0.88);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.12);
+      background: color-mix(in srgb, var(--panel-2) 96%, transparent);
+      color: var(--text);
+      border: 1px solid var(--border);
       backdrop-filter: blur(12px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.16);
       font-size: 14px;
       font-weight: 700;
     }
@@ -748,6 +774,11 @@
       .hero-side,
       .room-section {
         padding: 20px;
+      }
+
+      .theme-toggle {
+        top: 14px;
+        right: 14px;
       }
 
       .meta {
@@ -808,6 +839,11 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <section class="panel hero-main">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Przełącz motyw">
+          <span id="themeToggleIcon">☾</span>
+          <span id="themeToggleText">Ciemny tryb</span>
+        </button>
+
         <span class="eyebrow">Sprzedaż bezpośrednia</span>
         <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
         <p class="lead">
@@ -1050,14 +1086,7 @@
     </section>
   </main>
 
-  <div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-    aria-label="Galeria zdjęć mieszkania"
-  >
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galeria zdjęć mieszkania">
     <div class="lightbox-inner">
       <div class="lightbox-stage">
         <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij galerię">×</button>
@@ -1065,7 +1094,6 @@
         <img id="lightboxImage" src="" alt="">
         <button class="lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">›</button>
       </div>
-
       <div class="lightbox-meta" id="lightboxMeta"></div>
       <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Miniatury zdjęć"></div>
     </div>
@@ -1076,7 +1104,7 @@
   </a>
 
   <footer class="wrap">
-    Tymczasowa wersja działa na bezpiecznych nazwach plików, ma bardziej nowoczesny styl wizualny i przycisk powrotu na górę na mobile.
+    Wersja z light/dark toggle oraz jasnym stylem inspirowanym układem Homeverse.
   </footer>
 
   <script>
@@ -1149,11 +1177,35 @@
     const nextBtn = document.getElementById('lightboxNext');
     const backToTop = document.getElementById('backToTop');
 
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleIcon = document.getElementById('themeToggleIcon');
+    const themeToggleText = document.getElementById('themeToggleText');
+
     let activeGallery = 'main';
     let activeIndex = 0;
     let lastTrigger = null;
     let touchStartX = 0;
     let touchEndX = 0;
+
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      if (theme === 'light') {
+        themeToggleIcon.textContent = '☾';
+        themeToggleText.textContent = 'Ciemny tryb';
+      } else {
+        themeToggleIcon.textContent = '☀';
+        themeToggleText.textContent = 'Jasny tryb';
+      }
+    }
+
+    const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(preferredDark ? 'dark' : 'light');
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
 
     function renderThumbs() {
       const items = galleries[activeGallery];
@@ -1190,7 +1242,6 @@
       if (event.key !== 'Tab' || !lightbox.classList.contains('open')) return;
       const focusables = [...getFocusableElements()].filter(el => !el.disabled);
       if (!focusables.length) return;
-
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
 
