@@ -234,10 +234,7 @@
         </div>
       </div>
     </section>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     
             <div>
@@ -245,10 +242,6 @@
               <div class="underline"></div>
             </div>
 
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="galeria-pomieszczen" style="margin-bottom:56px">
       <div class="wrap">
@@ -348,41 +341,28 @@
         </div>
       </div>
     </section>
-<section class="section" id="toaleta">
+
+    <section class="section" id="toaleta">
       <div class="wrap">
-        <div class="flex" style="align-items:center;gap:36px;flex-direction:row;flex-wrap:nowrap">
-          <div class="intro-text-column" style="padding-top:4px;flex:0 0 42%;max-width:430px">
-            <h3 class="h3-small">Toaleta</h3>
-            <div class="underline"></div>
-            <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9">Toaleta — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+        <div class="content-section">
+          <div class="flex" style="align-items:center;gap:36px;flex-direction:row-reverse;flex-wrap:nowrap">
+            <div class="intro-text-column" style="flex:0 0 40%;max-width:430px">
+              <h3 class="h3-small">Toaleta</h3>
+              <div class="underline"></div>
+            </div>
+            <div class="subgallery-slider" style="flex:0 0 58%;min-width:0;max-width:58%">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="pokoj"><img src="images/IMG02682.JPG" alt="Pokój 1"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02688.JPG" alt="Pokój 2"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02700.JPG" alt="Pokój 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="toaleta">←</div><div class="sub-btn" data-next="toaleta">→</div></div>
+              </div>
+            </div>
           </div>
-          <div class="subgallery-slider" style="flex:0 0 58%;min-width:0;max-width:58%">
-            <div class="subgallery-stage">
-              <div class="subslide active" data-subslide="toaleta"><img src="images/IMG_20260411_161208.jpg" alt="Toaleta 1"></div>
+        </div>
+      </div>
+    </section>
          
-
-  
-  
-  <script>
-    const slides = [...document.querySelectorAll('.slide')];
-    let current = 0;
-    const show = i => { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); current = i; };
-    document.getElementById('nextSlide').addEventListener('click', () => show((current + 1) % slides.length));
-    document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
-    setInterval(() => show((current + 1) % slides.length), 4500);
-
-    document.querySelectorAll('.section[id]').forEach(sec => {
-      const group = [...sec.querySelectorAll('.subslide')];
-      const prev = sec.querySelector('[data-prev]');
-      const next = sec.querySelector('[data-next]');
-      if (!group.length || !prev || !next) return;
-      let idx = 0;
-      const render = n => { group.forEach((el, i) => el.classList.toggle('active', i === n)); idx = n; };
-      prev.addEventListener('click', () => render((idx - 1 + group.length) % group.length));
-      next.addEventListener('click', () => render((idx + 1) % group.length));
-    });
-  </script>
-
     <section class="section" id="sypialnia">
       <div class="wrap">
         <div class="content-section">
@@ -424,6 +404,29 @@
         </div>
       </div>
     </section>
+  
+  
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let current = 0;
+    const show = i => { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); current = i; };
+    document.getElementById('nextSlide').addEventListener('click', () => show((current + 1) % slides.length));
+    document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
+    setInterval(() => show((current + 1) % slides.length), 4500);
+
+    document.querySelectorAll('.section[id]').forEach(sec => {
+      const group = [...sec.querySelectorAll('.subslide')];
+      const prev = sec.querySelector('[data-prev]');
+      const next = sec.querySelector('[data-next]');
+      if (!group.length || !prev || !next) return;
+      let idx = 0;
+      const render = n => { group.forEach((el, i) => el.classList.toggle('active', i === n)); idx = n; };
+      prev.addEventListener('click', () => render((idx - 1 + group.length) % group.length));
+      next.addEventListener('click', () => render((idx + 1) % group.length));
+    });
+  </script>
+
+
 </main>
 </body>
 </html>
