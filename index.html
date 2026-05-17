@@ -6,220 +6,91 @@
   <meta name="color-scheme" content="light dark" />
   <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
-    :root{--bg:#f5f7fb;--panel:#fff;--text:#111827;--muted:#5b6475;--line:rgba(17,24,39,.10);--shadow:0 20px 60px rgba(16,24,40,.08);--radius:24px;--max:1200px;--blue:#2563eb;--cyan:#0ea5e9}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f6f9ff 0%,#eef4fb 100%);overflow-x:hidden}
-    a{color:inherit;text-decoration:none} img{display:block;width:100%;height:auto} button{font:inherit;cursor:pointer;border:0;background:none}
-    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}
-    .section{padding:22px 0}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .hero{padding:18px 0 8px}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
-    /* DIV: hero-main */
-    .hero-main,.hero-side{padding:30px}
-    .hero-main{display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#fff 0%,#f8fbff 100%)}
-    .eyebrow{display:inline-flex;width:fit-content;padding:9px 13px;border-radius:999px;background:#e8f2ff;color:var(--blue);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
-    h1{margin:0;font-size:clamp(34px,5vw,62px);line-height:.95;letter-spacing:-.06em;max-width:9ch}
-    .lead{margin:0;color:var(--muted);font-size:17px;line-height:1.8;max-width:60ch}
-    /* DIV: hero-info */
-    .info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .info-box{padding:20px;border-radius:22px;border:1px solid var(--line);background:#fff}
-    .label{display:block;margin-bottom:10px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#7b8794;font-weight:800}
-    .phone{margin:0;font-size:clamp(32px,4vw,46px);line-height:1;font-weight:900;letter-spacing:-.05em}
-    .sub{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.7}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;font-weight:800}
-    .btn-primary{background:linear-gradient(135deg,var(--blue) 0%,var(--cyan) 100%);color:#fff}
-    .btn-secondary{background:#f4f7fb;border:1px solid var(--line)}
-    /* DIV: hero-side */
-    .hero-side{display:flex;flex-direction:column;gap:16px;justify-content:center;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)}
-    .side-title{margin:0;font-size:14px;font-weight:900;letter-spacing:.08em;color:#7b8794;text-transform:uppercase}
-    .side-copy{margin:0;color:var(--muted);line-height:1.85;font-size:15px}
-    /* DIV: accordion */
-    .accordion{display:grid;gap:12px}
-    details.accordion-item{border:1px solid var(--line);border-radius:22px;background:#fff;overflow:hidden}
-    details.accordion-item summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900}
-    details.accordion-item summary::-webkit-details-marker{display:none}
-    .acc-body{padding:0 20px 20px;color:var(--muted);line-height:1.8;font-size:15px}
-    .acc-list{margin:0;padding-left:18px}
-    .acc-list li+li{margin-top:8px}
-    .gallery-shell{padding:34px 0 10px}
-    /* DIV: content-wrapper */
-    .content-wrapper{width:min(var(--max),calc(100% - 32px));margin:0 auto}
-    /* DIV: heading-box */
-    .heading-box.large{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:28px}
-    .intro-text{margin:0;color:var(--muted);font-size:18px;line-height:1.8;max-width:760px}
-    .top-margin._15-pixels{margin-top:15px}.top-margin._20-pixels{margin-top:20px}
-    /* DIV: flex */
-    .flex{display:grid;grid-template-columns:1.05fr 1.55fr;gap:18px;align-items:stretch}
-    /* DIV: intro-text-column */
-    .intro-text-column{display:flex;flex-direction:column;justify-content:center;padding:10px 4px}
-    .h3-small{margin:0;font-size:clamp(24px,3vw,40px);line-height:1.05;letter-spacing:-.05em;max-width:11ch}
-    .underline{width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--blue) 0%,var(--cyan) 100%);margin-top:14px}
-    /* DIV: intro-grid */
-    .intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    /* DIV: intro-box */
-    .intro-box{position:relative;min-height:360px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid var(--line)}
-    .intro-box img{width:100%;height:100%;object-fit:cover}
-    .image-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.08) 0%,rgba(14,165,233,.18) 100%);pointer-events:none;transition:transform .35s ease}
-    .image-bg._1{background-image:url('images/IMG02657.JPG');background-size:cover;background-position:center}
-    .image-bg._2{background-image:url('images/IMG02663.JPG');background-size:cover;background-position:center}
-    .image-bg._3{background-image:url('images/IMG02684.JPG');background-size:cover;background-position:center}
-    /* DIV: overlay */
-    .overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end}
-    .intro-link{display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em}
-    .corner-link{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(16,24,40,.12)}
-    .arrow-right{width:18px;height:18px}
-    .flex .intro-box:hover .image-bg{transform:scale(1.04)}
-    /* DIV: photo grid */
-    .photo-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .photo{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#edf4fb;box-shadow:0 14px 32px rgba(16,24,40,.06)}
-    .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,transparent 60%,rgba(0,0,0,.12) 100%)}
-    .photo img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-    .photo:hover img{transform:scale(1.02)}
-    .photo.wide{grid-column:span 7;aspect-ratio:4/3}.photo.tall{grid-column:span 5;aspect-ratio:4/3}.photo.small{grid-column:span 4;aspect-ratio:4/3}
-    .photo-badge{position:absolute;right:12px;bottom:12px;z-index:1;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);font-size:12px;font-weight:800}
-    /* DIV: more-grid */
-    .more-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .room{padding:18px;border-radius:22px;border:1px solid var(--line);background:#fff}
-    .room h3{margin:0 0 8px;font-size:20px;letter-spacing:-.03em}
-    .room p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
-    footer{padding:28px 0 40px;color:var(--muted);text-align:center;font-size:14px}
-    @media (max-width: 980px){.hero-grid,.flex,.more-grid{grid-template-columns:1fr}.info-row{grid-template-columns:1fr 1fr}.intro-grid{grid-template-columns:1fr}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}}
-    @media (max-width: 640px){.wrap,.content-wrapper{width:min(var(--max),calc(100% - 20px))}.hero-main,.hero-side{padding:22px}.info-row,.photo-grid,.more-grid{grid-template-columns:1fr}.intro-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.btn{width:100%}}
+    :root{--nav:#314563;--nav2:#2a3c57;--accent:#ff6b6b;--text:#f6f8fb;--muted:rgba(246,248,251,.82);--max:1220px;--radius:28px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#111827;overflow-x:hidden}
+    a{text-decoration:none;color:inherit} img{display:block;width:100%;height:auto} button,input{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 28px));margin:0 auto}
+    .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--nav) 0%,var(--nav2) 100%);color:var(--text);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .topbar-inner{min-height:74px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.02em}
+    .brand-mark{width:38px;height:38px;border:2px solid rgba(255,255,255,.22);border-radius:999px;display:grid;place-items:center;color:#ff7b7b;font-weight:900}
+    .menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;font-size:15px;font-weight:700;color:var(--muted)}
+    .menu a:hover,.menu a.active{color:#fff}
+    .phone-pill{display:inline-flex;align-items:center;gap:8px;color:#ff8d8d;font-weight:900;white-space:nowrap}
+    .book-btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;box-shadow:0 10px 20px rgba(255,107,107,.24)}
+    .hero{padding:0 0 18px}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:620px}
+    .hero-copy{background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+    .hero-copy:after{content:"";position:absolute;left:0;bottom:0;width:160px;height:160px;background:#f5f7fb;border-top-right-radius:100%;transform:translate(-40px,40px)}
+    .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
+    h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
+    .lead{margin:18px 0 0;font-size:18px;line-height:1.65;color:rgba(246,248,251,.88);max-width:26ch}
+    .hero-slider{position:relative;overflow:hidden;background:#24364f}
+    .slides{position:relative;width:100%;height:100%}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+    .slide.active{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover}
+    .hero-arrows{position:absolute;right:22px;bottom:18px;display:flex;gap:10px;z-index:2}
+    .arrow{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,107,107,.3)}
+    .mobile-cta{display:none}
+    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid{grid-template-columns:1fr;min-height:auto}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-copy:after{display:none}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}}
   </style>
 </head>
 <body>
-  <!-- DIV 01 hero --><header class="hero">
-    <!-- DIV 02 hero-grid --><div class="wrap hero-grid">
-      <!-- DIV: hero-main -->
-      <!-- DIV 03 hero-main --><section class="card hero-main">
-        <span class="eyebrow">Sprzedaż bezpośrednia</span>
-        <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
-        <p class="lead">3-pokojowe mieszkanie na 3. i ostatnim piętrze w budynku z 2013 roku. Jasny salon, osobna łazienka, oddzielne WC i balkon z ekspozycją południowo-zachodnią tworzą wygodny układ do codziennego życia.</p>
-        <!-- DIV: hero-info -->
-        <!-- DIV 04 info-row --><div class="info-row">
-          <!-- DIV 05 info-box --><div class="info-box">
-            <span class="label">Telefon</span>
-            <p class="phone">781 262 987</p>
-            <div class="sub">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
-          </div>
-          <!-- DIV 05 info-box --><div class="info-box">
-            <span class="label">Status</span>
-            <p class="phone" style="font-size:clamp(24px,3vw,34px)">Gotowe</p>
-            <div class="sub">Pełna własność, księga wieczysta, dostępne od zaraz.</div>
-          </div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">Ogłoszenie OTODOM</a>
-          <a class="btn btn-secondary" href="#galeria">Zobacz galerię</a>
-        </div>
-      </section>
-      <!-- DIV: hero-side -->
-      <!-- DIV 06 hero-side --><aside class="card hero-side">
-        <div>
-          <p class="side-title">Opis mieszkania</p>
-          <p class="side-copy"><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy. Oferuję przestronne mieszkanie gotowe do zamieszkania od zaraz lub do lekkiego odświeżenia według własnego gustu. Cena do negocjacji.</p>
-        </div>
-        <!-- DIV: accordion -->
-        <!-- DIV 07 accordion --><div class="accordion">
-          <details class="accordion-item" open>
-            <summary>Układ i wyposażenie <span>+</span></summary>
-            <div class="acc-body">
-              <ul class="acc-list">
-                <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
-                <li>Aneks kuchenny z miejscem na stół jadalniany.</li>
-                <li>Balkon od strony południowo-zachodniej.</li>
-                <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
-                <li>Duża szafa z lustrem w przedpokoju.</li>
-                <li>Klimatyzacja mająca 2 lata.</li>
-                <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
-              </ul>
-            </div>
-          </details>
-          <details class="accordion-item">
-            <summary>Lokalizacja <span>+</span></summary>
-            <div class="acc-body">
-              <ul class="acc-list">
-                <li>Spokojne osiedle, dobre dla rodzin z dziećmi.</li>
-                <li>W pobliżu: Biedronka, Topaz, Mrówka i Arhelan.</li>
-                <li>Blisko restauracje, przedszkola i kościół.</li>
-                <li>Zalew około 10 minut spacerem.</li>
-                <li>Siedlce Zachodnie około 2–3 minuty biegiem.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </aside>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">◌</span><span>Mieszkanie Dylewicza</span></a>
+      <nav class="menu" aria-label="Główne menu">
+        <a href="#galeria" class="active">Galeria</a>
+        <a href="#opis">Opis</a>
+        <a href="#lokalizacja">Lokalizacja</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="phone-pill" href="tel:+48781262987">781 262 987</a>
+      <a class="book-btn" href="tel:+48781262987">Zadzwoń</a>
     </div>
   </header>
 
-  <main>
-    <!-- DIV 08 gallery-shell --><section class="section gallery-shell">
-      <!-- DIV: content-wrapper -->
-      <!-- DIV 09 content-wrapper --><div class="content-wrapper">
-        <!-- DIV: heading-box -->
-        <!-- DIV 10 heading-box --><div class="heading-box large">
-          <div class="top-margin _15-pixels"><p class="intro-text">Located in the middle of a beautiful landscape our property is waiting for you and your family to stay and enjoy a relaxing experience.</p></div>
-        </div>
-        <!-- DIV: flex -->
-        <!-- DIV 11 flex --><div class="flex">
-          <!-- DIV: intro-text-column -->
-          <!-- DIV 12 intro-text-column --><div class="intro-text-column">
-            <h3 class="h3-small">Discover our property<br>where you’ll find amazing amenities</h3>
-            <div class="underline"></div>
-          </div>
-          <!-- DIV: intro-grid -->
-          <!-- DIV 13 intro-grid --><div class="intro-grid">
-            <!-- DIV: intro-box -->
-            <!-- DIV 14 intro-box --><div class="intro-box">
-              <div class="image-bg _1"></div>
-              <!-- DIV: overlay -->
-              <div class="overlay"><a href="#Bedroom" class="intro-link">Salon</a></div>
-              <a href="#Bedroom" class="corner-link"><img src="images/IMG02657.JPG" alt="Salon" class="arrow-right"></a>
-            </div>
-            <!-- DIV 14 intro-box --><div class="intro-box">
-              <div class="image-bg _2"></div>
-              <div class="overlay"><a href="#Kitchen" class="intro-link">Kitchen</a></div>
-              <a href="#Kitchen" class="corner-link"><img src="images/IMG02663.JPG" alt="Kuchnia" class="arrow-right"></a>
-            </div>
-            <!-- DIV 14 intro-box --><div class="intro-box">
-              <div class="image-bg _3"></div>
-              <div class="overlay"><a href="#contact" class="intro-link">Contact us</a></div>
-              <a href="#contact" class="corner-link"><img src="images/IMG02684.JPG" alt="Kontakt" class="arrow-right"></a>
-            </div>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Sprzedaż bezpośrednia</div>
+          <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
+          <p class="lead">3 pokoje, balkon, osobna łazienka i oddzielne WC. Gotowe do zamieszkania od zaraz.</p>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="book-btn mobile-cta" href="tel:+48781262987">781 262 987</a>
+            <a class="book-btn" style="background:#fff;color:#24364f" href="#galeria">Zobacz galerię</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- DIV 15 gallery-main --><section class="section card" id="galeria">
-      <!-- DIV 16 gallery-wrap --><div class="wrap" style="padding:24px 24px 28px">
-        <!-- DIV 17 gallery-head --><div style="display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px"><div><h2 style="margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.04em">Galeria zdjęć</h2><p style="margin:0;color:var(--muted);line-height:1.7;max-width:70ch">Układ galerii inspirowany MyRental: duże zdjęcie główne, mniejsze ujęcia pomocnicze i naturalny podgląd wnętrz.</p></div></div>
-        <!-- DIV: photo grid -->
-        <!-- DIV 18 photo-grid --><div class="photo-grid">
-          <a class="photo wide" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Salon"><span class="photo-badge">Salon</span></a>
-          <a class="photo tall" href="images/IMG02663.JPG"><img src="images/IMG02663.JPG" alt="Kuchnia"><span class="photo-badge">Kuchnia</span></a>
-          <a class="photo small" href="images/IMG02664.JPG"><img src="images/IMG02664.JPG" alt="Detal"><span class="photo-badge">Detal</span></a>
-          <a class="photo small" href="images/IMG02682.JPG"><img src="images/IMG02682.JPG" alt="Widok"><span class="photo-badge">Widok</span></a>
-          <a class="photo small" href="images/IMG02684.JPG"><img src="images/IMG02684.JPG" alt="Pokój"><span class="photo-badge">Pokój</span></a>
-          <a class="photo small" href="images/IMG02688.JPG"><img src="images/IMG02688.JPG" alt="Przedpokój"><span class="photo-badge">Przedpokój</span></a>
-          <a class="photo small" href="images/IMG02700.JPG"><img src="images/IMG02700.JPG" alt="Pokój 2"><span class="photo-badge">Pokój 2</span></a>
-          <a class="photo small" href="images/IMG02708.JPG"><img src="images/IMG02708.JPG" alt="Balkon"><span class="photo-badge">Balkon</span></a>
+        <div class="hero-slider" id="galleryHero">
+          <div class="slides">
+            <div class="slide active"><img src="images/IMG02657.JPG" alt="Salon"></div>
+            <div class="slide"><img src="images/IMG02663.JPG" alt="Kuchnia"></div>
+            <div class="slide"><img src="images/IMG02684.JPG" alt="Sypialnia"></div>
+            <div class="slide"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka"></div>
+            <div class="slide"><img src="images/IMG_20260411_181457.jpg" alt="Balkon"></div>
+          </div>
+          <div class="hero-arrows">
+            <div class="arrow" id="prevSlide">←</div>
+            <div class="arrow" id="nextSlide">→</div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- DIV 19 info-section --><section class="section">
-      <!-- DIV: more-grid -->
-      <!-- DIV 20 more-grid --><div class="wrap more-grid" id="contact">
-        <div class="room"><h3>Układ</h3><p>3 pokoje, osobna łazienka, oddzielne WC, balkon i przedpokój z dużą szafą.</p></div>
-        <div class="room"><h3>Budynek</h3><p>3. i ostatnie piętro, budynek z 2013 roku, bez windy.</p></div>
-        <div class="room"><h3>Stan</h3><p>Gotowe do zamieszkania, z meblami i częścią AGD w cenie.</p></div>
-        <div class="room"><h3>Kontakt</h3><p>781 262 987, najlepiej po 17:00, ewentualnie SMS.</p></div>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">Mieszkanie przy ul. Dylewicza, Siedlce.</footer>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let current = 0;
+    const show = i => {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      current = i;
+    };
+    document.getElementById('nextSlide').addEventListener('click', () => show((current + 1) % slides.length));
+    document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
+    setInterval(() => show((current + 1) % slides.length), 4500);
+  </script>
 </body>
 </html>
