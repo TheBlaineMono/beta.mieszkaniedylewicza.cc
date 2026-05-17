@@ -52,9 +52,9 @@
     .room-tile{position:relative;min-height:250px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08);display:block}
     .room-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .35s ease}
     .room-tile:hover .room-image{transform:scale(1.03)}
-    .tile-overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end}
-    .tile-label{display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.92);color:#0f172a;font-weight:900;letter-spacing:-.02em}
-    .tile-arrow{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(16,24,40,.12);color:#0f172a;font-weight:900}
+    .tile-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+    .tile-label{display:inline-flex;align-items:center;justify-content:center;padding:0;color:#fff;background:transparent;font-weight:900;letter-spacing:-.02em;font-size:18px;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+    .tile-arrow{position:absolute;right:0;bottom:0;width:56px;height:56px;border-radius:18px 0 0 0;display:grid;place-items:center;background:var(--accent);box-shadow:0 10px 24px rgba(16,24,40,.12);color:#fff;font-weight:900}
     .subgallery-slider{position:relative;display:grid;grid-template-columns:1fr;gap:14px}
     .subgallery-stage{position:relative;overflow:hidden;border-radius:28px;background:#24364f;min-height:420px;box-shadow:0 16px 40px rgba(16,24,40,.08)}
     .subslide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
@@ -62,7 +62,7 @@
     .subslide img{width:100%;height:100%;object-fit:cover}
     .sub-controls{position:absolute;right:18px;bottom:18px;display:flex;gap:10px;z-index:2}
     .sub-btn{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,107,107,.3)}
-    .tile-overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end}
+    .tile-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
     .tile-label{display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em}
     @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr;gap:14px}.room-tile{min-height:230px}}
     @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}.photo-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr}.room-tile{min-height:220px}}
@@ -120,9 +120,43 @@
               <div class="underline"></div>
             </div>
             <div class="opis-text">
-              <p>Mieszkanie o powierzchni 64,4 m² położone na trzecim, ostatnim piętrze budynku z 2013 roku w spokojnej i dobrze skomunikowanej części Siedlec. Lokal został zaprojektowany tak, aby codzienne korzystanie było maksymalnie wygodne: salon z aneksem kuchennym tworzy jasną strefę dzienną, dwa dodatkowe pokoje pozwalają swobodnie zorganizować sypialnię, pokój dziecka albo gabinet, a osobna łazienka i oddzielne WC podnoszą komfort domowników.</p>
-              <p>Do dyspozycji jest również przedpokój z dużą szafą w zabudowie oraz balkon od strony południowo-zachodniej, który daje przyjemne światło przez większą część dnia i bardzo ładne zachody słońca. Mieszkanie jest gotowe do zamieszkania od zaraz, a jeśli ktoś chce, może je odświeżyć pod swój gust bez większego remontu.</p>
-              <p>W cenie pozostają meble poza kanapą i stołem oraz podstawowe AGD, w tym zmywarka, lodówka, kuchenka i piekarnik. Ogrzewanie jest miejskie, czynsz wynosi około 600 zł miesięcznie, klimatyzacja ma dwa lata, a brak windy rekompensuje ostatnie piętro i większy spokój na co dzień. To bardzo praktyczna propozycja dla rodziny, pary albo osoby szukającej funkcjonalnego lokalu w miejscu z dobrym dostępem do sklepów, usług, szkół i kolei.</p>
+              <p><b>Sprzedaż bezpośrednia. Pośrednikom dziękujemy.</b></p>
+              <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).</p>
+              <p><b>Cena do negocjacji!</b></p>
+              <p>Układ i wyposażenie:</p>
+              <ul>
+                <li>jasny salon z wieloma punktami świetlnymi (także LED RGB),</li>
+                <li>aneks kuchenny z miejscem na wygodny stół jadalniany,</li>
+                <li>balkon od strony południowo-zachodniej – idealny na popołudniowy relaks i podziwianie zachodów słońca przez cały rok,</li>
+                <li>osobna łazienka z wanną wyposażoną w parawan, oraz oddzielne WC,</li>
+                <li>duża szafa z lustrem w przedpokoju,</li>
+                <li>2-letnia klimatyzacja,</li>
+                <li>meble (oprócz kanapy i stołu) i sprzęt AGD w cenie (zmywarka, lodówka, kuchenka, piekarnik),</li>
+                <li>ogrzewanie miejskie, czynsz ok. 600 PLN miesięcznie,</li>
+                <li><b>brak windy,</b></li>
+                <li>brak piwnicy,</li>
+                <li>komórka lokatorska za dodatkową opłatą,</li>
+                <li>miejsce parkingowe w hali garażowej możliwe do kupna od osób trzecich.</li>
+              </ul>
+              <p>Dodatkowe informacje:</p>
+              <ul>
+                <li><b>dostępne od zaraz</b>,</li>
+                <li>pełna własność (księga wieczysta)</li>
+              </ul>
+              <p>Lokalizacja:</p>
+              <ul>
+                <li>Spokojne i bezpieczne osiedle idealne dla rodzin z dziećmi.</li>
+                <li>Sklepy: Biedronka, Topaz, Mrówka, Arhelan.</li>
+                <li>Restauracje i bary: Pizzeria DaGrasso, Kebab Sułtan.</li>
+                <li>Przedszkola.</li>
+                <li>Kościół (ok. 5 min pieszo).</li>
+                <li><b>Zalew</b> – doskonałe miejsce na spacery, tylko 10 minut pieszo.</li>
+                <li>Stacja kolejowa <b>Siedlce Zachodnie</b> – zaledwie 2–3 minuty biegiem.</li>
+              </ul>
+              <p>To idealny wybór dla rodzin lub par szukających funkcjonalnego, ciepłego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do pełnej infrastruktury oraz bezproblemowym dojazdem do Warszawy pociągami Kolei Mazowieckich.</p>
+              <p>Zapraszam do kontaktu i obejrzenia mieszkania!</p>
+              <p>Pytania można zadawać SMS-em.</p>
+              <p>Kontakt telefoniczny po godzinie 17:00, w razie nieodebrania proszę o SMS – oddzwonię.</p></p>
             </div>
           </div>
         </div>
@@ -139,16 +173,14 @@
           </div>
           <div style="flex:1">
             <div class="room-tiles">
-              <a class="room-tile" href="#salon"><div class="room-image room-image-1"></div><div class="tile-overlay"><span class="tile-label">Salon</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#kuchnia"><div class="room-image room-image-2"></div><div class="tile-overlay"><span class="tile-label">Kuchnia</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#przedpokoj"><div class="room-image room-image-3"></div><div class="tile-overlay"><span class="tile-label">Przedpokój</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#lazienka"><div class="room-image room-image-4"></div><div class="tile-overlay"><span class="tile-label">Łazienka</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#toaleta"><div class="room-image room-image-5"></div><div class="tile-overlay"><span class="tile-label">Toaleta</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#sypialnia"><div class="room-image room-image-6"></div><div class="tile-overlay"><span class="tile-label">Sypialnia</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-              <a class="room-tile" href="#pokoj"><div class="room-image room-image-7"></div><div class="tile-overlay"><span class="tile-label">Pokój</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
-            </div>
-          </div>
-        </div>
+              <a class="room-tile" href="#salon"><div class="room-image room-image-1"></div><div class="tile-overlay"><span class="tile-label">Salon</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#kuchnia"><div class="room-image room-image-2"></div><div class="tile-overlay"><span class="tile-label">Kuchnia</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#przedpokoj"><div class="room-image room-image-3"></div><div class="tile-overlay"><span class="tile-label">Przedpokój</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#lazienka"><div class="room-image room-image-4"></div><div class="tile-overlay"><span class="tile-label">Łazienka</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#toaleta"><div class="room-image room-image-5"></div><div class="tile-overlay"><span class="tile-label">Toaleta</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#sypialnia"><div class="room-image room-image-6"></div><div class="tile-overlay"><span class="tile-label">Sypialnia</span></div><div class="tile-arrow">→</div></a>
+              <a class="room-tile" href="#pokoj"><div class="room-image room-image-7"></div><div class="tile-overlay"><span class="tile-label">Pokój</span></div><div class="tile-arrow">→</div></a>
+            </div></div>
       </div>
     </section>
     <section class="section" id="salon">
@@ -175,18 +207,7 @@
 
   </main>
 
-  <script>
-    const slides = [...document.querySelectorAll('.slide')];
-    let current = 0;
-    const show = i => {
-      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-      current = i;
-    };
-    document.getElementById('nextSlide').addEventListener('click', () => show((current + 1) % slides.length));
-    document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
-    setInterval(() => show((current + 1) % slides.length), 4500);
-  </script>
-
+  
   <script>
     const slides = [...document.querySelectorAll('.slide')];
     let current = 0;
@@ -195,15 +216,16 @@
     document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
     setInterval(() => show((current + 1) % slides.length), 4500);
 
-    const groups = [...new Set([...document.querySelectorAll('[data-subslide]')].map(el => el.dataset.subslide))];
-    groups.forEach(id => {
-      const group = [...document.querySelectorAll(`[data-subslide="${id}"]`)].filter(el => el.closest(`#${id}`));
+    document.querySelectorAll('.section[id]').forEach(sec => {
+      const id = sec.id;
+      const group = [...sec.querySelectorAll('.subslide')];
+      const prev = sec.querySelector('[data-prev]');
+      const next = sec.querySelector('[data-next]');
+      if (!group.length || !prev || !next) return;
       let idx = 0;
       const render = n => { group.forEach((el, i) => el.classList.toggle('active', i === n)); idx = n; };
-      const prev = document.querySelector(`[data-prev="${id}"]`);
-      const next = document.querySelector(`[data-next="${id}"]`);
-      if (prev) prev.addEventListener('click', () => render((idx - 1 + group.length) % group.length));
-      if (next) next.addEventListener('click', () => render((idx + 1) % group.length));
+      prev.addEventListener('click', () => render((idx - 1 + group.length) % group.length));
+      next.addEventListener('click', () => render((idx + 1) % group.length));
     });
   </script>
 </body>
