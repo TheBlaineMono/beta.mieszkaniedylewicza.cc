@@ -19,12 +19,12 @@
     .phone-pill{display:inline-flex;align-items:center;gap:8px;color:#ff8d8d;font-weight:900;white-space:nowrap}
     .book-btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;box-shadow:0 10px 20px rgba(255,107,107,.24)}
     .hero{padding:0 0 18px}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;width:100%}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:clamp(420px,55vw,680px);width:100%}
     .hero-copy{position:relative;background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
     h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
     .lead{margin:18px 0 0;font-size:18px;line-height:1.65;color:rgba(246,248,251,.88);max-width:26ch}
-    .hero-slider{position:relative;overflow:hidden;background:#24364f;min-height:100%}
+    .hero-slider{position:relative;overflow:hidden;background:#24364f;min-height:100%;height:100%}
     .slides{position:relative;width:100%;height:100%}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
     .slide.active{opacity:1}
@@ -123,7 +123,22 @@
 }
 
 .hero-media{position:relative;min-height:520px;border-radius:32px;overflow:hidden;background:#e9eef5}.hero-media img{display:block;width:100%;height:100%;object-fit:cover}.hero-copy{min-width:0}@media (max-width:768px){.hero-grid{grid-template-columns:1fr;gap:24px}.hero-media{min-height:320px;border-radius:24px}}
-</style>
+
+    #salon,#kuchnia,#przedpokoj,#lazienka,#toaleta,#sypialnia,#pokoj{margin-top:clamp(28px,5vw,72px)}
+    
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr;min-height:auto}
+      .hero-copy{padding:40px 28px 36px;border-bottom-left-radius:0;border-bottom-right-radius:0}
+      .hero-slider{min-height:340px}
+    }
+    @media (max-width:768px){
+      .room-tiles{grid-template-columns:1fr!important}
+      .room-tile{min-height:220px}
+      .opis-grid{grid-template-columns:1fr!important;gap:16px}
+      .content-section .flex{flex-direction:column!important}
+      .subgallery-slider,.intro-text-column{flex:1 1 auto!important;max-width:100%!important}
+    }
+    </style>
 </head>
 <body>
   <header class="topbar">
@@ -171,15 +186,12 @@
     <section class="opis" id="opis">
       <div class="wrap">
         <div class="opis-card">
-          <section class="section" id="opis">
-  <div class="wrap">
-    <div class="content-wrapper w-container">
-      <div class="
-        <div>
-          <h2>Opis</h2>
-          <div class="underline"></div>
-        </div>
-        <div class="opis-text">
+          <div class="opis-grid">
+            <div>
+              <h2>Opis</h2>
+              <div class="underline"></div>
+            </div>
+            <div class="opis-text">
           <p><b>Sprzedaż bezpośrednia. Pośrednikom dziękujemy.</b></p>
           <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).</p>
           <p><b>Cena do negocjacji!</b></p>
@@ -218,10 +230,10 @@
           <p>Pytania można zadawać SMS-em.</p>
           <p>Kontakt telefoniczny po godzinie 17:00, w razie nieodebrania proszę o SMS – oddzwonię.</p>
         </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
           </div>
         </div>
       </div>
@@ -370,6 +382,48 @@
       next.addEventListener('click', () => render((idx + 1) % group.length));
     });
   </script>
+
+    <section class="section" id="sypialnia">
+      <div class="wrap">
+        <div class="content-section">
+          <div class="flex" style="align-items:center;gap:36px;flex-direction:row;flex-wrap:nowrap">
+            <div class="intro-text-column" style="flex:0 0 40%;max-width:430px">
+              <h3 class="h3-small">Sypialnia</h3>
+              <div class="underline"></div>
+            </div>
+            <div class="subgallery-slider" style="flex:0 0 58%;min-width:0;max-width:58%">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="sypialnia"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></div>
+                <div class="subslide" data-subslide="sypialnia"><img src="images/IMG02700.JPG" alt="Sypialnia 2"></div>
+                <div class="subslide" data-subslide="sypialnia"><img src="images/IMG02708.JPG" alt="Sypialnia 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="sypialnia">←</div><div class="sub-btn" data-next="sypialnia">→</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pokoj">
+      <div class="wrap">
+        <div class="content-section">
+          <div class="flex" style="align-items:center;gap:36px;flex-direction:row-reverse;flex-wrap:nowrap">
+            <div class="intro-text-column" style="flex:0 0 40%;max-width:430px">
+              <h3 class="h3-small">Pokój</h3>
+              <div class="underline"></div>
+            </div>
+            <div class="subgallery-slider" style="flex:0 0 58%;min-width:0;max-width:58%">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="pokoj"><img src="images/IMG02682.JPG" alt="Pokój 1"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02688.JPG" alt="Pokój 2"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02700.JPG" alt="Pokój 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="pokoj">←</div><div class="sub-btn" data-next="pokoj">→</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 </main>
 </body>
 </html>
