@@ -1,814 +1,199 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="light">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
   <style>
-    :root {
-      color-scheme: light dark;
-      --radius-sm: 14px;
-      --radius-md: 18px;
-      --radius-lg: 28px;
-      --radius-full: 999px;
-      --max: 1220px;
-    }
-
-    html[data-theme="light"] {
-      --bg: #f7fbff;
-      --bg-2: #eef5fb;
-      --hero-bg: #ffffff;
-      --panel: rgba(255, 255, 255, 0.9);
-      --panel-2: rgba(255, 255, 255, 0.96);
-      --surface: rgba(37, 99, 235, 0.04);
-      --surface-2: rgba(37, 99, 235, 0.07);
-      --text: #0f172a;
-      --muted: #526277;
-      --faint: #7a8ba3;
-      --border: rgba(15, 23, 42, 0.10);
-      --divider: rgba(15, 23, 42, 0.08);
-      --accent: #0ea5e9;
-      --accent-2: #2563eb;
-      --accent-3: #38bdf8;
-      --accent-hover: #1d4ed8;
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 12px 28px rgba(37, 99, 235, 0.09);
-      --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.10);
-      --thumb-overlay: rgba(255,255,255,0.82);
-      --thumb-text: #0f172a;
-      --gallery-bg: #edf4fb;
-      --price-gradient: linear-gradient(90deg, #0f172a 0%, #2563eb 55%, #0ea5e9 100%);
-    }
-
-    html[data-theme="dark"] {
-      --bg: #0b1020;
-      --bg-2: #111a2e;
-      --hero-bg: rgba(19, 28, 48, 0.96);
-      --panel: rgba(15, 23, 42, 0.92);
-      --panel-2: rgba(26, 36, 60, 0.96);
-      --surface: rgba(148, 163, 184, 0.08);
-      --surface-2: rgba(148, 163, 184, 0.12);
-      --text: #f4f8ff;
-      --muted: #d2dced;
-      --faint: #9fb0c9;
-      --border: rgba(255,255,255,0.14);
-      --divider: rgba(255,255,255,0.11);
-      --accent: #7dd3fc;
-      --accent-2: #60a5fa;
-      --accent-3: #93c5fd;
-      --accent-hover: #dbeafe;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.22);
-      --shadow-md: 0 14px 34px rgba(0,0,0,0.34);
-      --shadow-lg: 0 34px 90px rgba(2, 6, 23, 0.56);
-      --thumb-overlay: rgba(9, 15, 30, 0.88);
-      --thumb-text: #ffffff;
-      --gallery-bg: #0c1426;
-      --price-gradient: linear-gradient(90deg, #f8fbff 0%, #bfdbfe 48%, #7dd3fc 100%);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 12% 16%, color-mix(in srgb, var(--accent-3) 14%, transparent) 0%, transparent 28%),
-        radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--accent-2) 10%, transparent) 0%, transparent 24%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background .25s ease, color .25s ease;
-    }
-
-    img { display: block; width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea, select { font: inherit; color: inherit; }
-    button { cursor: pointer; border: 0; background: none; padding: 0; }
-
-    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-    .panel {
-      position: relative;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(14px);
-      overflow: hidden;
-    }
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, color-mix(in srgb, white 38%, transparent) 0%, transparent 34%),
-        linear-gradient(180deg, color-mix(in srgb, white 7%, transparent) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .hero { padding: 28px 0 18px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-    .hero-main,
-    .hero-side { position: relative; z-index: 1; }
-    .hero-main {
-      padding: 42px 36px 36px;
-      background: linear-gradient(180deg, color-mix(in srgb, white 65%, transparent) 0%, color-mix(in srgb, white 28%, transparent) 100%);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      min-height: 100%;
-    }
-    html[data-theme="dark"] .hero-main { background: linear-gradient(180deg, rgba(21, 31, 53, 0.98) 0%, rgba(16, 24, 43, 0.96) 100%); }
-
-    .theme-toggle {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 5;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--panel-2);
-      color: var(--text);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(12px);
-      font-weight: 700;
-      font-size: 14px;
-      transition: transform .18s ease, background .18s ease;
-    }
-    .theme-toggle:hover { transform: translateY(-1px); }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      color: var(--accent-hover);
-      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
-      border-radius: var(--radius-full);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-top: 18px;
-      text-transform: uppercase;
-      box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
-      width: fit-content;
-    }
-    h1 {
-      margin: 0 0 2px;
-      font-size: clamp(34px, 4.6vw, 62px);
-      line-height: 0.92;
-      letter-spacing: -0.07em;
-      max-width: 8.6ch;
-      color: color-mix(in srgb, var(--text) 96%, #1e3a8a 4%);
-    }
-    .hero-main .lead { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.85; max-width: 58ch; }
-
-    .hero-main-info { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; max-width: 520px; }
-    .info-box {
-      padding: 22px 22px 20px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, color-mix(in srgb, white 92%, transparent) 0%, color-mix(in srgb, white 70%, transparent) 100%);
-      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      box-shadow: 0 1px 0 color-mix(in srgb, white 70%, transparent), 0 10px 24px rgba(15, 23, 42, 0.04);
-    }
-    html[data-theme="dark"] .info-box {
-      background: linear-gradient(180deg, rgba(27, 39, 66, 0.98) 0%, rgba(19, 28, 48, 0.98) 100%);
-      border-color: rgba(255,255,255,0.12);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 14px 28px rgba(0,0,0,0.22);
-    }
-    .label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.11em;
-      color: var(--faint);
-      text-transform: uppercase;
-    }
-    .price {
-      margin: 0;
-      font-size: clamp(50px, 5vw, 66px);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
-      font-weight: 900;
-      background: linear-gradient(90deg, #4b5563 0%, #3b82f6 62%, #2563eb 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    html[data-theme="dark"] .price { background: linear-gradient(90deg, #f8fbff 0%, #bfdbfe 48%, #7dd3fc 100%); -webkit-background-clip: text; background-clip: text; }
-    .phone {
-      margin: 0;
-      font-size: clamp(34px, 3.6vw, 48px);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
-      font-weight: 900;
-      color: color-mix(in srgb, var(--text) 98%, #111827 2%);
-    }
-    .subtext { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.72; max-width: 34ch; }
-    .hero-otodom { display: flex; flex-direction: column; gap: 10px; }
-    .hero-otodom-thumb {
-      display: block;
-      position: relative;
-      width: 100%;
-      max-width: 244px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.10);
-      background: var(--gallery-bg);
-      aspect-ratio: 4 / 3;
-    }
-    .hero-otodom-thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; }
-    .hero-otodom-fade {
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 22px;
-      background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 20%, transparent) 100%);
-      pointer-events: none;
-    }
-
-
-
-
-
-
-
-
-
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: var(--radius-full);
-      font-weight: 800;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
-      color: white;
-      box-shadow: 0 14px 28px color-mix(in srgb, #2563eb 24%, transparent);
-    }
-    .btn-secondary {
-      background: linear-gradient(180deg, color-mix(in srgb, white 92%, transparent) 0%, color-mix(in srgb, white 76%, transparent) 100%);
-      color: var(--text);
-      border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-      box-shadow: inset 0 1px 0 color-mix(in srgb, white 70%, transparent);
-    }
-    html[data-theme="dark"] .btn-secondary {
-      background: linear-gradient(180deg, rgba(31, 44, 72, 0.98) 0%, rgba(22, 32, 56, 0.98) 100%);
-      border-color: rgba(255,255,255,0.12);
-      color: var(--text);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-
-    .hero-side {
-      padding: 34px 28px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
-      background: linear-gradient(180deg, color-mix(in srgb, white 56%, transparent) 0%, color-mix(in srgb, white 18%, transparent) 100%);
-    }
-    html[data-theme="dark"] .hero-side { background: linear-gradient(180deg, rgba(19, 29, 50, 0.98) 0%, rgba(14, 22, 39, 0.96) 100%); }
-
-    .description-content {
-      padding: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-      border-top: 0;
-    }
-    .description-content strong { color: var(--text); }
-    .description-content p { margin: 0 0 14px; }
-    .description-content h4 {
-      margin: 22px 0 10px;
-      font-size: 15px;
-      line-height: 1.4;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-    .description-highlight { font-weight: 800; color: var(--accent-hover); }
-    .description-list { margin: 0 0 10px; padding-left: 18px; color: var(--muted); line-height: 1.8; }
-    .description-list li + li { margin-top: 8px; }
-    .description-note { margin-top: 16px; color: var(--muted); }
-    .mobile-room-links { display: none; gap: 10px; flex-wrap: wrap; padding: 0; margin-top: -2px; }
-    .mobile-description-toggle, .gallery-choice-toggle { display: none; }
-    .mobile-description-toggle summary, .gallery-choice-toggle summary { list-style: none; cursor: pointer; }
-    .mobile-description-toggle summary::-webkit-details-marker, .gallery-choice-toggle summary::-webkit-details-marker { display: none; }
-    .mobile-description-toggle summary, .gallery-choice-toggle summary {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 16px 18px; border-radius: 22px; border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--text) 3%, transparent); font-weight: 800; color: var(--text);
-    }
-    .mobile-description-body, .gallery-choice-body { padding: 16px 2px 0; }
-    .choice-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .choice-btn {
-      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px;
-      border-radius: 999px; background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%); color: #fff; font-weight: 800;
-    }
-    .choice-btn-secondary { background: color-mix(in srgb, var(--text) 4%, transparent); color: var(--text); border: 1px solid var(--border); }
-    .choice-note { margin: 10px 0 0; color: var(--muted); line-height: 1.7; }
-    .mobile-room-links a {
-      padding: 10px 14px;
-      border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--accent) 10%, transparent);
-      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
-      color: var(--accent-hover);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .section { padding: 18px 0 20px; }
-    .section-header { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 16px; }
-    .section-header h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); letter-spacing: -0.04em; }
-    .section-header p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 66ch; }
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      margin: 8px 0 18px;
-      padding: 10px;
-      background: color-mix(in srgb, var(--panel) 96%, transparent);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow-md);
-      overflow-x: auto;
-    }
-    .sticky-nav .nav-row { display: flex; gap: 10px; min-width: max-content; }
-    .sticky-nav a {
-      white-space: nowrap;
-      padding: 10px 14px;
-      border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--text) 3%, transparent);
-      border: 1px solid var(--divider);
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-
-
-
-
-
-
-
-
-    .main-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-    .gallery-item, .room-thumb, .lightbox-thumb {
-      position: relative;
-      display: block;
-      overflow: hidden;
-      border-radius: 22px;
-      border: 1px solid var(--divider);
-      background: var(--gallery-bg);
-      box-shadow: var(--shadow-md);
-    }
-    .gallery-item::after, .room-thumb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, color-mix(in srgb, white 8%, transparent) 0%, transparent 34%, color-mix(in srgb, black 12%, transparent) 100%);
-      pointer-events: none;
-    }
-    .gallery-item img, .room-thumb img, .lightbox-thumb img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease, opacity .2s ease;
-    }
-    .main-gallery .wide { grid-column: span 7; aspect-ratio: 4 / 3; }
-    .main-gallery .half { grid-column: span 5; aspect-ratio: 4 / 3; }
-    .main-gallery .small { grid-column: span 4; aspect-ratio: 4 / 3; }
-    .gallery-badge, .thumb-count {
-      position: absolute; right: 12px; bottom: 12px;
-      padding: 7px 10px; border-radius: var(--radius-full);
-      background: var(--thumb-overlay); border: 1px solid var(--border);
-      color: var(--thumb-text); font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
-      backdrop-filter: blur(10px); z-index: 1;
-    }
-    .gallery-shortcut {
-      display: inline-flex; margin-top: 8px; padding: 10px 14px; border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--text) 4%, transparent);
-      border: 1px solid var(--border); color: var(--text); font-size: 14px; font-weight: 700;
-    }
-    .subgallery-list { display: grid; gap: 16px; margin-top: 8px; }
-    .room-section {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; align-items: center;
-      padding: 24px; scroll-margin-top: 88px;
-      background: linear-gradient(180deg, color-mix(in srgb, white 5%, transparent) 0%, color-mix(in srgb, white 2%, transparent) 100%);
-    }
-    .room-copy h3 { margin: 0 0 10px; font-size: clamp(24px, 2.5vw, 32px); letter-spacing: -0.03em; }
-    .room-copy p { margin: 0 0 12px; color: var(--muted); line-height: 1.8; font-size: 16px; max-width: 68ch; }
-    .room-note, .room-caption { display: inline-flex; padding: 8px 12px; border-radius: var(--radius-full); border: 1px solid var(--divider); font-size: 13px; font-weight: 600; }
-    .room-note { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent-hover); }
-    .room-caption { margin-top: 10px; background: color-mix(in srgb, var(--text) 3%, transparent); color: var(--muted); }
-    .room-thumb { aspect-ratio: 4 / 3; min-height: 240px; }
-    .thumb-overlay {
-      position: absolute; inset: auto 12px 12px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 10px 12px; border-radius: var(--radius-full); background: var(--thumb-overlay); color: var(--thumb-text);
-      backdrop-filter: blur(8px); border: 1px solid var(--border); z-index: 1;
-    }
-    .thumb-overlay span { font-size: 13px; font-weight: 700; }
-
-    .lightbox {
-      position: fixed; inset: 0; background: rgba(2, 6, 23, 0.94); display: none; align-items: center; justify-content: center;
-      z-index: 1000; padding: 18px;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-inner { width: min(1280px, 100%); height: min(92vh, 960px); display: grid; grid-template-rows: minmax(0, 1fr) auto auto; gap: 14px; position: relative; }
-    .lightbox-stage {
-      position: relative; min-height: 0; display: grid; place-items: center;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 28%), radial-gradient(circle at top right, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 24%), rgba(255,255,255,0.03);
-      border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden;
-    }
-    .lightbox-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: #0b1120; }
-    .lightbox-close, .lightbox-prev, .lightbox-next {
-      position: absolute; border: 0; border-radius: 999px; background: rgba(255,255,255,0.12); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(8px); transition: background .18s ease, transform .18s ease; min-width: 46px; min-height: 46px; z-index: 2;
-    }
-    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.20); transform: translateY(-1px); }
-    .lightbox-close { top: 12px; right: 12px; width: 48px; height: 48px; font-size: 26px; }
-    .lightbox-prev, .lightbox-next { top: 50%; transform: translateY(-50%); width: 54px; height: 54px; font-size: 28px; }
-    .lightbox-prev { left: 12px; } .lightbox-next { right: 12px; }
-    .lightbox-meta { display: flex; align-items: center; justify-content: center; gap: 10px; color: rgba(255,255,255,0.86); font-size: 14px; text-align: center; min-height: 24px; }
-    .lightbox-thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 10px; max-height: 132px; overflow-y: auto; padding: 4px; }
-    .lightbox-thumb { aspect-ratio: 4 / 3; border-radius: 14px; opacity: 0.65; transition: opacity .18s ease, border-color .18s ease, transform .18s ease; }
-    .lightbox-thumb.active { opacity: 1; border-color: rgba(110, 231, 249, 0.66); transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(110, 231, 249, 0.22); }
-    .lightbox-thumb img { height: 100%; }
-
-    .back-to-top {
-      position: fixed; right: 14px; bottom: 14px; z-index: 1200; display: none; align-items: center; gap: 8px;
-      min-height: 46px; padding: 0 14px; border-radius: 999px; background: color-mix(in srgb, var(--panel-2) 96%, transparent); color: var(--text); border: 1px solid var(--border); backdrop-filter: blur(12px); box-shadow: 0 12px 24px rgba(0,0,0,0.16); font-size: 14px; font-weight: 700;
-    }
-    .back-to-top.is-visible { display: inline-flex; }
-    footer { padding: 30px 0 42px; text-align: center; color: var(--muted); font-size: 14px; }
-
-    @media (max-width: 980px) {
-      .hero-grid, .room-section { grid-template-columns: 1fr; }
-      .main-gallery .wide, .main-gallery .half, .main-gallery .small { grid-column: span 6; }
-    }
-    @media (max-width: 768px) {
-      .back-to-top.is-visible { display: inline-flex; }
-      .mobile-room-links { display: flex; }
-      .sticky-nav { display: none; }
-      .hero-mini { display: none; }
-    }
-    @media (min-width: 769px) { .back-to-top { display: none !important; } }
-    @media (max-width: 640px) {
-      .wrap { width: min(var(--max), calc(100% - 20px)); }
-      .hero-main, .hero-side, .room-section { padding: 20px; }
-      .theme-toggle { top: 14px; right: 14px; }
-      h1 { font-size: clamp(34px, 11vw, 48px); max-width: 10ch; }
-      .actions { flex-direction: column; }
-      .btn { width: 100%; }
-      .hero-otodom-thumb { max-width: 100%; }
-      .main-gallery { grid-template-columns: 1fr; }
-      .main-gallery .wide, .main-gallery .half, .main-gallery .small { grid-column: auto; aspect-ratio: 4 / 3; }
-      .room-thumb { min-height: 0; }
-      .lightbox { padding: 10px; }
-      .lightbox-inner { height: min(94vh, 980px); }
-      .lightbox-prev, .lightbox-next { width: 46px; height: 46px; font-size: 24px; }
-      .lightbox-prev { left: 8px; } .lightbox-next { right: 8px; } .lightbox-close { top: 8px; right: 8px; }
-      .lightbox-thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)); max-height: 120px; }
-      .gallery-cta-row { flex-direction: column; }
-    }
+    :root { --bg:#f5f7fb; --panel:#ffffff; --text:#101828; --muted:#5b6475; --line:rgba(16,24,40,.10); --shadow:0 20px 60px rgba(16,24,40,.08); --radius:24px; --max:1200px; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f6f9ff 0%,#eef4fb 100%);overflow-x:hidden}
+    a{color:inherit;text-decoration:none} img{display:block;width:100%;height:auto} button{font:inherit;cursor:pointer;border:0;background:none}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+    .section{padding:24px 0}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .hero{padding:20px 0 10px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
+    .hero-main,.hero-side{padding:30px}
+    .hero-main{display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#fff 0%,#f8fbff 100%)}
+    .eyebrow{display:inline-flex;width:fit-content;padding:9px 13px;border-radius:999px;background:#e8f2ff;color:#2563eb;font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+    h1{margin:0;font-size:clamp(34px,5vw,62px);line-height:.95;letter-spacing:-.06em;max-width:9ch}
+    .lead{margin:0;color:var(--muted);font-size:17px;line-height:1.8;max-width:60ch}
+    .info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .info-box{padding:20px;border-radius:22px;border:1px solid var(--line);background:#fff}
+    .label{display:block;margin-bottom:10px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#7b8794;font-weight:800}
+    .phone{margin:0;font-size:clamp(32px,4vw,46px);line-height:1;font-weight:900;letter-spacing:-.05em}
+    .sub{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.7}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;font-weight:800}
+    .btn-primary{background:linear-gradient(135deg,#2563eb 0%,#0ea5e9 100%);color:#fff}
+    .btn-secondary{background:#f4f7fb;border:1px solid var(--line)}
+    .hero-side{display:flex;flex-direction:column;gap:16px;justify-content:center;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)}
+    .side-title{margin:0;font-size:14px;font-weight:900;letter-spacing:.08em;color:#7b8794;text-transform:uppercase}
+    .side-copy{margin:0;color:var(--muted);line-height:1.85;font-size:15px}
+    .details-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .detail{padding:16px;border-radius:18px;border:1px solid var(--line);background:#fff}
+    .detail strong{display:block;margin-bottom:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#7b8794}
+    .detail span{font-weight:700}
+    .gallery-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px}
+    .gallery-head h2,.more-head h2{margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.04em}
+    .gallery-head p,.more-head p{margin:0;color:var(--muted);line-height:1.7;max-width:70ch}
+    .gallery-stage{display:grid;grid-template-columns:1.45fr .55fr;gap:14px;align-items:stretch}
+    .gallery-main{position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#eaf1fb;box-shadow:0 16px 36px rgba(16,24,40,.08)}
+    .gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+    .gallery-main:hover img{transform:scale(1.02)}
+    .gallery-strip{display:grid;grid-template-rows:1fr 1fr;gap:12px}
+    .thumb{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#edf4fb;box-shadow:0 12px 30px rgba(16,24,40,.06)}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+    .thumb:hover img{transform:scale(1.02)}
+    .thumb.big{aspect-ratio:4/3}
+    .gallery-caption{position:absolute;left:14px;bottom:14px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);font-size:12px;font-weight:800}
+    .accordion{display:grid;gap:12px}
+    details.accordion-item{border:1px solid var(--line);border-radius:22px;background:#fff;overflow:hidden}
+    details.accordion-item summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900}
+    details.accordion-item summary::-webkit-details-marker{display:none}
+    .acc-body{padding:0 20px 20px;color:var(--muted);line-height:1.8;font-size:15px}
+    .acc-list{margin:0;padding-left:18px}
+    .acc-list li+li{margin-top:8px}
+    .photos{padding-top:8px}
+    .photo-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .photo{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#edf4fb;box-shadow:0 14px 32px rgba(16,24,40,.06)}
+    .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,transparent 60%,rgba(0,0,0,.12) 100%)}
+    .photo img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+    .photo:hover img{transform:scale(1.02)}
+    .photo.wide{grid-column:span 7;aspect-ratio:4/3}.photo.tall{grid-column:span 5;aspect-ratio:4/3}.photo.small{grid-column:span 4;aspect-ratio:4/3}
+    .photo-badge{position:absolute;right:12px;bottom:12px;z-index:1;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);font-size:12px;font-weight:800}
+    .more-head{margin-bottom:14px}
+    .more-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .room{padding:18px;border-radius:22px;border:1px solid var(--line);background:#fff}
+    .room h3{margin:0 0 8px;font-size:20px;letter-spacing:-.03em}
+    .room p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
+    footer{padding:28px 0 40px;color:var(--muted);text-align:center;font-size:14px}
+    @media (max-width: 980px){.hero-grid,.gallery-stage,.more-grid{grid-template-columns:1fr}.details-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.photo-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 20px))}.hero-main,.hero-side{padding:22px}.info-row,.details-grid,.photo-grid,.more-grid{grid-template-columns:1fr}.gallery-stage{grid-template-columns:1fr;gap:12px}.gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}.photo.wide,.photo.tall,.photo.small,.thumb.big{grid-column:auto}.btn{width:100%}}
   </style>
 </head>
 <body>
-  <a id="top"></a>
   <header class="hero">
     <div class="wrap hero-grid">
-      <section class="panel hero-main">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Przełącz motyw">
-          <span id="themeToggleIcon">☾</span>
-          <span id="themeToggleText">Ciemny tryb</span>
-        </button>
-
+      <section class="card hero-main">
         <span class="eyebrow">Sprzedaż bezpośrednia</span>
         <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
-
-        <div class="hero-main-info">
-          <div class="info-box">
-            <span class="label">Cena</span>
-            <p class="price">800 000 zł</p>
-            <div class="subtext">Cena do dalszej aktualizacji według bieżącego ogłoszenia.</div>
-          </div>
-
+        <p class="lead">3-pokojowe mieszkanie na 3. i ostatnim piętrze w budynku z 2013 roku. Jasny salon, osobna łazienka, oddzielne WC i balkon z ekspozycją południowo-zachodnią tworzą wygodny układ do codziennego życia.</p>
+        <div class="info-row">
           <div class="info-box">
             <span class="label">Telefon</span>
             <p class="phone">781 262 987</p>
-            <div class="subtext">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
+            <div class="sub">Kontakt najlepiej po 17:00, a przy nieodebraniu proszę o SMS.</div>
           </div>
-
-
-          <div class="actions">
-            <a class="btn btn-secondary" href="#galeria-pomieszczenia">Główna galeria</a>
-            <a class="btn btn-primary" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">Ogłoszenie OTODOM</a>
+          <div class="info-box">
+            <span class="label">Status</span>
+            <p class="phone" style="font-size:clamp(24px,3vw,34px)">Gotowe</p>
+            <div class="sub">Pełna własność, księga wieczysta, dostępne od zaraz.</div>
           </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.otodom.pl/pl/oferta/mieszkanie-64-4-m-w-spokojnej-okolicy-dylewicza-pkp-siedlce-zachodnie-ID4ATvS" target="_blank" rel="noopener noreferrer">Ogłoszenie OTODOM</a>
+          <a class="btn btn-secondary" href="#galeria">Zobacz galerię</a>
         </div>
       </section>
-
-      <aside class="panel hero-side">
-        <div class="mobile-room-links">
-          <a href="#salon">Salon</a>
-          <a href="#kuchnia">Kuchnia</a>
-          <a href="#sypialnia">Sypialnia</a>
-          <a href="#pokoj">Drugi pokój</a>
-          <a href="#lazienka">Łazienka</a>
-          <a href="#balkon">Balkon</a>
-          <a href="#przedpokoj">Przedpokój</a>
-          <a href="#galeria-skrocona">Galeria skrócona</a>
+      <aside class="card hero-side">
+        <div>
+          <p class="side-title">Opis mieszkania</p>
+          <p class="side-copy"><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy. Oferuję przestronne mieszkanie gotowe do zamieszkania od zaraz lub do lekkiego odświeżenia według własnego gustu. Cena do negocjacji.</p>
         </div>
-
-        <details class="mobile-description-toggle">
-          <summary>Opis mieszkania</summary>
-          <div class="mobile-description-body">
-          <p><strong>Sprzedaż bezpośrednia.</strong> Pośrednikom dziękujemy.</p>
-          <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. i ostatnim piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz, ewentualnie do odświeżenia według własnego gustu.</p>
-          <p class="description-highlight">Cena do negocjacji.</p>
-          <h4>Układ i wyposażenie</h4>
-          <ul class="description-list">
-            <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
-            <li>Aneks kuchenny z miejscem na wygodny stół jadalniany.</li>
-            <li>Balkon od strony południowo-zachodniej, idealny na popołudniowy relaks i zachody słońca.</li>
-            <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
-            <li>Duża szafa z lustrem w przedpokoju przy drzwiach wejściowych.</li>
-            <li>Klimatyzacja mająca 2 lata.</li>
-            <li>Meble, z wyjątkiem kanapy i stołu, oraz sprzęt AGD w cenie: zmywarka, lodówka, kuchenka i piekarnik.</li>
-            <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
-            <li>Brak windy i brak piwnicy.</li>
-            <li>Komórka lokatorska dostępna za dodatkową opłatą.</li>
-            <li>Miejsce parkingowe w hali garażowej możliwe do kupienia od osób trzecich.</li>
-          </ul>
-          <h4>Dodatkowe informacje</h4>
-          <ul class="description-list"><li>Dostępne od zaraz.</li><li>Pełna własność, księga wieczysta.</li></ul>
-          <h4>Lokalizacja</h4>
-          <ul class="description-list">
-            <li>Spokojne i bezpieczne osiedle, dobre dla rodzin z dziećmi.</li>
-            <li>W pobliżu sklepy: Biedronka, Topaz, Mrówka i Arhelan.</li>
-            <li>Blisko restauracje i bary, m.in. DaGrasso i Kebab Sułtan.</li>
-            <li>W okolicy przedszkola i kościół, około 5 minut pieszo.</li>
-            <li>Zalew w odległości około 10 minut spacerem.</li>
-            <li>Stacja Siedlce Zachodnie około 2–3 minuty biegiem, co dobrze sprawdza się przy dojazdach do Warszawy.</li>
-          </ul>
-          <p class="description-note">To dobry wybór dla rodziny lub pary szukającej funkcjonalnego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do infrastruktury i wygodnym dojazdem koleją do Warszawy.</p>
-          <p class="description-note">Zapraszam do kontaktu. Pytania można zadawać SMS-em.</p>
-          </div>
-        </details>
-
-        <details class="gallery-choice-toggle">
-          <summary>Wybierz galerię</summary>
-          <div class="gallery-choice-body">
-            <div class="choice-row">
-              <a class="choice-btn" href="#galeria-pomieszczenia">Galeria pełna</a>
-              <a class="choice-btn choice-btn-secondary" href="#galeria-skrocona">Galeria skrócona</a>
+        <div class="accordion">
+          <details class="accordion-item" open>
+            <summary>Układ i wyposażenie <span>+</span></summary>
+            <div class="acc-body">
+              <ul class="acc-list">
+                <li>Jasny salon z wieloma punktami świetlnymi, w tym LED RGB.</li>
+                <li>Aneks kuchenny z miejscem na stół jadalniany.</li>
+                <li>Balkon od strony południowo-zachodniej.</li>
+                <li>Osobna łazienka z wanną i parawanem prysznicowym oraz oddzielne WC.</li>
+                <li>Duża szafa z lustrem w przedpokoju.</li>
+                <li>Klimatyzacja mająca 2 lata.</li>
+                <li>Ogrzewanie miejskie, czynsz około 600 zł miesięcznie.</li>
+              </ul>
             </div>
-            <p class="choice-note">Pełna galeria pokazuje wszystkie pomieszczenia, a skrócona daje szybki przegląd najważniejszych ujęć.</p>
-          </div>
-        </details>
+          </details>
+          <details class="accordion-item">
+            <summary>Lokalizacja <span>+</span></summary>
+            <div class="acc-body">
+              <ul class="acc-list">
+                <li>Spokojne osiedle, dobre dla rodzin z dziećmi.</li>
+                <li>W pobliżu: Biedronka, Topaz, Mrówka i Arhelan.</li>
+                <li>Blisko restauracje, przedszkola i kościół.</li>
+                <li>Zalew około 10 minut spacerem.</li>
+                <li>Siedlce Zachodnie około 2–3 minuty biegiem.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="accordion">
+          <details class="accordion-item" open>
+            <summary>Wybierz galerię <span>+</span></summary>
+            <div class="acc-body">
+              <p>Pełna galeria pokazuje wszystkie pomieszczenia, a skrócona daje szybki przegląd najważniejszych ujęć.</p>
+              <div class="actions" style="margin-top:12px">
+                <a class="btn btn-primary" href="#galeria">Galeria pełna</a>
+                <a class="btn btn-secondary" href="#galeria-skrocona">Galeria skrócona</a>
+              </div>
+            </div>
+          </details>
+        </div>
       </aside>
     </div>
   </header>
 
   <main class="wrap">
-    <nav class="sticky-nav">
-      <div class="nav-row">
-        <a href="#galeria-pomieszczenia">Główna galeria</a>
-        <a href="#salon">Salon</a>
-        <a href="#kuchnia">Kuchnia</a>
-        <a href="#sypialnia">Sypialnia</a>
-        <a href="#pokoj">Drugi pokój</a>
-        <a href="#lazienka">Łazienka</a>
-        <a href="#balkon">Balkon</a>
-        <a href="#przedpokoj">Przedpokój</a>
-        <a href="#galeria-skrocona">Galeria skrócona</a>
-      </div>
-    </nav>
-
-    <section class="section" id="galeria-pomieszczenia">
-      <div class="section-header">
-        <div>
-          <h2>Główna galeria</h2>
-          <p>Najważniejszy podgląd mieszkania z podziałem na pomieszczenia. Kliknij dowolne zdjęcie, aby otworzyć osobną galerię wybranego wnętrza.</p>
+    <section class="section card" id="galeria">
+      <div class="hero-main" style="padding:24px">
+        <div class="gallery-head">
+          <div><h2>Galeria zdjęć</h2><p>Układ galerii inspirowany MyRental: duże zdjęcie główne, mniejsze ujęcia pomocnicze i naturalny podgląd wnętrz.</p></div>
+        </div>
+        <div class="gallery-stage">
+          <a class="gallery-main" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Salon"><span class="gallery-caption">Salon</span></a>
+          <div class="gallery-strip">
+            <a class="thumb big" href="images/IMG02663.JPG"><img src="images/IMG02663.JPG" alt="Kuchnia"><span class="gallery-caption">Kuchnia</span></a>
+            <a class="thumb" href="images/IMG02684.JPG"><img src="images/IMG02684.JPG" alt="Sypialnia"><span class="gallery-caption">Sypialnia</span></a>
+            <a class="thumb" href="images/IMG_20260411_160649.jpg"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka"><span class="gallery-caption">Łazienka</span></a>
+          </div>
         </div>
       </div>
-
-      <section class="subgallery-list">
-        <article class="panel room-section" id="salon">
-          <div class="room-copy"><h3>Salon</h3><p>Tu później możesz podpiąć docelowe zdjęcia strefy dziennej oraz podkreślić jej otwarty, nowoczesny charakter.</p><span class="room-note">Podgląd otwiera osobną galerię salonu</span><div class="room-caption">Przykładowy podpis: jasna strefa dzienna z miejscem na wspólne spędzanie czasu.</div></div>
-          <button class="room-thumb" data-gallery="salon" data-index="0" type="button"><img src="images/IMG02657.JPG" alt="Salon - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="kuchnia">
-          <div class="room-copy"><h3>Kuchnia</h3><p>Sekcja pod zdjęcia kuchni lub aneksu kuchennego. Docelowo możesz tu pokazać funkcjonalność i ergonomię układu.</p><span class="room-note">Podgląd otwiera osobną galerię kuchni</span><div class="room-caption">Przykładowy podpis: funkcjonalna kuchnia z wygodnym blatem roboczym.</div></div>
-          <button class="room-thumb" data-gallery="kuchnia" data-index="0" type="button"><img src="images/IMG02663.JPG" alt="Kuchnia - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="sypialnia">
-          <div class="room-copy"><h3>Sypialnia</h3><p>Miejsce na zdjęcia pokoju głównego. Tu możesz później pokazać ustawność, spokój i bardziej prywatny charakter tej części mieszkania.</p><span class="room-note">Podgląd otwiera osobną galerię sypialni</span><div class="room-caption">Przykładowy podpis: kameralna sypialnia z miejscem na przechowywanie.</div></div>
-          <button class="room-thumb" data-gallery="sypialnia" data-index="0" type="button"><img src="images/IMG02684.JPG" alt="Sypialnia - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="pokoj">
-          <div class="room-copy"><h3>Drugi pokój</h3><p>Tę sekcję możesz później wykorzystać jako pokój dziecka, gabinet albo drugi pokój sypialny, zależnie od finalnej narracji oferty.</p><span class="room-note">Podgląd otwiera osobną galerię drugiego pokoju</span><div class="room-caption">Przykładowy podpis: elastyczny pokój pod gabinet, dziecięcy lub gościnny.</div></div>
-          <button class="room-thumb" data-gallery="pokoj" data-index="0" type="button"><img src="images/IMG02700.JPG" alt="Drugi pokój - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="lazienka">
-          <div class="room-copy"><h3>Łazienka</h3><p>Tu warto później wyeksponować osobną łazienkę i jej praktyczny układ, zwłaszcza jeśli chcesz podkreślić funkcjonalność mieszkania.</p><span class="room-note">Podgląd otwiera osobną galerię łazienki</span><div class="room-caption">Przykładowy podpis: osobna łazienka z wygodnym, praktycznym układem.</div></div>
-          <button class="room-thumb" data-gallery="lazienka" data-index="0" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="balkon">
-          <div class="room-copy"><h3>Balkon</h3><p>Balkon może być mocnym elementem oferty, szczególnie jeśli pokazuje światło, ekspozycję i przyjemną przestrzeń na odpoczynek.</p><span class="room-note">Podgląd otwiera osobną galerię balkonu</span><div class="room-caption">Przykładowy podpis: balkon z przyjemnym światłem i miejscem na poranną kawę.</div></div>
-          <button class="room-thumb" data-gallery="balkon" data-index="0" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Balkon - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-        <article class="panel room-section" id="przedpokoj">
-          <div class="room-copy"><h3>Przedpokój</h3><p>Sekcja pod zdjęcia wejścia i komunikacji. To dobre miejsce na pokazanie zabudowy, szafy z lustrem i pierwszego wrażenia po wejściu.</p><span class="room-note">Podgląd otwiera osobną galerię przedpokoju</span><div class="room-caption">Przykładowy podpis: uporządkowane wejście z miejscem na przechowywanie.</div></div>
-          <button class="room-thumb" data-gallery="przedpokoj" data-index="0" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Przedpokój - zdjęcie podglądowe"><span class="thumb-overlay"><span>Otwórz galerię</span><span class="thumb-count">3 zdjęcia</span></span></button>
-        </article>
-      </section>
     </section>
 
-    <section class="section" id="galeria-skrocona">
-      <div class="section-header"><div><h2>Galeria skrócona</h2><p>Zbiorczy szybki przegląd najważniejszych ujęć mieszkania. Kliknij zdjęcie, aby otworzyć pełnoekranową galerię.</p></div></div>
-      <div class="main-gallery">
-        <button class="gallery-item wide" data-gallery="main" data-index="0" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 1"><span class="gallery-badge">Galeria</span></button>
-        <button class="gallery-item half" data-gallery="main" data-index="1" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 2"><span class="gallery-badge">Galeria</span></button>
-        <button class="gallery-item small" data-gallery="main" data-index="2" type="button"><img src="images/IMG02657.JPG" alt="Zdjęcie mieszkania 3"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="3" type="button"><img src="images/IMG02663.JPG" alt="Zdjęcie mieszkania 4"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="4" type="button"><img src="images/IMG02664.JPG" alt="Zdjęcie mieszkania 5"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="5" type="button"><img src="images/IMG02682.JPG" alt="Zdjęcie mieszkania 6"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="6" type="button"><img src="images/IMG02684.JPG" alt="Zdjęcie mieszkania 7"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="7" type="button"><img src="images/IMG02688.JPG" alt="Zdjęcie mieszkania 8"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="8" type="button"><img src="images/IMG02700.JPG" alt="Zdjęcie mieszkania 9"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="9" type="button"><img src="images/IMG02708.JPG" alt="Zdjęcie mieszkania 10"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="10" type="button"><img src="images/IMG_20260411_160649.jpg" alt="Zdjęcie mieszkania 11"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="11" type="button"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie mieszkania 12"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="12" type="button"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie mieszkania 13"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="13" type="button"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie mieszkania 14"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="14" type="button"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie mieszkania 15"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="15" type="button"><img src="images/IMG_20260411_181724.jpg" alt="Zdjęcie mieszkania 16"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="16" type="button"><img src="images/IMG_20260412_190903.jpg" alt="Zdjęcie mieszkania 17"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="17" type="button"><img src="images/IMG_20260412_195053.jpg" alt="Zdjęcie mieszkania 18"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="18" type="button"><img src="images/IMG_20260412_195145.jpg" alt="Zdjęcie mieszkania 19"></button>
-        <button class="gallery-item small" data-gallery="main" data-index="19" type="button"><img src="images/IMG_20260412_200118.jpg" alt="Zdjęcie mieszkania 20"></button>
+    <section class="section card" id="galeria-skrocona">
+      <div class="hero-main" style="padding:24px">
+        <div class="more-head"><h2>Galeria skrócona</h2><p>Szybki przegląd najważniejszych zdjęć mieszkania.</p></div>
+        <div class="photo-grid">
+          <a class="photo wide" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Zdjęcie 1"><span class="photo-badge">Salon</span></a>
+          <a class="photo tall" href="images/IMG02663.JPG"><img src="images/IMG02663.JPG" alt="Zdjęcie 2"><span class="photo-badge">Kuchnia</span></a>
+          <a class="photo small" href="images/IMG02664.JPG"><img src="images/IMG02664.JPG" alt="Zdjęcie 3"><span class="photo-badge">Detal</span></a>
+          <a class="photo small" href="images/IMG02682.JPG"><img src="images/IMG02682.JPG" alt="Zdjęcie 4"><span class="photo-badge">Widok</span></a>
+          <a class="photo small" href="images/IMG02684.JPG"><img src="images/IMG02684.JPG" alt="Zdjęcie 5"><span class="photo-badge">Pokój</span></a>
+          <a class="photo small" href="images/IMG02688.JPG"><img src="images/IMG02688.JPG" alt="Zdjęcie 6"><span class="photo-badge">Przedpokój</span></a>
+          <a class="photo small" href="images/IMG02700.JPG"><img src="images/IMG02700.JPG" alt="Zdjęcie 7"><span class="photo-badge">Pokój 2</span></a>
+          <a class="photo small" href="images/IMG02708.JPG"><img src="images/IMG02708.JPG" alt="Zdjęcie 8"><span class="photo-badge">Balkon</span></a>
+          <a class="photo small" href="images/IMG_20260411_160936.jpg"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie 9"><span class="photo-badge">Łazienka</span></a>
+          <a class="photo small" href="images/IMG_20260411_161208.jpg"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie 10"><span class="photo-badge">Łazienka 2</span></a>
+          <a class="photo small" href="images/IMG_20260411_181457.jpg"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie 11"><span class="photo-badge">Balkon 2</span></a>
+          <a class="photo small" href="images/IMG_20260411_181542.jpg"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie 12"><span class="photo-badge">Balkon 3</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="more-head"><h2>Najważniejsze informacje</h2><p>Bez sekcji cen, bez social mediów i bez stopki z follow us. Prosty, czytelny układ pod konkretną ofertę.</p></div>
+      <div class="more-grid">
+        <div class="room"><h3>Układ</h3><p>3 pokoje, osobna łazienka, oddzielne WC, balkon i przedpokój z dużą szafą.</p></div>
+        <div class="room"><h3>Budynek</h3><p>3. i ostatnie piętro, budynek z 2013 roku, bez windy.</p></div>
+        <div class="room"><h3>Stan</h3><p>Gotowe do zamieszkania, z meblami i częścią AGD w cenie.</p></div>
+        <div class="room"><h3>Kontakt</h3><p>781 262 987, najlepiej po 17:00, ewentualnie SMS.</p></div>
       </div>
     </section>
   </main>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galeria zdjęć mieszkania">
-    <div class="lightbox-inner">
-      <div class="lightbox-stage">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij galerię">×</button>
-        <button class="lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">‹</button>
-        <img id="lightboxImage" src="" alt="">
-        <button class="lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">›</button>
-      </div>
-      <div class="lightbox-meta" id="lightboxMeta"></div>
-      <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Miniatury zdjęć"></div>
-    </div>
-  </div>
-
-  <a href="#top" class="back-to-top" id="backToTop" aria-label="Powrót na górę">↑ <span>Na górę</span></a>
-
-  <footer class="wrap">Wersja z główną galerią podzieloną na pomieszczenia oraz skróconą galerią zbiorczą na końcu strony.</footer>
-
-  <script>
-    const galleries = {
-      main: [
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 1' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 2' },
-        { src: 'images/IMG02657.JPG', alt: 'Zdjęcie mieszkania 3' },
-        { src: 'images/IMG02663.JPG', alt: 'Zdjęcie mieszkania 4' },
-        { src: 'images/IMG02664.JPG', alt: 'Zdjęcie mieszkania 5' },
-        { src: 'images/IMG02682.JPG', alt: 'Zdjęcie mieszkania 6' },
-        { src: 'images/IMG02684.JPG', alt: 'Zdjęcie mieszkania 7' },
-        { src: 'images/IMG02688.JPG', alt: 'Zdjęcie mieszkania 8' },
-        { src: 'images/IMG02700.JPG', alt: 'Zdjęcie mieszkania 9' },
-        { src: 'images/IMG02708.JPG', alt: 'Zdjęcie mieszkania 10' },
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Zdjęcie mieszkania 11' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Zdjęcie mieszkania 12' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Zdjęcie mieszkania 13' },
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Zdjęcie mieszkania 14' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Zdjęcie mieszkania 15' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Zdjęcie mieszkania 16' },
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Zdjęcie mieszkania 17' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Zdjęcie mieszkania 18' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Zdjęcie mieszkania 19' },
-        { src: 'images/IMG_20260412_200118.jpg', alt: 'Zdjęcie mieszkania 20' }
-      ],
-      salon: [
-        { src: 'images/IMG02657.JPG', alt: 'Salon 1' },
-        { src: 'images/IMG02664.JPG', alt: 'Salon 2' },
-        { src: 'images/IMG02684.JPG', alt: 'Salon 3' }
-      ],
-      kuchnia: [
-        { src: 'images/IMG02663.JPG', alt: 'Kuchnia 1' },
-        { src: 'images/IMG02682.JPG', alt: 'Kuchnia 2' },
-        { src: 'images/IMG02688.JPG', alt: 'Kuchnia 3' }
-      ],
-      sypialnia: [
-        { src: 'images/IMG02684.JPG', alt: 'Sypialnia 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Sypialnia 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Sypialnia 3' }
-      ],
-      pokoj: [
-        { src: 'images/IMG02663.JPG', alt: 'Drugi pokój 1' },
-        { src: 'images/IMG02700.JPG', alt: 'Drugi pokój 2' },
-        { src: 'images/IMG02708.JPG', alt: 'Drugi pokój 3' }
-      ],
-      lazienka: [
-        { src: 'images/IMG_20260411_160649.jpg', alt: 'Łazienka 1' },
-        { src: 'images/IMG_20260411_160936.jpg', alt: 'Łazienka 2' },
-        { src: 'images/IMG_20260411_161208.jpg', alt: 'Łazienka 3' }
-      ],
-      balkon: [
-        { src: 'images/IMG_20260411_181457.jpg', alt: 'Balkon 1' },
-        { src: 'images/IMG_20260411_181542.jpg', alt: 'Balkon 2' },
-        { src: 'images/IMG_20260411_181724.jpg', alt: 'Balkon 3' }
-      ],
-      przedpokoj: [
-        { src: 'images/IMG_20260412_190903.jpg', alt: 'Przedpokój 1' },
-        { src: 'images/IMG_20260412_195053.jpg', alt: 'Przedpokój 2' },
-        { src: 'images/IMG_20260412_195145.jpg', alt: 'Przedpokój 3' }
-      ]
-    };
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxMeta = document.getElementById('lightboxMeta');
-    const lightboxThumbs = document.getElementById('lightboxThumbs');
-    const closeBtn = document.getElementById('lightboxClose');
-    const prevBtn = document.getElementById('lightboxPrev');
-    const nextBtn = document.getElementById('lightboxNext');
-    const backToTop = document.getElementById('backToTop');
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeToggleIcon = document.getElementById('themeToggleIcon');
-    const themeToggleText = document.getElementById('themeToggleText');
-    let activeGallery = 'main'; let activeIndex = 0; let lastTrigger = null; let touchStartX = 0; let touchEndX = 0;
-
-    function setTheme(theme) {
-      root.setAttribute('data-theme', theme);
-      if (theme === 'light') { themeToggleIcon.textContent = '☾'; themeToggleText.textContent = 'Ciemny tryb'; }
-      else { themeToggleIcon.textContent = '☀'; themeToggleText.textContent = 'Jasny tryb'; }
-    }
-    setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    themeToggle.addEventListener('click', () => setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
-
-    function renderThumbs() {
-      const items = galleries[activeGallery];
-      lightboxThumbs.innerHTML = '';
-      items.forEach((item, index) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'lightbox-thumb' + (index === activeIndex ? ' active' : '');
-        btn.setAttribute('aria-label', `Pokaż ${item.alt}`);
-        btn.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
-        btn.addEventListener('click', () => { activeIndex = index; renderLightbox(); });
-        lightboxThumbs.appendChild(btn);
-      });
-    }
-    function renderLightbox() {
-      const items = galleries[activeGallery];
-      const item = items[activeIndex];
-      lightboxImage.src = item.src; lightboxImage.alt = item.alt; lightboxMeta.textContent = `${item.alt} • ${activeIndex + 1} / ${items.length}`; renderThumbs();
-    }
-    function openLightbox(galleryName, index, trigger) {
-      activeGallery = galleryName; activeIndex = index; lastTrigger = trigger || null; renderLightbox(); lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; closeBtn.focus();
-    }
-    function closeLightbox() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastTrigger) lastTrigger.focus(); }
-    function showNext() { const items = galleries[activeGallery]; activeIndex = (activeIndex + 1) % items.length; renderLightbox(); }
-    function showPrev() { const items = galleries[activeGallery]; activeIndex = (activeIndex - 1 + items.length) % items.length; renderLightbox(); }
-    function trapFocus(event) {
-      if (event.key !== 'Tab' || !lightbox.classList.contains('open')) return;
-      const focusables = [...lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
-      if (!focusables.length) return; const first = focusables[0]; const last = focusables[focusables.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    }
-    function toggleBackToTop() { if (window.innerWidth <= 768 && window.scrollY > 700) backToTop.classList.add('is-visible'); else backToTop.classList.remove('is-visible'); }
-
-    document.querySelectorAll('[data-gallery]').forEach((item) => item.addEventListener('click', () => openLightbox(item.dataset.gallery, Number(item.dataset.index || 0), item)));
-    closeBtn.addEventListener('click', closeLightbox); nextBtn.addEventListener('click', showNext); prevBtn.addEventListener('click', showPrev);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => { if (!lightbox.classList.contains('open')) return; trapFocus(e); if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowRight') showNext(); if (e.key === 'ArrowLeft') showPrev(); });
-    lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-    lightbox.addEventListener('touchend', (e) => { touchEndX = e.changedTouches[0].screenX; const diff = touchEndX - touchStartX; if (Math.abs(diff) < 40) return; if (diff < 0) showNext(); if (diff > 0) showPrev(); }, { passive: true });
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    window.addEventListener('resize', toggleBackToTop); toggleBackToTop();
-  </script>
+  <footer class="wrap">Mieszkanie przy ul. Dylewicza, Siedlce.</footer>
 </body>
 </html>
