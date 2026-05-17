@@ -19,7 +19,7 @@
     .phone-pill{display:inline-flex;align-items:center;gap:8px;color:#ff8d8d;font-weight:900;white-space:nowrap}
     .book-btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;box-shadow:0 10px 20px rgba(255,107,107,.24)}
     .hero{padding:0 0 18px}
-    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:620px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;width:100%}
     .hero-copy{position:relative;background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
     h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
@@ -78,8 +78,8 @@
     @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr;gap:14px}.room-tile{min-height:230px}}
     @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}.photo-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr}.room-tile{min-height:220px}}
   
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.content-wrapper.w-container{max-width:1200px;margin:0 auto}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.content-wrapper.w-container{width:100%;max-width:1200px;margin:0 auto;box-sizing:border-box}
 .flex{display:flex;gap:48px;align-items:center}
 .room-pair{display:flex;gap:48px;align-items:center;flex-wrap:nowrap}
 .room-pair:nth-of-type(even){flex-direction:row-reverse}
@@ -97,10 +97,20 @@
 .description-box li{margin:6px 0}
 .room-tile .tile-label{display:inline-flex!important;align-items:center;justify-content:center;padding:10px 18px!important;border-radius:999px!important;background:rgba(255,255,255,.18)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff!important;box-shadow:0 8px 24px rgba(0,0,0,.12);font-family:Inter, Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif!important;font-weight:700;font-size:19px;letter-spacing:-.03em}
 
-.opis-grid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start;max-width:1100px}
+.opis-grid{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:56px;align-items:start;width:100%;max-width:1180px;box-sizing:border-box}
 .opis-text{line-height:1.9;color:#2f3747}
 .opis-text ul{padding-left:22px;margin:10px 0 18px}
 .opis-text li{margin:6px 0}
+
+@media (max-width: 768px){
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .room-tiles{grid-template-columns:1fr;display:grid!important;gap:14px}
+  .room-tile{min-height:220px;display:block!important}
+  .room-image{min-height:220px}
+  .opis-grid{grid-template-columns:1fr;gap:16px}
+  .wrap,.content-wrapper.w-container{padding-left:16px;padding-right:16px}
+}
+
 @media (max-width: 768px){
   .opis-grid{grid-template-columns:1fr;gap:16px}
   .content-wrapper.w-container,.wrap{max-width:100%;padding-left:16px;padding-right:16px}
@@ -163,7 +173,7 @@
           <section class="section" id="opis">
   <div class="wrap">
     <div class="content-wrapper w-container">
-      <div class="opis-grid">
+      <div class="
         <div>
           <h2>Opis</h2>
           <div class="underline"></div>
@@ -216,6 +226,7 @@
       </div>
     </section>
 
+    
             <div>
               <h2>Discover the apartment where you’ll find everything you need</h2>
               <div class="underline"></div>
@@ -226,7 +237,7 @@
       </div>
     </section>
 
-    <section class="section" id="galeria-pomieszczen">
+    <section class="section" id="galeria-pomieszczen" style="margin-bottom:56px">
       <div class="wrap">
         <div class="flex" style="align-items:start;gap:22px">
           <div class="intro-text-column" style="padding-top:4px">
@@ -248,7 +259,7 @@
         </div>
       </div>
     </section>
-<section class="section" id="salon">
+<section class="section" id="salon" style="margin-top:36px">
       <div class="wrap">
         <div class="flex" style="align-items:center;gap:36px;flex-direction:row;flex-wrap:nowrap">
           <div class="intro-text-column" style="padding-top:4px;flex:0 0 42%;max-width:430px">
