@@ -38,16 +38,28 @@
     .gallery-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px}
     .gallery-head h2,.more-head h2{margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.04em}
     .gallery-head p,.more-head p{margin:0;color:var(--muted);line-height:1.7;max-width:70ch}
-    .gallery-stage{display:grid;grid-template-columns:1.45fr .55fr;gap:14px;align-items:stretch}
-    .gallery-main{position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#eaf1fb;box-shadow:0 16px 36px rgba(16,24,40,.08)}
-    .gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-    .gallery-main:hover img{transform:scale(1.02)}
-    .gallery-strip{display:grid;grid-template-rows:1fr 1fr;gap:12px}
-    .thumb{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#edf4fb;box-shadow:0 12px 30px rgba(16,24,40,.06)}
-    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-    .thumb:hover img{transform:scale(1.02)}
-    .thumb.big{aspect-ratio:4/3}
-    .gallery-caption{position:absolute;left:14px;bottom:14px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);font-size:12px;font-weight:800}
+    .myrental-gallery{padding:40px 0 10px}
+    .content-wrapper{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+    .heading-box.large{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:28px}
+    .intro-text{margin:0;color:var(--muted);font-size:18px;line-height:1.8;max-width:760px}
+    .top-margin._15-pixels{margin-top:15px}
+    .top-margin._20-pixels{margin-top:20px}
+    .flex{display:grid;grid-template-columns:1.05fr 1.55fr;gap:18px;align-items:stretch}
+    .intro-text-column{display:flex;flex-direction:column;justify-content:center;padding:10px 4px}
+    .h3-small{margin:0;font-size:clamp(24px,3vw,40px);line-height:1.05;letter-spacing:-.05em;max-width:11ch}
+    .underline{width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#0ea5e9 100%);margin-top:14px}
+    .intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .intro-box{position:relative;min-height:360px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid var(--line)}
+    .intro-box img{width:100%;height:100%;object-fit:cover}
+    .image-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.08) 0%,rgba(14,165,233,.18) 100%);mix-blend-mode:multiply;pointer-events:none;transition:transform .35s ease}
+    .image-bg._1{background-image:url('images/IMG02657.JPG');background-size:cover;background-position:center}
+    .image-bg._2{background-image:url('images/IMG02663.JPG');background-size:cover;background-position:center}
+    .image-bg._3{background-image:url('images/IMG02684.JPG');background-size:cover;background-position:center}
+    .overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end}
+    .intro-link{display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em}
+    .corner-link{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(16,24,40,.12)}
+    .arrow-right{width:18px;height:18px}
+    .flex .intro-box:hover .image-bg{transform:scale(1.04)}
     .accordion{display:grid;gap:12px}
     details.accordion-item{border:1px solid var(--line);border-radius:22px;background:#fff;overflow:hidden}
     details.accordion-item summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900}
@@ -69,8 +81,8 @@
     .room h3{margin:0 0 8px;font-size:20px;letter-spacing:-.03em}
     .room p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
     footer{padding:28px 0 40px;color:var(--muted);text-align:center;font-size:14px}
-    @media (max-width: 980px){.hero-grid,.gallery-stage,.more-grid{grid-template-columns:1fr}.details-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.photo-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 20px))}.hero-main,.hero-side{padding:22px}.info-row,.details-grid,.photo-grid,.more-grid{grid-template-columns:1fr}.gallery-stage{grid-template-columns:1fr;gap:12px}.gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}.photo.wide,.photo.tall,.photo.small,.thumb.big{grid-column:auto}.btn{width:100%}}
+    @media (max-width: 980px){.hero-grid,.flex,.more-grid{grid-template-columns:1fr}.details-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.photo-grid{grid-template-columns:1fr 1fr}.intro-grid{grid-template-columns:1fr;}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 20px))}.hero-main,.hero-side{padding:22px}.info-row,.details-grid,.photo-grid,.more-grid{grid-template-columns:1fr}.flex{grid-template-columns:1fr}.intro-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small,.thumb.big{grid-column:auto}.btn{width:100%}}
   </style>
 </head>
 <body>
@@ -147,45 +159,39 @@
   </header>
 
   <main class="wrap">
-    <section class="section card" id="galeria">
-      <div class="hero-main" style="padding:24px">
-        <div class="gallery-head">
-          <div><h2>Galeria zdjęć</h2><p>Układ galerii inspirowany MyRental: duże zdjęcie główne, mniejsze ujęcia pomocnicze i naturalny podgląd wnętrz.</p></div>
+    <section class="section myrental-gallery" id="galeria">
+      <div class="content-wrapper">
+        <div class="heading-box large">
+          <div class="top-margin _15-pixels"><p class="intro-text">Located in the middle of a beautiful landscape our property is waiting for you and your family to stay and enjoy a relaxing experience.</p></div>
         </div>
-        <div class="gallery-stage">
-          <a class="gallery-main" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Salon"><span class="gallery-caption">Salon</span></a>
-          <div class="gallery-strip">
-            <a class="thumb big" href="images/IMG02663.JPG"><img src="images/IMG02663.JPG" alt="Kuchnia"><span class="gallery-caption">Kuchnia</span></a>
-            <a class="thumb" href="images/IMG02684.JPG"><img src="images/IMG02684.JPG" alt="Sypialnia"><span class="gallery-caption">Sypialnia</span></a>
-            <a class="thumb" href="images/IMG_20260411_160649.jpg"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka"><span class="gallery-caption">Łazienka</span></a>
+        <div class="flex">
+          <div class="intro-text-column">
+            <h3 class="h3-small">Discover our property<br>where you’ll find amazing amenities</h3>
+            <div class="underline"></div>
+          </div>
+          <div class="intro-grid">
+            <div class="intro-box">
+              <div class="image-bg _1"></div>
+              <div class="overlay"><a href="#Bedroom" class="intro-link">Salon</a></div>
+              <a href="#Bedroom" class="corner-link"><img src="images/IMG02657.JPG" alt="Salon" class="arrow-right"></a>
+            </div>
+            <div class="intro-box">
+              <div class="image-bg _2"></div>
+              <div class="overlay"><a href="#Kitchen" class="intro-link">Kitchen</a></div>
+              <a href="#Kitchen" class="corner-link"><img src="images/IMG02663.JPG" alt="Kuchnia" class="arrow-right"></a>
+            </div>
+            <div class="intro-box">
+              <div class="image-bg _3"></div>
+              <div class="overlay"><a href="#contact" class="intro-link">Contact us</a></div>
+              <a href="#contact" class="corner-link"><img src="images/IMG02684.JPG" alt="Kontakt" class="arrow-right"></a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section card" id="galeria-skrocona">
-      <div class="hero-main" style="padding:24px">
-        <div class="more-head"><h2>Galeria skrócona</h2><p>Szybki przegląd najważniejszych zdjęć mieszkania.</p></div>
-        <div class="photo-grid">
-          <a class="photo wide" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Zdjęcie 1"><span class="photo-badge">Salon</span></a>
-          <a class="photo tall" href="images/IMG02663.JPG"><img src="images/IMG02663.JPG" alt="Zdjęcie 2"><span class="photo-badge">Kuchnia</span></a>
-          <a class="photo small" href="images/IMG02664.JPG"><img src="images/IMG02664.JPG" alt="Zdjęcie 3"><span class="photo-badge">Detal</span></a>
-          <a class="photo small" href="images/IMG02682.JPG"><img src="images/IMG02682.JPG" alt="Zdjęcie 4"><span class="photo-badge">Widok</span></a>
-          <a class="photo small" href="images/IMG02684.JPG"><img src="images/IMG02684.JPG" alt="Zdjęcie 5"><span class="photo-badge">Pokój</span></a>
-          <a class="photo small" href="images/IMG02688.JPG"><img src="images/IMG02688.JPG" alt="Zdjęcie 6"><span class="photo-badge">Przedpokój</span></a>
-          <a class="photo small" href="images/IMG02700.JPG"><img src="images/IMG02700.JPG" alt="Zdjęcie 7"><span class="photo-badge">Pokój 2</span></a>
-          <a class="photo small" href="images/IMG02708.JPG"><img src="images/IMG02708.JPG" alt="Zdjęcie 8"><span class="photo-badge">Balkon</span></a>
-          <a class="photo small" href="images/IMG_20260411_160936.jpg"><img src="images/IMG_20260411_160936.jpg" alt="Zdjęcie 9"><span class="photo-badge">Łazienka</span></a>
-          <a class="photo small" href="images/IMG_20260411_161208.jpg"><img src="images/IMG_20260411_161208.jpg" alt="Zdjęcie 10"><span class="photo-badge">Łazienka 2</span></a>
-          <a class="photo small" href="images/IMG_20260411_181457.jpg"><img src="images/IMG_20260411_181457.jpg" alt="Zdjęcie 11"><span class="photo-badge">Balkon 2</span></a>
-          <a class="photo small" href="images/IMG_20260411_181542.jpg"><img src="images/IMG_20260411_181542.jpg" alt="Zdjęcie 12"><span class="photo-badge">Balkon 3</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+<section class="section">
       <div class="more-head"><h2>Najważniejsze informacje</h2><p>Bez sekcji cen, bez social mediów i bez stopki z follow us. Prosty, czytelny układ pod konkretną ofertę.</p></div>
-      <div class="more-grid">
+      <div class="more-grid" id="contact">
         <div class="room"><h3>Układ</h3><p>3 pokoje, osobna łazienka, oddzielne WC, balkon i przedpokój z dużą szafą.</p></div>
         <div class="room"><h3>Budynek</h3><p>3. i ostatnie piętro, budynek z 2013 roku, bez windy.</p></div>
         <div class="room"><h3>Stan</h3><p>Gotowe do zamieszkania, z meblami i częścią AGD w cenie.</p></div>
