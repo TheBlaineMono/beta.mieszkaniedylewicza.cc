@@ -40,14 +40,14 @@
     .opis-text{color:#5b6475;font-size:16px;line-height:1.9}
     .opis-text p{margin:0 0 16px}
 
-    .room-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .room-image-1{background-image:url('images/IMG02657.JPG')}
-    .room-image-2{background-image:url('images/IMG02663.JPG')}
-    .room-image-3{background-image:url('images/IMG02688.JPG')}
-    .room-image-4{background-image:url('images/IMG_20260411_160649.jpg')}
-    .room-image-5{background-image:url('images/IMG_20260411_161208.jpg')}
-    .room-image-6{background-image:url('images/IMG02684.JPG')}
-    .room-image-7{background-image:url('images/IMG02700.JPG')}
+    .room-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(12px,2vw,24px);width:100%;margin-top:clamp(18px,3vw,36px)}
+    .room-image-1{background-image:url('images/salon/salon-11.jpeg')}
+    .room-image-2{background-image:url('images/salon/salon-10.jpeg')}
+    .room-image-3{background-image:url('images/duza_lazienka/duza_lazienka-1.jpg')}
+    .room-image-4{background-image:url('images/duza_lazienka/duza_lazienka-4.jpg')}
+    .room-image-5{background-image:url('images/drugi_pokoj/maly_pokoj-1.jpg')}
+    .room-image-6{background-image:url('images/sypialnia/sypialnia-1.jpg')}
+    .room-image-7{background-image:url('images/drugi_pokoj/maly_pokoj-3.jpg')}
 
     .room-tile{position:relative;height:clamp(180px,22vw,280px);border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08);display:block}
     .room-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .35s ease}
@@ -102,27 +102,24 @@
 .opis-text ul{padding-left:22px;margin:10px 0 18px}
 .opis-text li{margin:6px 0}
 
-@media (max-width: 768px){
-  .room-tiles{grid-template-columns:1fr!important;display:grid!important;gap:14px}
+
   .room-tile{min-height:220px;display:block!important}
   .room-image{min-height:220px}
   .opis-grid{grid-template-columns:1fr!important;gap:16px}
   .wrap,.content-wrapper.w-container{padding-left:16px;padding-right:16px}
 }
 
-@media (max-width: 768px){
-  .opis-grid{grid-template-columns:1fr;gap:16px}
+
   .content-wrapper.w-container,.wrap{max-width:100%;padding-left:16px;padding-right:16px}
 }
 
-@media (max-width: 768px){
-  .flex,.room-pair{flex-direction:column!important;gap:20px}
+
   .room-slider,.room-text{flex:1 1 auto;max-width:none;width:100%}
   .room-mask{aspect-ratio:1.2/1}
   .wrap{padding:0 16px}
 }
 
-.hero-media{position:relative;min-height:520px;border-radius:32px;overflow:hidden;background:#e9eef5}.hero-media img{display:block;width:100%;height:100%;object-fit:cover}.hero-copy{min-width:0}@media (max-width:768px){.hero-grid{grid-template-columns:1fr;gap:24px}.hero-media{min-height:320px;border-radius:24px}}
+.hero-media{position:relative;min-height:520px;border-radius:32px;overflow:hidden;background:#e9eef5}.hero-media img{display:block;width:100%;height:100%;object-fit:cover}.hero-copy{min-width:0}.hero-media{min-height:320px;border-radius:24px}}
 
     #salon,#kuchnia,#przedpokoj,#lazienka,#toaleta,#sypialnia,#pokoj{margin-top:clamp(28px,5vw,72px)}
     
@@ -130,30 +127,48 @@
       .hero-copy{padding:40px 28px 36px;border-bottom-left-radius:0;border-bottom-right-radius:0}
       .hero-slider{min-height:340px}
     }
-    @media (max-width:768px){
-      .room-tiles{grid-template-columns:1fr!important}
+    
       .room-tile{min-height:220px}
       .opis-grid{grid-template-columns:1fr!important;gap:16px}
       .content-section .flex{flex-direction:column!important}
       .subgallery-slider,.intro-text-column{flex:1 1 auto!important;max-width:100%!important}
     }
     
-    .gallery-flex { display: flex; flex-wrap: wrap; gap: clamp(18px,3vw,40px); align-items: flex-start }
-    .gallery-flex > .intro-text-column { flex: 0 0 320px; max-width: 360px; min-width: 220px }
-    .gallery-flex > div[style*="flex:1"] { flex: 1 1 auto; min-width: 0; width: 100% }
-    .room-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(12px,2vw,24px); width: 100%; margin-top: clamp(18px,3vw,36px) }
-
+    .gallery-flex{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px);align-items:flex-start}
+    .gallery-flex > .intro-text-column{flex:0 0 320px;max-width:360px;min-width:220px}
+    .gallery-flex > div[style*="flex:1"]{flex:1 1 auto;min-width:0;width:100%}
+    .gallery-flex .room-tiles{width:100%}
+    .content-section .flex{display:flex;gap:clamp(24px,4vw,56px);align-items:center;flex-wrap:nowrap}
+    .subgallery-slider{flex:0 0 62%;max-width:62%;min-width:0;align-self:stretch}
+    .room-text,.intro-text-column{flex:0 0 38%;max-width:38%;min-width:0;align-self:center}
+    .subgallery-stage{position:relative;overflow:hidden;border-radius:clamp(14px,2vw,28px);background:#24364f;aspect-ratio:4/3;box-shadow:0 16px 40px rgba(16,24,40,.08);width:100%}
+    .subslide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+    .subslide.active{opacity:1}
+    .subslide img{width:100%;height:100%;object-fit:cover;display:block}
+    .sub-controls{position:absolute;right:0;bottom:0;display:flex;z-index:3}
+    .sub-btn{width:52px;height:52px;background:var(--accent,#ff6b6b);color:#fff;display:grid;place-items:center;font-size:22px;cursor:pointer}
+    .sub-btn:first-child{border-radius:14px 0 0 0}
+    @media (min-width: 1440px){.wrap{max-width:1320px}.hero-grid{min-height:clamp(500px,42vw,760px)}.section{padding:clamp(48px,4.5vw,110px) 0}.room-tiles{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+    @media (min-width: 1920px){.wrap{max-width:1480px}.hero-grid{min-height:clamp(560px,38vw,840px)}.opis-grid{grid-template-columns:clamp(240px,18vw,360px) minmax(0,1fr)}.room-tiles{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+    
     @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr;min-height:auto;gap:24px}
+      .hero-slider{min-height:340px}
+      .opis-grid{grid-template-columns:1fr;gap:16px}
       .gallery-flex{flex-direction:column!important;gap:16px!important}
       .gallery-flex > .intro-text-column{flex:1 1 auto;max-width:100%;min-width:0;order:0}
       .gallery-flex > div[style*="flex:1"]{flex:1 1 auto;max-width:100%;width:100%;min-width:0;order:1}
       .room-tiles{grid-template-columns:1fr!important}
       .room-tile{height:220px!important}
       .content-section .flex{flex-direction:column!important;align-items:stretch!important;flex-wrap:nowrap!important}
-      .subgallery-slider,.room-text,.intro-text-column{flex:1 1 auto!important;max-width:100%!important;width:100%}
-      .room-text,.intro-text-column{order:0;margin-bottom:12px}
-      .subgallery-slider{order:1}
+      .room-text,.intro-text-column{order:0;flex:1 1 auto!important;max-width:100%!important;width:100%}
+      .subgallery-slider{order:1;flex:1 1 auto!important;max-width:100%!important;width:100%}
       .subgallery-stage{width:100%;min-height:280px}
+    }
+    @media (max-width: 768px){
+      .room-tiles{grid-template-columns:1fr!important}
+      .room-tile{height:220px!important}
+      .subgallery-stage{min-height:240px}
     }
 
     </style>
@@ -254,10 +269,16 @@
     </section>
 
 
+    
+            <div>
+              <h2>Discover the apartment where you’ll find everything you need</h2>
+              <div class="underline"></div>
+            </div>
+
 
     <section class="section" id="galeria-pomieszczen" style="margin-bottom:56px">
       <div class="wrap">
-        <div class="flex gallery-flex" style="align-items:start;gap:22px">
+        <div class="flex" style="align-items:start;gap:22px">
           <div class="intro-text-column" style="padding-top:4px">
             <h3 class="h3-small">Find several pictures<br>of our property for rent</h3>
             <div class="underline"></div>
@@ -449,35 +470,17 @@
 
 <script>
 (function(){
-  const overlay = document.getElementById('lightboxOverlay');
-  const img = document.getElementById('lightboxImage');
-  const closeBtn = document.getElementById('lightboxClose');
-  const candidates = [...document.querySelectorAll('.slide img, .subslide img, .room-image')];
-  function open(src, alt){
-    img.src = src;
-    img.alt = alt || '';
-    overlay.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    history.pushState({lb:true}, '', '#photo');
-  }
-  function close(){
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-    img.src = '';
-    if(location.hash === '#photo') history.back();
-  }
-  candidates.forEach(el => {
-    el.style.cursor = 'zoom-in';
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      const src = el.currentSrc || el.src || el.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-      open(src, el.alt || 'photo');
-    });
-  });
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
-  window.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.style.display === 'flex') close(); });
-  window.addEventListener('popstate', () => { if (overlay.style.display === 'flex') close(); });
+  const overlay=document.getElementById('lightboxOverlay');
+  const img=document.getElementById('lightboxImage');
+  const closeBtn=document.getElementById('lightboxClose');
+  const candidates=[...document.querySelectorAll('.slide img,.subslide img,.room-image')];
+  function open(src,alt){img.src=src;img.alt=alt||'';overlay.style.display='flex';document.body.style.overflow='hidden';history.pushState({lb:true},'', '#photo');}
+  function close(){overlay.style.display='none';document.body.style.overflow='';img.src='';if(location.hash==='#photo') history.back();}
+  candidates.forEach(el=>{el.style.cursor='zoom-in';el.addEventListener('click',e=>{e.preventDefault();const src=el.currentSrc||el.src||el.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/,'');open(src,el.alt||'photo');});});
+  closeBtn.addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay) close();});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.style.display==='flex') close();});
+  window.addEventListener('popstate',()=>{if(overlay.style.display==='flex') close();});
 })();
 </script>
 
