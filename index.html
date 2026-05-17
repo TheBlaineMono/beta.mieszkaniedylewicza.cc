@@ -39,8 +39,20 @@
     .underline{width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#0ea5e9 100%);margin-top:14px}
     .opis-text{color:#5b6475;font-size:16px;line-height:1.9}
     .opis-text p{margin:0 0 16px}
-    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}}
-    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}.photo-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}}
+
+    .room-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .room-tile{position:relative;min-height:250px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08);display:block}
+    .room-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .35s ease}
+    .room-image-1{background-image:url('images/IMG02657.JPG')}
+    .room-image-2{background-image:url('images/IMG02663.JPG')}
+    .room-image-3{background-image:url('images/IMG02688.JPG')}
+    .room-image-4{background-image:url('images/IMG_20260411_160649.jpg')}
+    .room-image-5{background-image:url('images/IMG_20260411_161208.jpg')}
+    .room-image-6{background-image:url('images/IMG02684.JPG')}
+    .room-image-7{background-image:url('images/IMG02700.JPG')}
+    .room-tile:hover .room-image{transform:scale(1.03)}
+    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr;gap:14px}.room-tile{min-height:230px}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}.photo-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr}.room-tile{min-height:220px}}
   </style>
 </head>
 <body>
@@ -106,64 +118,27 @@
 
     <section class="section" id="galeria-pomieszczen">
       <div class="wrap">
-        <div style="display:grid;grid-template-columns:1.05fr 1.55fr;gap:18px;align-items:stretch">
-          <div style="display:flex;flex-direction:column;justify-content:center;padding:10px 4px">
-            <h2 style="margin:0;font-size:clamp(24px,3vw,40px);line-height:1.05;letter-spacing:-.05em;max-width:11ch">Discover our property<br>where you’ll find amazing amenities</h2>
-            <div style="width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#0ea5e9 100%);margin-top:14px"></div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-            <div style="position:relative;min-height:340px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08)">
-              <div style="position:absolute;inset:0;background:url('images/IMG02657.JPG') center/cover no-repeat"></div>
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.08) 0%,rgba(14,165,233,.18) 100%);"></div>
-              <div style="position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end"><a href="#salon" style="display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em">Salon</a></div>
-              <a href="#salon" style="position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(16,24,40,.12)"><span style="font-size:18px;line-height:1">→</span></a>
-            </div>
-            <div style="position:relative;min-height:340px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08)">
-              <div style="position:absolute;inset:0;background:url('images/IMG02663.JPG') center/cover no-repeat"></div>
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.08) 0%,rgba(14,165,233,.18) 100%);"></div>
-              <div style="position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end"><a href="#kuchnia" style="display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em">Kitchen</a></div>
-              <a href="#kuchnia" style="position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(16,24,40,.12)"><span style="font-size:18px;line-height:1">→</span></a>
-            </div>
-            <div style="position:relative;min-height:340px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08)">
-              <div style="position:absolute;inset:0;background:url('images/IMG02684.JPG') center/cover no-repeat"></div>
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.08) 0%,rgba(14,165,233,.18) 100%);"></div>
-              <div style="position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent 0%,rgba(8,15,30,.72) 100%);display:flex;justify-content:flex-start;align-items:flex-end"><a href="#kontakt" style="display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em">Contact us</a></div>
-              <a href="#kontakt" style="position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(16,24,40,.12)"><span style="font-size:18px;line-height:1">→</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <section class="section" id="galeria-pomieszczen">
-      <div class="wrap">
         <div class="flex" style="align-items:start;gap:22px">
           <div class="intro-text-column" style="padding-top:4px">
             <h3 class="h3-small">Find several pictures<br>of our property for rent</h3>
             <div class="underline"></div>
-            <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Kliknij kafelek, aby przejść do odpowiedniej subgalerii. Każde pomieszczenie ma własną sekcję ze zdjęciami i krótkim opisem.</div>
+            <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Kliknij kafelek, aby przejść do subgalerii. Na mobile kafelki układają się w pionowy, przewijany układ podobny do MyRental.</div>
           </div>
           <div style="flex:1">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-              <a href="#salon" style="position:relative;min-height:250px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08)">
-                <div style="position:absolute;inset:0;background:url('images/IMG02657.JPG') center/cover no-repeat"></div>
-                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.12) 0%,rgba(8,15,30,.65) 100%)"></div>
-                <div style="position:absolute;left:16px;bottom:16px;color:#fff;font-weight:900;font-size:18px">Salon</div>
-                <div style="position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900">→</div>
-              </a>
-              <a href="#kuchnia" style="position:relative;min-height:250px;border-radius:28px;overflow:hidden;background:#eef4fb;box-shadow:0 16px 40px rgba(16,24,40,.08);border:1px solid rgba(17,24,39,.08)">
-                <div style="position:absolute;inset:0;background:url('images/IMG02663.JPG') center/cover no-repeat"></div>
-                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.12) 0%,rgba(8,15,30,.65) 100%)"></div>
-                <div style="position:absolute;left:16px;bottom:16px;color:#fff;font-weight:900;font-size:18px">Kuchnia</div>
-                <div style="position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900">→</div>
-              </a>
+            <div class="room-tiles">
+              <a class="room-tile" href="#salon"><div class="room-image room-image-1"></div><div class="overlay"><span class="intro-link">Salon</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#kuchnia"><div class="room-image room-image-2"></div><div class="overlay"><span class="intro-link">Kuchnia</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#przedpokoj"><div class="room-image room-image-3"></div><div class="overlay"><span class="intro-link">Przedpokój</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#lazienka"><div class="room-image room-image-4"></div><div class="overlay"><span class="intro-link">Łazienka</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#toaleta"><div class="room-image room-image-5"></div><div class="overlay"><span class="intro-link">Toaleta</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#sypialnia"><div class="room-image room-image-6"></div><div class="overlay"><span class="intro-link">Sypialnia</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
+              <a class="room-tile" href="#pokoj"><div class="room-image room-image-7"></div><div class="overlay"><span class="intro-link">Pokój</span></div><span class="corner-link"><span class="arrow-right">→</span></span></a>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section" id="salon">
+<section class="section" id="salon">
       <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Salon</h2><div class="underline"></div></div><div class="photo-grid"><a class="photo wide" href="images/IMG02657.JPG"><img src="images/IMG02657.JPG" alt="Salon 1"></a><a class="photo tall" href="images/IMG02664.JPG"><img src="images/IMG02664.JPG" alt="Salon 2"></a><a class="photo small" href="images/IMG02682.JPG"><img src="images/IMG02682.JPG" alt="Salon 3"></a></div></div></div></div>
     </section>
     <section class="section" id="kuchnia">
