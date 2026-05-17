@@ -20,11 +20,11 @@
     .book-btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;box-shadow:0 10px 20px rgba(255,107,107,.24)}
     .hero{padding:0 0 18px}
     .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:620px}
-    .hero-copy:after{content:"";position:absolute;left:0;bottom:0;width:160px;height:160px;background:#f5f7fb;border-top-right-radius:100%;transform:translate(-40px,40px)}
+    .hero-copy{position:relative;background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
     .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
     h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
     .lead{margin:18px 0 0;font-size:18px;line-height:1.65;color:rgba(246,248,251,.88);max-width:26ch}
-    .hero-slider{position:relative;overflow:hidden;background:#24364f}
+    .hero-slider{position:relative;overflow:hidden;background:#24364f;min-height:100%}
     .slides{position:relative;width:100%;height:100%}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
     .slide.active{opacity:1}
@@ -32,8 +32,15 @@
     .hero-arrows{position:absolute;right:22px;bottom:18px;display:flex;gap:10px;z-index:2}
     .arrow{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,107,107,.3)}
     .mobile-cta{display:none}
-    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid{grid-template-columns:1fr;min-height:auto}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-copy:after{display:none}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}}
-    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}}
+    .opis{padding:26px 0 14px}
+    .opis-card{background:#fff;border-radius:24px;border:1px solid rgba(17,24,39,.08);box-shadow:0 20px 60px rgba(16,24,40,.08);padding:32px 34px}
+    .opis-grid{display:grid;grid-template-columns:1.05fr 1.55fr;gap:18px;align-items:start}
+    .opis h2{margin:0;font-size:clamp(26px,3vw,42px);line-height:1.02;letter-spacing:-.05em;max-width:9ch}
+    .underline{width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#0ea5e9 100%);margin-top:14px}
+    .opis-text{color:#5b6475;font-size:16px;line-height:1.9}
+    .opis-text p{margin:0 0 16px}
+    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}}
   </style>
 </head>
 <body>
@@ -54,13 +61,15 @@
   <main id="top">
     <section class="hero">
       <div class="wrap hero-grid">
+        <div class="hero-copy">
           <div class="eyebrow">Sprzedaż bezpośrednia</div>
           <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
           <p class="lead">3 pokoje, balkon, osobna łazienka i oddzielne WC. Gotowe do zamieszkania od zaraz.</p>
           <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
             <a class="book-btn mobile-cta" href="tel:+48781262987">781 262 987</a>
-            <a class="book-btn" style="background:#fff;color:#24364f" href="#galeria">Zobacz galerię</a>
+            <a class="book-btn" style="background:#fff;color:#24364f" href="https://www.otodom.pl" target="_blank" rel="noopener noreferrer">OTODOM</a>
           </div>
+        </div>
         <div class="hero-slider" id="galleryHero">
           <div class="slides">
             <div class="slide active"><img src="images/IMG02657.JPG" alt="Salon"></div>
@@ -72,6 +81,24 @@
           <div class="hero-arrows">
             <div class="arrow" id="prevSlide">←</div>
             <div class="arrow" id="nextSlide">→</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="opis" id="opis">
+      <div class="wrap">
+        <div class="opis-card">
+          <div class="opis-grid">
+            <div>
+              <h2>Discover the apartment where you’ll find everything you need</h2>
+              <div class="underline"></div>
+            </div>
+            <div class="opis-text">
+              <p>Mieszkanie o powierzchni 64,4 m² położone na trzecim, ostatnim piętrze budynku z 2013 roku w spokojnej i dobrze skomunikowanej części Siedlec. Lokal został zaprojektowany tak, aby codzienne korzystanie było maksymalnie wygodne: salon z aneksem kuchennym tworzy jasną strefę dzienną, dwa dodatkowe pokoje pozwalają swobodnie zorganizować sypialnię, pokój dziecka albo gabinet, a osobna łazienka i oddzielne WC podnoszą komfort domowników.</p>
+              <p>Do dyspozycji jest również przedpokój z dużą szafą w zabudowie oraz balkon od strony południowo-zachodniej, który daje przyjemne światło przez większą część dnia i bardzo ładne zachody słońca. Mieszkanie jest gotowe do zamieszkania od zaraz, a jeśli ktoś chce, może je odświeżyć pod swój gust bez większego remontu.</p>
+              <p>W cenie pozostają meble poza kanapą i stołem oraz podstawowe AGD, w tym zmywarka, lodówka, kuchenka i piekarnik. Ogrzewanie jest miejskie, czynsz wynosi około 600 zł miesięcznie, klimatyzacja ma dwa lata, a brak windy rekompensuje ostatnie piętro i większy spokój na co dzień. To bardzo praktyczna propozycja dla rodziny, pary albo osoby szukającej funkcjonalnego lokalu w miejscu z dobrym dostępem do sklepów, usług, szkół i kolei.</p>
+            </div>
           </div>
         </div>
       </div>
