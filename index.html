@@ -53,8 +53,19 @@
     .room-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .35s ease}
     .room-tile:hover .room-image{transform:scale(1.03)}
     .tile-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-    .tile-label{display:inline-flex;align-items:center;justify-content:center;padding:0;color:#fff;background:transparent;font-weight:900;letter-spacing:-.02em;font-size:18px;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+    .tile-label{display:inline-block !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:0 !important;background:none !important;color:#fff !important;box-shadow:none !important;outline:none !important;font-weight:900;letter-spacing:-.02em;font-size:18px;text-shadow:0 2px 10px rgba(0,0,0,.35);-webkit-text-fill-color:#fff}
     .tile-arrow{position:absolute;right:0;bottom:0;width:56px;height:56px;border-radius:18px 0 0 0;display:grid;place-items:center;background:var(--accent);box-shadow:0 10px 24px rgba(16,24,40,.12);color:#fff;font-weight:900}
+
+    .room-tile .tile-label{display:inline-block !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:0 !important;background:none !important;color:#fff !important;box-shadow:none !important;outline:none !important;font-weight:900;letter-spacing:-.02em;font-size:18px;text-shadow:0 2px 10px rgba(0,0,0,.35);-webkit-text-fill-color:#fff}
+
+    .subgallery-slider{position:relative;display:grid;grid-template-columns:1fr;gap:14px;flex:1}
+    .subgallery-stage{position:relative;overflow:hidden;border-radius:28px;background:#24364f;min-height:420px;box-shadow:0 16px 40px rgba(16,24,40,.08)}
+    .subslide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+    .subslide.active{opacity:1}
+    .subslide img{width:100%;height:100%;object-fit:cover}
+    .sub-controls{position:absolute;right:18px;bottom:18px;display:flex;gap:10px;z-index:2}
+    .sub-btn{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,107,107,.3)}
+
     .subgallery-slider{position:relative;display:grid;grid-template-columns:1fr;gap:14px}
     .subgallery-stage{position:relative;overflow:hidden;border-radius:28px;background:#24364f;min-height:420px;box-shadow:0 16px 40px rgba(16,24,40,.08)}
     .subslide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
@@ -116,7 +127,7 @@
         <div class="opis-card">
           <div class="opis-grid">
             <div>
-              <h2>Opis</h2>
+              <h2>Discover the apartment where you’ll find everything you need</h2>
               <div class="underline"></div>
             </div>
             <div class="opis-text">
@@ -167,9 +178,9 @@
       <div class="wrap">
         <div class="flex" style="align-items:start;gap:22px">
           <div class="intro-text-column" style="padding-top:4px">
-            <h3 class="h3-small">Galeria pomieszczeń</h3>
+            <h3 class="h3-small">Find several pictures<br>of our property for rent</h3>
             <div class="underline"></div>
-           
+            <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Kliknij kafelek, aby przejść do subgalerii. Na mobile kafelki układają się w pionowy, przewijany układ podobny do MyRental.</div>
           </div>
           <div style="flex:1">
             <div class="room-tiles">
@@ -180,33 +191,112 @@
               <a class="room-tile" href="#toaleta"><div class="room-image room-image-5"></div><div class="tile-overlay"><span class="tile-label">Toaleta</span></div><div class="tile-arrow">→</div></a>
               <a class="room-tile" href="#sypialnia"><div class="room-image room-image-6"></div><div class="tile-overlay"><span class="tile-label">Sypialnia</span></div><div class="tile-arrow">→</div></a>
               <a class="room-tile" href="#pokoj"><div class="room-image room-image-7"></div><div class="tile-overlay"><span class="tile-label">Pokój</span></div><div class="tile-arrow">→</div></a>
-            </div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section" id="salon">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Salon</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="salon"><img src="images/IMG02657.JPG" alt="Salon 1"></div><div class="subslide " data-subslide="salon"><img src="images/IMG02664.JPG" alt="Salon 2"></div><div class="subslide " data-subslide="salon"><img src="images/IMG02682.JPG" alt="Salon 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="salon">←</div><div class="sub-btn" data-next="salon">→</div></div></div></div></div></div>
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row"><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Salon</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Salon — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="salon"><img src="images/IMG02657.JPG" alt="Salon 1"></div>
+                <div class="subslide" data-subslide="salon"><img src="images/IMG02664.JPG" alt="Salon 2"></div>
+                <div class="subslide" data-subslide="salon"><img src="images/IMG02682.JPG" alt="Salon 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="salon">←</div><div class="sub-btn" data-next="salon">→</div></div>
+              </div>
+            </div></div></div>
     </section>
-        <section class="section" id="kuchnia">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Kuchnia</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="kuchnia"><img src="images/IMG02663.JPG" alt="Kuchnia 1"></div><div class="subslide " data-subslide="kuchnia"><img src="images/IMG02688.JPG" alt="Kuchnia 2"></div><div class="subslide " data-subslide="kuchnia"><img src="images/IMG02700.JPG" alt="Kuchnia 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="kuchnia">←</div><div class="sub-btn" data-next="kuchnia">→</div></div></div></div></div></div>
+    <section class="section" id="kuchnia">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row-reverse"><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="kuchnia"><img src="images/IMG02663.JPG" alt="Kuchnia 1"></div>
+                <div class="subslide" data-subslide="kuchnia"><img src="images/IMG02688.JPG" alt="Kuchnia 2"></div>
+                <div class="subslide" data-subslide="kuchnia"><img src="images/IMG02700.JPG" alt="Kuchnia 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="kuchnia">←</div><div class="sub-btn" data-next="kuchnia">→</div></div>
+              </div>
+            </div><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Kuchnia</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Kuchnia — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div></div></div>
     </section>
-        <section class="section" id="przedpokoj">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Przedpokój</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="przedpokoj"><img src="images/IMG_20260412190903.jpg" alt="Przedpokój 1"></div><div class="subslide " data-subslide="przedpokoj"><img src="images/IMG_20260412195053.jpg" alt="Przedpokój 2"></div><div class="subslide " data-subslide="przedpokoj"><img src="images/IMG_20260412195145.jpg" alt="Przedpokój 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="przedpokoj">←</div><div class="sub-btn" data-next="przedpokoj">→</div></div></div></div></div></div>
+    <section class="section" id="przedpokoj">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row"><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Przedpokój</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Przedpokój — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="przedpokoj"><img src="images/IMG_20260412190903.jpg" alt="Przedpokój 1"></div>
+                <div class="subslide" data-subslide="przedpokoj"><img src="images/IMG_20260412195053.jpg" alt="Przedpokój 2"></div>
+                <div class="subslide" data-subslide="przedpokoj"><img src="images/IMG_20260412195145.jpg" alt="Przedpokój 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="przedpokoj">←</div><div class="sub-btn" data-next="przedpokoj">→</div></div>
+              </div>
+            </div></div></div>
     </section>
-        <section class="section" id="lazienka">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Łazienka</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="lazienka"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></div><div class="subslide " data-subslide="lazienka"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></div><div class="subslide " data-subslide="lazienka"><img src="images/IMG_20260411_161208.jpg" alt="Łazienka 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="lazienka">←</div><div class="sub-btn" data-next="lazienka">→</div></div></div></div></div></div>
+    <section class="section" id="lazienka">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row-reverse"><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="lazienka"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka 1"></div>
+                <div class="subslide" data-subslide="lazienka"><img src="images/IMG_20260411_160936.jpg" alt="Łazienka 2"></div>
+                <div class="subslide" data-subslide="lazienka"><img src="images/IMG_20260411_161208.jpg" alt="Łazienka 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="lazienka">←</div><div class="sub-btn" data-next="lazienka">→</div></div>
+              </div>
+            </div><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Łazienka</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Łazienka — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div></div></div>
     </section>
-        <section class="section" id="toaleta">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Toaleta</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="toaleta"><img src="images/IMG_20260411_161208.jpg" alt="Toaleta 1"></div><div class="subslide " data-subslide="toaleta"><img src="images/IMG_20260411_160936.jpg" alt="Toaleta 2"></div><div class="subslide " data-subslide="toaleta"><img src="images/IMG_20260411_160649.jpg" alt="Toaleta 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="toaleta">←</div><div class="sub-btn" data-next="toaleta">→</div></div></div></div></div></div>
+    <section class="section" id="toaleta">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row"><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Toaleta</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Toaleta — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="toaleta"><img src="images/IMG_20260411_161208.jpg" alt="Toaleta 1"></div>
+                <div class="subslide" data-subslide="toaleta"><img src="images/IMG_20260411_160936.jpg" alt="Toaleta 2"></div>
+                <div class="subslide" data-subslide="toaleta"><img src="images/IMG_20260411_160649.jpg" alt="Toaleta 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="toaleta">←</div><div class="sub-btn" data-next="toaleta">→</div></div>
+              </div>
+            </div></div></div>
     </section>
-        <section class="section" id="sypialnia">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Sypialnia</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="sypialnia"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></div><div class="subslide " data-subslide="sypialnia"><img src="images/IMG02700.JPG" alt="Sypialnia 2"></div><div class="subslide " data-subslide="sypialnia"><img src="images/IMG02708.JPG" alt="Sypialnia 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="sypialnia">←</div><div class="sub-btn" data-next="sypialnia">→</div></div></div></div></div></div>
+    <section class="section" id="sypialnia">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row-reverse"><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="sypialnia"><img src="images/IMG02684.JPG" alt="Sypialnia 1"></div>
+                <div class="subslide" data-subslide="sypialnia"><img src="images/IMG02700.JPG" alt="Sypialnia 2"></div>
+                <div class="subslide" data-subslide="sypialnia"><img src="images/IMG02708.JPG" alt="Sypialnia 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="sypialnia">←</div><div class="sub-btn" data-next="sypialnia">→</div></div>
+              </div>
+            </div><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Sypialnia</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Sypialnia — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div></div></div>
     </section>
-        <section class="section" id="pokoj">
-      <div class="wrap"><div class="opis-card"><div class="opis-grid"><div><h2>Pokój</h2><div class="underline"></div></div><div class="subgallery-slider"><div class="subgallery-stage"><div class="subslide active" data-subslide="pokoj"><img src="images/IMG02682.JPG" alt="Pokój 1"></div><div class="subslide " data-subslide="pokoj"><img src="images/IMG02688.JPG" alt="Pokój 2"></div><div class="subslide " data-subslide="pokoj"><img src="images/IMG02700.JPG" alt="Pokój 3"></div><div class="sub-controls"><div class="sub-btn" data-prev="pokoj">←</div><div class="sub-btn" data-next="pokoj">→</div></div></div></div></div></div>
+    <section class="section" id="pokoj">
+      <div class="wrap"><div class="flex" style="align-items:center;gap:22px;flex-direction:row"><div class="intro-text-column" style="padding-top:4px">
+              <h3 class="h3-small">Pokój</h3>
+              <div class="underline"></div>
+              <div style="margin-top:18px;color:#5b6475;font-size:16px;line-height:1.9;max-width:430px">Pokój — subgaleria z możliwością przewijania zdjęć strzałkami.</div>
+            </div><div class="subgallery-slider">
+              <div class="subgallery-stage">
+                <div class="subslide active" data-subslide="pokoj"><img src="images/IMG02682.JPG" alt="Pokój 1"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02688.JPG" alt="Pokój 2"></div>
+                <div class="subslide" data-subslide="pokoj"><img src="images/IMG02700.JPG" alt="Pokój 3"></div>
+                <div class="sub-controls"><div class="sub-btn" data-prev="pokoj">←</div><div class="sub-btn" data-next="pokoj">→</div></div>
+              </div>
+            </div></div></div>
     </section>
+</main>
 
-  </main>
-
+  
   
   <script>
     const slides = [...document.querySelectorAll('.slide')];
@@ -217,7 +307,6 @@
     setInterval(() => show((current + 1) % slides.length), 4500);
 
     document.querySelectorAll('.section[id]').forEach(sec => {
-      const id = sec.id;
       const group = [...sec.querySelectorAll('.subslide')];
       const prev = sec.querySelector('[data-prev]');
       const next = sec.querySelector('[data-next]');
