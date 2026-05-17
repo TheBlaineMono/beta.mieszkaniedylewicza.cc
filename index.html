@@ -77,7 +77,42 @@
     .tile-label{display:inline-flex;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.9);color:#0f172a;font-weight:900;letter-spacing:-.02em}
     @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid,.opis-grid{grid-template-columns:1fr}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}.opis-card{padding:24px}.opis-grid{gap:14px}.photo-grid{grid-template-columns:1fr 1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr;gap:14px}.room-tile{min-height:230px}}
     @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}.opis{padding-top:14px}.opis-card{padding:22px 18px;border-radius:20px}.photo-grid{grid-template-columns:1fr}.photo.wide,.photo.tall,.photo.small{grid-column:auto}.room-tiles{grid-template-columns:1fr}.room-tile{min-height:220px}}
-  </style>
+  
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.content-wrapper.w-container{max-width:1200px;margin:0 auto}
+.flex{display:flex;gap:48px;align-items:center}
+.room-pair{display:flex;gap:48px;align-items:center;flex-wrap:nowrap}
+.room-pair:nth-of-type(even){flex-direction:row-reverse}
+.room-slider{flex:0 0 56%;max-width:56%;position:relative;min-width:0}
+.room-text{flex:0 0 44%;max-width:44%;min-width:0}
+.room-mask{position:relative;overflow:hidden;border-radius:26px;aspect-ratio:1.35/1;background:#f3f4f6}
+.room-mask .w-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+.room-mask .w-slide.active{opacity:1}
+.room-mask img{width:100%;height:100%;object-fit:cover;display:block}
+.corner-link-top,.corner-link-bottom{position:absolute;right:0;width:54px;height:54px;background:#ff6b6b;color:#fff;display:grid;place-items:center;z-index:3;cursor:pointer}
+.corner-link-top{bottom:54px;border-radius:16px 0 0 0}
+.corner-link-bottom{bottom:0;border-radius:0 0 0 16px}
+.description-box{max-width:760px;line-height:1.9}
+.description-box ul{padding-left:22px}
+.description-box li{margin:6px 0}
+.room-tile .tile-label{display:inline-flex!important;align-items:center;justify-content:center;padding:10px 18px!important;border-radius:999px!important;background:rgba(255,255,255,.18)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff!important;box-shadow:0 8px 24px rgba(0,0,0,.12);font-family:Inter, Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif!important;font-weight:700;font-size:19px;letter-spacing:-.03em}
+
+.opis-grid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start;max-width:1100px}
+.opis-text{line-height:1.9;color:#2f3747}
+.opis-text ul{padding-left:22px;margin:10px 0 18px}
+.opis-text li{margin:6px 0}
+@media (max-width: 768px){
+  .opis-grid{grid-template-columns:1fr;gap:16px}
+  .content-wrapper.w-container,.wrap{max-width:100%;padding-left:16px;padding-right:16px}
+}
+
+@media (max-width: 768px){
+  .flex,.room-pair{flex-direction:column!important;gap:20px}
+  .room-slider,.room-text{flex:1 1 auto;max-width:none;width:100%}
+  .room-mask{aspect-ratio:1.2/1}
+  .wrap{padding:0 16px}
+}
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -125,99 +160,67 @@
     <section class="opis" id="opis">
       <div class="wrap">
         <div class="opis-card">
-          <div class="opis-grid">
-            <div>
-              <h2>Discover the apartment where you’ll find everything you need</h2>
-              <div class="underline"></div>
-            </div>
-            <div class="opis-text">
-              <p><b>Sprzedaż bezpośrednia. Pośrednikom dziękujemy.</b></p>
-              <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).</p>
-              <p><b>Cena do negocjacji!</b></p>
-              <p>Układ i wyposażenie:</p>
-              <ul>
-                <li>jasny salon z wieloma punktami świetlnymi (także LED RGB),</li>
-                <li>aneks kuchenny z miejscem na wygodny stół jadalniany,</li>
-                <li>balkon od strony południowo-zachodniej – idealny na popołudniowy relaks i podziwianie zachodów słońca przez cały rok,</li>
-                <li>osobna łazienka z wanną wyposażoną w parawan, oraz oddzielne WC,</li>
-                <li>duża szafa z lustrem w przedpokoju,</li>
-                <li>2-letnia klimatyzacja,</li>
-                <li>meble (oprócz kanapy i stołu) i sprzęt AGD w cenie (zmywarka, lodówka, kuchenka, piekarnik),</li>
-                <li>ogrzewanie miejskie, czynsz ok. 600 PLN miesięcznie,</li>
-                <li><b>brak windy,</b></li>
-                <li>brak piwnicy,</li>
-                <li>komórka lokatorska za dodatkową opłatą,</li>
-                <li>miejsce parkingowe w hali garażowej możliwe do kupna od osób trzecich.</li>
-              </ul>
-              <p>Dodatkowe informacje:</p>
-              <ul>
-                <li><b>dostępne od zaraz</b>,</li>
-                <li>pełna własność (księga wieczysta)</li>
-              </ul>
-              <p>Lokalizacja:</p>
-              <ul>
-                <li>Spokojne i bezpieczne osiedle idealne dla rodzin z dziećmi.</li>
-                <li>Sklepy: Biedronka, Topaz, Mrówka, Arhelan.</li>
-                <li>Restauracje i bary: Pizzeria DaGrasso, Kebab Sułtan.</li>
-                <li>Przedszkola.</li>
-                <li>Kościół (ok. 5 min pieszo).</li>
-                <li><b>Zalew</b> – doskonałe miejsce na spacery, tylko 10 minut pieszo.</li>
-                <li>Stacja kolejowa <b>Siedlce Zachodnie</b> – zaledwie 2–3 minuty biegiem.</li>
-              </ul>
-              <p>To idealny wybór dla rodzin lub par szukających funkcjonalnego, ciepłego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do pełnej infrastruktury oraz bezproblemowym dojazdem do Warszawy pociągami Kolei Mazowieckich.</p>
-              <p>Zapraszam do kontaktu i obejrzenia mieszkania!</p>
-              <p>Pytania można zadawać SMS-em.</p>
-              <p>Kontakt telefoniczny po godzinie 17:00, w razie nieodebrania proszę o SMS – oddzwonię.</p></p>
-            </div>
+          <section class="section" id="opis">
+  <div class="wrap">
+    <div class="content-wrapper w-container">
+      <div class="opis-grid">
+        <div>
+          <h2>Opis</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="opis-text">
+          <p><b>Sprzedaż bezpośrednia. Pośrednikom dziękujemy.</b></p>
+          <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).</p>
+          <p><b>Cena do negocjacji!</b></p>
+          <p>Układ i wyposażenie:</p>
+          <ul>
+            <li>jasny salon z wieloma punktami świetlnymi (także LED RGB),</li>
+            <li>aneks kuchenny z miejscem na wygodny stół jadalniany,</li>
+            <li>balkon od strony południowo-zachodniej – idealny na popołudniowy relaks i podziwianie zachodów słońca przez cały rok,</li>
+            <li>osobna łazienka z wanną wyposażoną w parawan, oraz oddzielne WC,</li>
+            <li>duża szafa z lustrem w przedpokoju,</li>
+            <li>2-letnia klimatyzacja,</li>
+            <li>meble (oprócz kanapy i stołu) i sprzęt AGD w cenie (zmywarka, lodówka, kuchenka, piekarnik),</li>
+            <li>ogrzewanie miejskie, czynsz ok. 600 PLN miesięcznie,</li>
+            <li><b>brak windy,</b></li>
+            <li>brak piwnicy,</li>
+            <li>komórka lokatorska za dodatkową opłatą,</li>
+            <li>miejsce parkingowe w hali garażowej możliwe do kupna od osób trzecich.</li>
+          </ul>
+          <p>Dodatkowe informacje:</p>
+          <ul>
+            <li><b>dostępne od zaraz</b>,</li>
+            <li>pełna własność (księga wieczysta)</li>
+          </ul>
+          <p>Lokalizacja:</p>
+          <ul>
+            <li>Spokojne i bezpieczne osiedle idealne dla rodzin z dziećmi.</li>
+            <li>Sklepy: Biedronka, Topaz, Mrówka, Arhelan.</li>
+            <li>Restauracje i bary: Pizzeria DaGrasso, Kebab Sułtan.</li>
+            <li>Przedszkola.</li>
+            <li>Kościół (ok. 5 min pieszo).</li>
+            <li><b>Zalew</b> – doskonałe miejsce na spacery, tylko 10 minut pieszo.</li>
+            <li>Stacja kolejowa <b>Siedlce Zachodnie</b> – zaledwie 2–3 minuty biegiem.</li>
+          </ul>
+          <p>To idealny wybór dla rodzin lub par szukających funkcjonalnego, ciepłego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do pełnej infrastruktury oraz bezproblemowym dojazdem do Warszawy pociągami Kolei Mazowieckich.</p>
+          <p>Zapraszam do kontaktu i obejrzenia mieszkania!</p>
+          <p>Pytania można zadawać SMS-em.</p>
+          <p>Kontakt telefoniczny po godzinie 17:00, w razie nieodebrania proszę o SMS – oddzwonię.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
           </div>
         </div>
       </div>
     </section>
 
-    opis-grid">
             <div>
               <h2>Discover the apartment where you’ll find everything you need</h2>
               <div class="underline"></div>
             </div>
-            <div class="opis-text">
-              <p><b>Sprzedaż bezpośrednia. Pośrednikom dziękujemy.</b></p>
-              <p>Oferuję przestronne mieszkanie o powierzchni 64,4 m², położone na 3. (ostatnim) piętrze bloku z 2013 roku. Lokal jest gotowy do zamieszkania od zaraz (ewentualnie do odświeżenia wg swojego gustu).</p>
-              <p><b>Cena do negocjacji!</b></p>
-              <p>Układ i wyposażenie:</p>
-              <ul>
-                <li>jasny salon z wieloma punktami świetlnymi (także LED RGB),</li>
-                <li>aneks kuchenny z miejscem na wygodny stół jadalniany,</li>
-                <li>balkon od strony południowo-zachodniej – idealny na popołudniowy relaks i podziwianie zachodów słońca przez cały rok,</li>
-                <li>osobna łazienka z wanną wyposażoną w parawan, oraz oddzielne WC,</li>
-                <li>duża szafa z lustrem w przedpokoju,</li>
-                <li>2-letnia klimatyzacja,</li>
-                <li>meble (oprócz kanapy i stołu) i sprzęt AGD w cenie (zmywarka, lodówka, kuchenka, piekarnik),</li>
-                <li>ogrzewanie miejskie, czynsz ok. 600 PLN miesięcznie,</li>
-                <li><b>brak windy,</b></li>
-                <li>brak piwnicy,</li>
-                <li>komórka lokatorska za dodatkową opłatą,</li>
-                <li>miejsce parkingowe w hali garażowej możliwe do kupna od osób trzecich.</li>
-              </ul>
-              <p>Dodatkowe informacje:</p>
-              <ul>
-                <li><b>dostępne od zaraz</b>,</li>
-                <li>pełna własność (księga wieczysta)</li>
-              </ul>
-              <p>Lokalizacja:</p>
-              <ul>
-                <li>Spokojne i bezpieczne osiedle idealne dla rodzin z dziećmi.</li>
-                <li>Sklepy: Biedronka, Topaz, Mrówka, Arhelan.</li>
-                <li>Restauracje i bary: Pizzeria DaGrasso, Kebab Sułtan.</li>
-                <li>Przedszkola.</li>
-                <li>Kościół (ok. 5 min pieszo).</li>
-                <li><b>Zalew</b> – doskonałe miejsce na spacery, tylko 10 minut pieszo.</li>
-                <li>Stacja kolejowa <b>Siedlce Zachodnie</b> – zaledwie 2–3 minuty biegiem.</li>
-              </ul>
-              <p>To idealny wybór dla rodzin lub par szukających funkcjonalnego, ciepłego mieszkania w spokojnej części miasta, z jednoczesnym dostępem do pełnej infrastruktury oraz bezproblemowym dojazdem do Warszawy pociągami Kolei Mazowieckich.</p>
-              <p>Zapraszam do kontaktu i obejrzenia mieszkania!</p>
-              <p>Pytania można zadawać SMS-em.</p>
-              <p>Kontakt telefoniczny po godzinie 17:00, w razie nieodebrania proszę o SMS – oddzwonię.</p></p>
-            </div>
+
           </div>
         </div>
       </div>
@@ -355,5 +358,6 @@
       next.addEventListener('click', () => render((idx + 1) % group.length));
     });
   </script>
+</main>
 </body>
 </html>
