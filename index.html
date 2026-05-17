@@ -21,6 +21,120 @@
     .hero{padding:0 0 18px}
     .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:620px}
     .hero-copy{background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+    
+    .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
+    h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
+    .lead{margin:18px 0 0;font-size:18px;line-height:1.65;color:rgba(246,248,251,.88);max-width:26ch}
+    .hero-slider{position:relative;overflow:hidden;background:#24364f}
+    .slides{position:relative;width:100%;height:100%}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+    .slide.active{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover}
+    .hero-arrows{position:absolute;right:22px;bottom:18px;display:flex;gap:10px;z-index:2}
+    .arrow{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,107,107,.3)}
+    .mobile-cta{display:none}
+    @media (max-width: 980px){.topbar-inner{gap:12px;flex-wrap:wrap;padding:12px 0}.menu{display:none}.book-btn{margin-left:auto}.hero-grid{grid-template-columns:1fr;min-height:auto}.hero-copy{min-height:360px;border-bottom-left-radius:0;border-bottom-right-radius:var(--radius);padding:48px 24px}.hero-copy:after{display:none}.hero-slider{min-height:420px}.mobile-cta{display:inline-flex}.hero-arrows{right:14px;bottom:14px}}
+    @media (max-width: 640px){.wrap{width:min(var(--max),calc(100% - 18px))}.topbar-inner{min-height:66px}.brand{font-size:14px}.book-btn{padding:12px 16px;border-radius:12px}.hero-copy{padding:36px 18px 28px;min-height:320px}.lead{font-size:16px;max-width:unset}.hero-slider{min-height:320px}.phone-pill{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">◌</span><span>Mieszkanie Dylewicza</span></a>
+      <nav class="menu" aria-label="Główne menu">
+        <a href="#galeria" class="active">Galeria</a>
+        <a href="#opis">Opis</a>
+        <a href="#lokalizacja">Lokalizacja</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="phone-pill" href="tel:+48781262987">781 262 987</a>
+      <a class="book-btn" href="tel:+48781262987">Zadzwoń</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Sprzedaż bezpośrednia</div>
+          <h1>Mieszkanie 64,4 m² przy ul. Dylewicza</h1>
+          <p class="lead">Mieszkanie o powierzchni 64,4 m² położone na trzecim i jednocześnie ostatnim piętrze budynku z 2013 roku, w spokojnej i dobrze skomunikowanej części Siedlec. Układ lokalu jest bardzo funkcjonalny: salon z aneksem kuchennym tworzy jasną, codzienną strefę dzienną, a dwa dodatkowe pokoje pozwalają wygodnie zorganizować sypialnię, pokój dziecka albo gabinet do pracy. Do tego dochodzi osobna łazienka z wanną i parawanem prysznicowym, oddzielne WC, praktyczny przedpokój z dużą szafą w zabudowie oraz balkon od strony południowo-zachodniej, który daje przyjemne światło przez większą część dnia i bardzo fajne zachody słońca. Mieszkanie jest gotowe do zamieszkania od zaraz, a jeśli ktoś będzie chciał, może je odświeżyć pod swój gust bez większego remontu. W cenie zostają meble poza kanapą i stołem oraz podstawowe AGD, w tym zmywarka, lodówka, kuchenka i piekarnik, więc to wygodna opcja dla osoby, która chce wejść i po prostu mieszkać. Ogrzewanie jest miejskie, czynsz wynosi około 600 zł miesięcznie, klimatyzacja ma dwa lata, a brak windy rekompensuje ostatnie piętro i większy spokój na co dzień. To mieszkanie będzie dobrym wyborem dla rodziny, pary albo kogoś, kto szuka praktycznego lokalu w miejscu z dobrym dostępem do sklepów, usług, szkół i kolei.
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="book-btn mobile-cta" href="tel:+48781262987">781 262 987</a>
+            <a class="book-btn" style="background:#fff;color:#24364f" href="https://www.otodom.pl" target="_blank" rel="noopener noreferrer">OTODOM</a>
+          </div>
+        </div>
+        <div class="hero-slider" id="galleryHero">
+          <div class="slides">
+            <div class="slide active"><img src="images/IMG02657.JPG" alt="Salon"></div>
+            <div class="slide"><img src="images/IMG02663.JPG" alt="Kuchnia"></div>
+            <div class="slide"><img src="images/IMG02684.JPG" alt="Sypialnia"></div>
+            <div class="slide"><img src="images/IMG_20260411_160649.jpg" alt="Łazienka"></div>
+            <div class="slide"><img src="images/IMG_20260411_181457.jpg" alt="Balkon"></div>
+          </div>
+          <div class="hero-arrows">
+            <div class="arrow" id="prevSlide">←</div>
+            <div class="arrow" id="nextSlide">→</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="opis" style="padding-top:0">
+      <div class="wrap">
+        <div class="card" style="padding:30px 34px;margin-top:-6px;border-top-left-radius:0;border-top-right-radius:0">
+          <div style="display:grid;grid-template-columns:1.05fr 1.55fr;gap:18px;align-items:start">
+            <div>
+              <h2 style="margin:0;font-size:clamp(26px,3vw,42px);line-height:1.02;letter-spacing:-.05em;max-width:9ch">Discover the apartment where you’ll find everything you need</h2>
+              <div style="width:72px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--blue) 0%,var(--cyan) 100%);margin-top:14px"></div>
+            </div>
+            <div style="color:var(--muted);font-size:16px;line-height:1.9">
+              <p style="margin:0 0 16px">Mieszkanie o powierzchni 64,4 m² położone na trzecim, ostatnim piętrze budynku z 2013 roku w spokojnej i dobrze skomunikowanej części Siedlec. Lokal został zaprojektowany tak, aby codzienne korzystanie było maksymalnie wygodne: salon z aneksem kuchennym tworzy jasną strefę dzienną, dwa dodatkowe pokoje pozwalają swobodnie zorganizować sypialnię, pokój dziecka albo gabinet, a osobna łazienka i oddzielne WC podnoszą komfort domowników.</p>
+              <p style="margin:0 0 16px">Do dyspozycji jest również przedpokój z dużą szafą w zabudowie oraz balkon od strony południowo-zachodniej, który daje przyjemne światło przez większą część dnia i bardzo ładne zachody słońca. Mieszkanie jest gotowe do zamieszkania od zaraz, a jeśli ktoś chce, może je odświeżyć pod swój gust bez większego remontu.</p>
+              <p style="margin:0">W cenie pozostają meble poza kanapą i stołem oraz podstawowe AGD, w tym zmywarka, lodówka, kuchenka i piekarnik. Ogrzewanie jest miejskie, czynsz wynosi około 600 zł miesięcznie, klimatyzacja ma dwa lata, a brak windy rekompensuje ostatnie piętro i większy spokój na co dzień. To bardzo praktyczna propozycja dla rodziny, pary albo osoby szukającej funkcjonalnego lokalu w miejscu z dobrym dostępem do sklepów, usług, szkół i kolei.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let current = 0;
+    const show = i => {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      current = i;
+    };
+    document.getElementById('nextSlide').addEventListener('click', () => show((current + 1) % slides.length));
+    document.getElementById('prevSlide').addEventListener('click', () => show((current - 1 + slides.length) % slides.length));
+    setInterval(() => show((current + 1) % slides.length), 4500);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Mieszkanie 64,4 m² – Dylewicza, Siedlce</title>
+  <style>
+    :root{--nav:#314563;--nav2:#2a3c57;--accent:#ff6b6b;--text:#f6f8fb;--muted:rgba(246,248,251,.82);--max:1220px;--radius:28px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#111827;overflow-x:hidden}
+    a{text-decoration:none;color:inherit} img{display:block;width:100%;height:auto} button,input{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 28px));margin:0 auto}
+    .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--nav) 0%,var(--nav2) 100%);color:var(--text);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .topbar-inner{min-height:74px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.02em}
+    .brand-mark{width:38px;height:38px;border:2px solid rgba(255,255,255,.22);border-radius:999px;display:grid;place-items:center;color:#ff7b7b;font-weight:900}
+    .menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;font-size:15px;font-weight:700;color:var(--muted)}
+    .menu a:hover,.menu a.active{color:#fff}
+    .phone-pill{display:inline-flex;align-items:center;gap:8px;color:#ff8d8d;font-weight:900;white-space:nowrap}
+    .book-btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;box-shadow:0 10px 20px rgba(255,107,107,.24)}
+    .hero{padding:0 0 18px}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:0;min-height:620px}
+    .hero-copy{background:var(--nav);color:var(--text);padding:76px 68px 58px;border-bottom-left-radius:var(--radius);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
     .hero-copy:after{content:"";position:absolute;left:0;bottom:0;width:160px;height:160px;background:#f5f7fb;border-top-right-radius:100%;transform:translate(-40px,40px)}
     .eyebrow{font-size:14px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:18px}
     h1{margin:0;font-size:clamp(38px,5.4vw,64px);line-height:.96;letter-spacing:-.06em;max-width:8ch}
