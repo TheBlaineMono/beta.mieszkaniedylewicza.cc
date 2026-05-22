@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initGallery() {
   const map = {
     salon: [
       'images/salon/salon-11.jpeg',
@@ -46,6 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
+  const openLightbox = (src, alt) => {
+    const overlay = document.getElementById('lightboxOverlay');
+    const image = document.getElementById('lightboxImage');
+    if (!overlay || !image) return;
+    image.src = src;
+    image.alt = alt;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    const overlay = document.getElementById('lightboxOverlay');
+    const image = document.getElementById('lightboxImage');
+    if (!overlay || !image) return;
+    overlay.style.display = 'none';
+    image.src = '';
+    document.body.style.overflow = '';
+  };
+
+  const overlay = document.getElementById('lightboxOverlay');
+  const closeButton = document.getElementById('lightboxClose');
+  overlay?.addEventListener('click', (event) => {
+    if (event.target === overlay) closeLightbox();
+  });
+  closeButton?.addEventListener('click', closeLightbox);
+
   document.querySelectorAll('.content-section').forEach((section) => {
     const id = section.id;
     const stage = section.querySelector('.subgallery-stage');
@@ -69,7 +95,37 @@ document.addEventListener('DOMContentLoaded', () => {
       slides().forEach((s, i) => s.classList.toggle('active', i === idx));
     };
 
+    stage.addEventListener('click', (event) => {
+      const img = event.target.closest('img');
+      if (!img) return;
+      openLightbox(img.src, img.alt);
+    });
+
     prev.addEventListener('click', () => render(idx - 1));
     next.addEventListener('click', () => render(idx + 1));
   });
-});
+
+  document.querySelectorAll('.room-tile').forEach((tile) => {
+    const imageElement = tile.querySelector('.room-image');
+    const labelElement = tile.querySelector('.tile-label');
+    const bg = imageElement?.style.backgroundImage || '';
+    const match = bg.match(/url\(["']?(.*?)["']?\)/);
+    const src = match ? match[1] : '';
+    const alt = labelElement?.textContent.trim() || '';
+    if (!src) return;
+
+    tile.style.cursor = 'zoom-in';
+    tile.addEventListener('click', (event) => {
+      if (event.target.closest('.tile-arrow')) return;
+      event.preventDefault();
+      openLightbox(src, alt);
+    });
+  });
+
+}
+
+if (document.querySelector('[data-include]')) {
+  document.addEventListener('includes:loaded', initGallery);
+} else {
+  document.addEventListener('DOMContentLoaded', initGallery);
+}

@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize main interactions (hero slider, menu) after includes are loaded.
+function initMain() {
   const slides = document.querySelectorAll('.slide');
   const prev = document.getElementById('prevSlide');
   const next = document.getElementById('nextSlide');
@@ -41,4 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-});
+}
+
+// If the page uses HTML includes, wait for them to finish loading.
+if (document.querySelector('[data-include]')) {
+  document.addEventListener('includes:loaded', initMain);
+} else {
+  document.addEventListener('DOMContentLoaded', initMain);
+}
