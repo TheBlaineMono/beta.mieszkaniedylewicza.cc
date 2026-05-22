@@ -94,4 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
+  const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('pageMenu');
+
+menuToggle?.addEventListener('click', () => {
+  const open = menu.classList.toggle('is-open');
+  menuToggle.setAttribute('aria-expanded', String(open));
+});
+
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
+});
 });

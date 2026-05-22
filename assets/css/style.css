@@ -420,3 +420,35 @@ a:focus-visible {
   .room-tile { min-height: 220px; }
   .subgallery-stage { min-height: 260px; border-radius: 20px; }
 }
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .menu {
+    display: none;
+    width: 100%;
+    order: 10;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0 0;
+  }
+
+  .menu.is-open {
+    display: flex;
+  }
+}
