@@ -6,6 +6,15 @@
   <meta name="color-scheme" content="light" />
   <title>Mieszkanie 64,4 m² Dylewicza, Siedlce</title>
   <meta name="description" content="Mieszkanie 64,4 m² przy ul. Dylewicza w Siedlcach. 3 pokoje, balkon, osobna łazienka i oddzielne WC." />
+  <meta property="og:title" content="Mieszkanie 64,4 m² przy ul. Dylewicza, Siedlce" />
+  <meta property="og:description" content="Sprzedaż bezpośrednia mieszkania 64,4 m². 3 pokoje, balkon, osobna łazienka i oddzielne WC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://beta.mieszkaniedylewicza.cc/" />
+  <meta property="og:image" content="https://beta.mieszkaniedylewicza.cc/images/salon/salon-11.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mieszkanie 64,4 m² przy ul. Dylewicza, Siedlce" />
+  <meta name="twitter:description" content="Sprzedaż bezpośrednia mieszkania 64,4 m². 3 pokoje, balkon, osobna łazienka i oddzielne WC." />
+  <link rel="canonical" href="https://beta.mieszkaniedylewicza.cc/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,7 +27,8 @@
         <span class="brand-mark">MD</span>
         <span>Mieszkanie Dylewicza</span>
       </a>
-      <nav class="menu" aria-label="Główne menu">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="pageMenu" aria-label="Otwórz menu">☰</button>
+      <nav class="menu" id="pageMenu" aria-label="Główne menu">
         <a href="#galeria">Galeria</a>
         <a href="#opis">Opis</a>
         <a href="#galeria-pomieszczen">Pomieszczenia</a>
@@ -43,11 +53,11 @@
         </div>
         <div class="hero-slider" id="galeria">
           <div class="slides">
-            <div class="slide active"><img src="images/salon/salon-11.jpeg" alt="Salon"></div>
-            <div class="slide"><img src="images/kuchnia/kuchnia-1.jpeg" alt="Kuchnia"></div>
-            <div class="slide"><img src="images/sypialnia/sypialnia-1.jpg" alt="Sypialnia"></div>
-            <div class="slide"><img src="images/duza_lazienka/duza_lazienka-1.jpg" alt="Łazienka"></div>
-            <div class="slide"><img src="images/przedpokój/przedpokoj-1.jpg" alt="Przedpokój"></div>
+            <div class="slide active"><img loading="lazy" decoding="async" src="images/salon/salon-11.jpeg" alt="Salon"></div>
+            <div class="slide"><img loading="lazy" decoding="async" src="images/kuchnia/kuchnia-1.jpeg" alt="Kuchnia"></div>
+            <div class="slide"><img loading="lazy" decoding="async" src="images/sypialnia/sypialnia-1.jpg" alt="Sypialnia"></div>
+            <div class="slide"><img loading="lazy" decoding="async" src="images/duza_lazienka/duza_lazienka-1.jpg" alt="Łazienka"></div>
+            <div class="slide"><img loading="lazy" decoding="async" src="images/przedpokój/przedpokoj-1.jpg" alt="Przedpokój"></div>
           </div>
           <div class="hero-arrows">
             <button class="arrow" id="prevSlide" aria-label="Poprzednie zdjęcie">‹</button>
@@ -112,9 +122,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/salon/salon-11.jpeg" alt="Salon 1" data-lightbox></div>
-              <div class="subslide"><img src="images/salon/salon-10.jpeg" alt="Salon 2" data-lightbox></div>
-              <div class="subslide"><img src="images/salon/salon-14.jpeg" alt="Salon 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/salon/salon-11.jpeg" alt="Salon 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/salon/salon-10.jpeg" alt="Salon 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/salon/salon-14.jpeg" alt="Salon 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="salon" aria-label="Poprzednie zdjęcie salonu">‹</button>
@@ -135,9 +145,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/kuchnia/kuchnia-1.jpeg" alt="Kuchnia 1" data-lightbox></div>
-              <div class="subslide"><img src="images/kuchnia/kuchnia-2.jpeg" alt="Kuchnia 2" data-lightbox></div>
-              <div class="subslide"><img src="images/kuchnia/kuchnia-3.jpeg" alt="Kuchnia 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/kuchnia/kuchnia-1.jpeg" alt="Kuchnia 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/kuchnia/kuchnia-2.jpeg" alt="Kuchnia 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/kuchnia/kuchnia-3.jpeg" alt="Kuchnia 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="kuchnia" aria-label="Poprzednie zdjęcie kuchni">‹</button>
@@ -158,9 +168,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/przedpokój/przedpokoj-1.jpg" alt="Przedpokój 1" data-lightbox></div>
-              <div class="subslide"><img src="images/przedpokój/przedpokoj-2.jpg" alt="Przedpokój 2" data-lightbox></div>
-              <div class="subslide"><img src="images/przedpokój/przedpokoj-3.jpeg" alt="Przedpokój 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/przedpokój/przedpokoj-1.jpg" alt="Przedpokój 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/przedpokój/przedpokoj-2.jpg" alt="Przedpokój 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/przedpokój/przedpokoj-3.jpeg" alt="Przedpokój 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="przedpokoj" aria-label="Poprzednie zdjęcie przedpokoju">‹</button>
@@ -181,9 +191,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/duza_lazienka/duza_lazienka-1.jpg" alt="Łazienka 1" data-lightbox></div>
-              <div class="subslide"><img src="images/duza_lazienka/duza_lazienka-2.jpg" alt="Łazienka 2" data-lightbox></div>
-              <div class="subslide"><img src="images/duza_lazienka/duza_lazienka-3.jpg" alt="Łazienka 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/duza_lazienka/duza_lazienka-1.jpg" alt="Łazienka 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/duza_lazienka/duza_lazienka-2.jpg" alt="Łazienka 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/duza_lazienka/duza_lazienka-3.jpg" alt="Łazienka 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="duza_lazienka" aria-label="Poprzednie zdjęcie łazienki">‹</button>
@@ -204,9 +214,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/toaleta/toaleta-1.jpeg" alt="Toaleta 1" data-lightbox></div>
-              <div class="subslide"><img src="images/toaleta/toaleta-2.jpeg" alt="Toaleta 2" data-lightbox></div>
-              <div class="subslide"><img src="images/toaleta/toaleta-3.jpeg" alt="Toaleta 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/toaleta/toaleta-1.jpeg" alt="Toaleta 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/toaleta/toaleta-2.jpeg" alt="Toaleta 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/toaleta/toaleta-3.jpeg" alt="Toaleta 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="toaleta" aria-label="Poprzednie zdjęcie toalety">‹</button>
@@ -227,9 +237,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/sypialnia/sypialnia-1.jpg" alt="Sypialnia 1" data-lightbox></div>
-              <div class="subslide"><img src="images/sypialnia/sypialnia-3.jpg" alt="Sypialnia 2" data-lightbox></div>
-              <div class="subslide"><img src="images/sypialnia/sypialnia-7.jpg" alt="Sypialnia 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/sypialnia/sypialnia-1.jpg" alt="Sypialnia 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/sypialnia/sypialnia-3.jpg" alt="Sypialnia 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/sypialnia/sypialnia-7.jpg" alt="Sypialnia 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="sypialnia" aria-label="Poprzednie zdjęcie sypialni">‹</button>
@@ -250,9 +260,9 @@
           </div>
           <div class="subgallery-slider">
             <div class="subgallery-stage">
-              <div class="subslide active"><img src="images/drugi_pokoj/maly_pokoj-1.jpg" alt="Pokój 1" data-lightbox></div>
-              <div class="subslide"><img src="images/drugi_pokoj/maly_pokoj-3.jpg" alt="Pokój 2" data-lightbox></div>
-              <div class="subslide"><img src="images/drugi_pokoj/maly_pokoj-4.jpg" alt="Pokój 3" data-lightbox></div>
+              <div class="subslide active"><img loading="lazy" decoding="async" src="images/drugi_pokoj/maly_pokoj-1.jpg" alt="Pokój 1" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/drugi_pokoj/maly_pokoj-3.jpg" alt="Pokój 2" data-lightbox></div>
+              <div class="subslide"><img loading="lazy" decoding="async" src="images/drugi_pokoj/maly_pokoj-4.jpg" alt="Pokój 3" data-lightbox></div>
             </div>
             <div class="sub-controls">
               <button class="sub-btn" data-prev="drugi_pokoj" aria-label="Poprzednie zdjęcie pokoju">‹</button>
@@ -282,7 +292,7 @@
     </div>
   </footer>
 
-  <div id="lightboxOverlay" style="position:fixed;inset:0;z-index:9999;background:rgba(8,12,24,.88);display:none;align-items:center;justify-content:center;padding:24px;">
+  <div id="lightboxOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galeria zdjęć" tabindex="-1" style="position:fixed;inset:0;z-index:9999;background:rgba(8,12,24,.88);display:none;align-items:center;justify-content:center;padding:24px;">
     <button id="lightboxClose" aria-label="Zamknij" style="position:absolute;top:18px;right:18px;width:44px;height:44px;border:0;border-radius:999px;background:#fff;color:#111;font-size:26px;cursor:pointer;line-height:44px;">×</button>
     <img id="lightboxImage" alt="" style="max-width:min(95vw,1400px);max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.35);">
   </div>

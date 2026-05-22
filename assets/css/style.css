@@ -59,6 +59,7 @@ button, input, textarea, select { font: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  position: relative;
 }
 .brand {
   display: inline-flex;
@@ -89,6 +90,41 @@ button, input, textarea, select { font: inherit; }
   font-size: 15px;
 }
 .menu a:hover, .menu a.active { color: #fff; }
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 12px;
+}
+.menu-toggle:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.85);
+  outline-offset: 2px;
+}
+.menu.open {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  background: rgba(19, 40, 61, 0.96);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+}
+.menu.open a {
+  color: rgba(255,255,255,0.92);
+}
+.menu.open a.active,
+.menu.open a:hover {
+  color: #fff;
+}
 .phone-pill {
   display: inline-flex;
   align-items: center;
@@ -359,6 +395,8 @@ button, input, textarea, select { font: inherit; }
 @media (max-width: 980px) {
   .topbar-inner { flex-wrap: wrap; padding: 12px 0; }
   .menu { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .menu.open { display: flex; }
   .hero-grid, .opis-grid, .content-grid { grid-template-columns: 1fr; }
   .hero-copy { min-height: 360px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
   .hero-media { min-height: 340px; }
