@@ -1,21 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.subgallery-slider').forEach((slider) => {
-    const stage = slider.querySelector('.subgallery-stage');
-    const prev = slider.querySelector('[data-prev]');
-    const next = slider.querySelector('[data-next]');
-    const slides = stage ? Array.from(stage.querySelectorAll('.subslide')) : [];
+  const map = {
+    salon: [
+      'images/salon/salon-11.jpeg',
+      'images/salon/salon-10.jpeg',
+      'images/salon/salon-14.jpeg',
+      'images/salon/salon-18.jpeg',
+      'images/salon/salon-2.jpeg'
+    ],
+    kuchnia: [
+      'images/kuchnia/kuchnia-1.jpeg',
+      'images/kuchnia/kuchnia-2.jpeg',
+      'images/kuchnia/kuchnia-3.jpeg',
+      'images/kuchnia/kuchnia-4.jpeg',
+      'images/kuchnia/kuchnia-5.jpeg'
+    ],
+    przedpokoj: [
+      'images/przedpokój/przedpokoj-1.jpg',
+      'images/przedpokój/przedpokoj-2.jpg',
+      'images/przedpokój/przedpokoj-3.jpeg',
+      'images/przedpokój/balkon-2.jpg'
+    ],
+    duza_lazienka: [
+      'images/duza_lazienka/duza_lazienka-1.jpg',
+      'images/duza_lazienka/duza_lazienka-2.jpg',
+      'images/duza_lazienka/duza_lazienka-3.jpg',
+      'images/duza_lazienka/duza_lazienka-4.jpg'
+    ],
+    toaleta: [
+      'images/toaleta/toaleta-1.jpeg',
+      'images/toaleta/toaleta-2.jpeg',
+      'images/toaleta/toaleta-3.jpeg',
+      'images/toaleta/toaleta-4.jpeg'
+    ],
+    sypialnia: [
+      'images/sypialnia/sypialnia-1.jpg',
+      'images/sypialnia/sypialnia-3.jpg',
+      'images/sypialnia/sypialnia-7.jpg',
+      'images/sypialnia/sypialnia-8.jpg'
+    ],
+    drugi_pokoj: [
+      'images/drugi_pokoj/maly_pokoj-1.jpg',
+      'images/drugi_pokoj/maly_pokoj-3.jpg',
+      'images/drugi_pokoj/maly_pokoj-4.jpg',
+      'images/drugi_pokoj/maly_pokoj-5.jpg'
+    ]
+  };
 
-    if (!stage || slides.length === 0) return;
+  document.querySelectorAll('.content-section').forEach((section) => {
+    const id = section.id;
+    const stage = section.querySelector('.subgallery-stage');
+    const prev = section.querySelector('[data-prev]');
+    const next = section.querySelector('[data-next]');
+    if (!id || !stage || !prev || !next || !map[id]) return;
 
-    let idx = slides.findIndex((slide) => slide.classList.contains('active'));
-    if (idx < 0) idx = 0;
+    const images = map[id];
+    let idx = 0;
+
+    stage.innerHTML = images.map((src, i) => `
+      <div class="subslide${i === 0 ? ' active' : ''}">
+        <img loading="lazy" decoding="async" src="${src}" alt="${id} ${i + 1}" data-lightbox>
+      </div>
+    `).join('');
+
+    const slides = () => stage.querySelectorAll('.subslide');
 
     const render = (n) => {
-      idx = (n + slides.length) % slides.length;
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === idx));
+      idx = (n + images.length) % images.length;
+      slides().forEach((s, i) => s.classList.toggle('active', i === idx));
     };
 
-    prev?.addEventListener('click', () => render(idx - 1));
-    next?.addEventListener('click', () => render(idx + 1));
+    prev.addEventListener('click', () => render(idx - 1));
+    next.addEventListener('click', () => render(idx + 1));
   });
 });
