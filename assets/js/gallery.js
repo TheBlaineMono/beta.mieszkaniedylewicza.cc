@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
       'images/kuchnia/kuchnia-5.jpeg'
     ],
     przedpokoj: [
-      'images/przedpokój/przedpokoj-1.jpg',
-      'images/przedpokój/przedpokoj-2.jpg',
-      'images/przedpokój/przedpokoj-3.jpeg',
-      'images/przedpokój/balkon-2.jpg'
+      'images/przedpokoj/przedpokoj-1.jpg',
+      'images/przedpokoj/przedpokoj-2.jpg',
+      'images/przedpokoj/przedpokoj-3.jpeg',
+      'images/przedpokoj/balkon-2.jpg'
     ],
     duza_lazienka: [
       'images/duza_lazienka/duza_lazienka-1.jpg',
