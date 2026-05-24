@@ -149,17 +149,16 @@ function initGallery() {
     stage.addEventListener('click', (event) => {
       const img = event.target.closest('img');
       if (!img) return;
-      openLightbox(img.src, img.alt, id, idx);
+      // Find the actual index of the clicked image
+      const clickedSrc = img.src;
+      const clickedIndex = images.findIndex(src => img.src.includes(src.split('/').pop()));
+      const actualIndex = clickedIndex !== -1 ? clickedIndex : idx;
+      openLightbox(img.src, img.alt, id, actualIndex);
+      idx = actualIndex; // Sync idx with the clicked image
     });
 
     prev.addEventListener('click', () => render(idx - 1));
     next.addEventListener('click', () => render(idx + 1));
-  });
-
-  document.querySelectorAll('.room-tile').forEach((tile) => {
-    tile.addEventListener('click', (event) => {
-      event.preventDefault();
-    });
   });
 
 }
