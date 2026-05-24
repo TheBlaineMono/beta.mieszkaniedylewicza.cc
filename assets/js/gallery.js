@@ -46,12 +46,15 @@ function initGallery() {
     ]
   };
 
-  const openLightbox = (src, alt) => {
+  let lightboxState = { isOpen: false, roomId: null, index: 0 };
+
+  const openLightbox = (src, alt, roomId, index) => {
     const overlay = document.getElementById('lightboxOverlay');
     const image = document.getElementById('lightboxImage');
     if (!overlay || !image) return;
     image.src = src;
     image.alt = alt;
+    lightboxState = { isOpen: true, roomId, index };
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   };
@@ -63,14 +66,56 @@ function initGallery() {
     overlay.style.display = 'none';
     image.src = '';
     document.body.style.overflow = '';
+    lightboxState = { isOpen: false, roomId: null, index: 0 };
+  };
+
+  const updateLightboxImage = () => {
+    if (!lightboxState.isOpen || !lightboxState.roomId) return;
+    const images = map[lightboxState.roomId];
+    if (!images) return;
+    const src = images[lightboxState.index];
+    const image = document.getElementById('lightboxImage');
+    if (image) {
+      image.src = src;
+      image.alt = `${lightboxState.roomId} ${lightboxState.index + 1}`;
+    }
   };
 
   const overlay = document.getElementById('lightboxOverlay');
   const closeButton = document.getElementById('lightboxClose');
+  const prevButton = document.getElementById('lightboxPrev');
+  const nextButton = document.getElementById('lightboxNext');
+  
   overlay?.addEventListener('click', (event) => {
     if (event.target === overlay) closeLightbox();
   });
   closeButton?.addEventListener('click', closeLightbox);
+  
+  prevButton?.addEventListener('click', () => {
+    if (!lightboxState.isOpen || !lightboxState.roomId) return;
+    lightboxState.index = (lightboxState.index - 1 + map[lightboxState.roomId].length) % map[lightboxState.roomId].length;
+    updateLightboxImage();
+  });
+  
+  nextButton?.addEventListener('click', () => {
+    if (!lightboxState.isOpen || !lightboxState.roomId) return;
+    lightboxState.index = (lightboxState.index + 1) % map[lightboxState.roomId].length;
+    updateLightboxImage();
+  });
+
+  // Keyboard navigation for lightbox
+  document.addEventListener('keydown', (event) => {
+    if (!lightboxState.isOpen) return;
+    if (event.key === 'ArrowLeft') {
+      lightboxState.index = (lightboxState.index - 1 + map[lightboxState.roomId].length) % map[lightboxState.roomId].length;
+      updateLightboxImage();
+    } else if (event.key === 'ArrowRight') {
+      lightboxState.index = (lightboxState.index + 1) % map[lightboxState.roomId].length;
+      updateLightboxImage();
+    } else if (event.key === 'Escape') {
+      closeLightbox();
+    }
+  });
 
   document.querySelectorAll('.content-section').forEach((section) => {
     const id = section.id;
@@ -93,12 +138,18 @@ function initGallery() {
     const render = (n) => {
       idx = (n + images.length) % images.length;
       slides().forEach((s, i) => s.classList.toggle('active', i === idx));
+      
+      // If lightbox is open and shows this room, update it
+      if (lightboxState.isOpen && lightboxState.roomId === id) {
+        lightboxState.index = idx;
+        updateLightboxImage();
+      }
     };
 
     stage.addEventListener('click', (event) => {
       const img = event.target.closest('img');
       if (!img) return;
-      openLightbox(img.src, img.alt);
+      openLightbox(img.src, img.alt, id, idx);
     });
 
     prev.addEventListener('click', () => render(idx - 1));
@@ -106,19 +157,8 @@ function initGallery() {
   });
 
   document.querySelectorAll('.room-tile').forEach((tile) => {
-    const imageElement = tile.querySelector('.room-image');
-    const labelElement = tile.querySelector('.tile-label');
-    const bg = imageElement?.style.backgroundImage || '';
-    const match = bg.match(/url\(["']?(.*?)["']?\)/);
-    const src = match ? match[1] : '';
-    const alt = labelElement?.textContent.trim() || '';
-    if (!src) return;
-
-    tile.style.cursor = 'zoom-in';
     tile.addEventListener('click', (event) => {
-      if (event.target.closest('.tile-arrow')) return;
       event.preventDefault();
-      openLightbox(src, alt);
     });
   });
 
