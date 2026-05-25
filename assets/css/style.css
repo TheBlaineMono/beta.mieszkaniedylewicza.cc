@@ -230,7 +230,7 @@ a:focus-visible {
 .hero-media img, .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .hero-arrows, .sub-controls {
   position: absolute;
