@@ -402,7 +402,7 @@ a:focus-visible {
   grid-column: 1;
   grid-row: 2;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(16px, 3vw, 28px);
 }
 .content-section .flex {
