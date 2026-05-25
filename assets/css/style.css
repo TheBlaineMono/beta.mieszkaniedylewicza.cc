@@ -330,6 +330,22 @@ a:focus-visible {
 }
 .opis-text li, .text-block li { margin: 6px 0; }
 
+.floor-plans {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: 32px;
+}
+.floor-plan-placeholder {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: var(--surface-2);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
 .room-tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -536,6 +552,9 @@ a:focus-visible {
   .book-btn, .ghost-btn, .cta-btn {
     padding: 12px 18px;
     font-size: 14px;
+  }
+  .floor-plans {
+    grid-template-columns: 1fr;
   }
 }
 
