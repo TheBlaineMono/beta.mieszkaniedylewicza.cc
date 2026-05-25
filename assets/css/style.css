@@ -454,7 +454,7 @@ a:focus-visible {
   .hero-copy {
     min-height: 360px;
   }
-  .hero-media {
+  .hero-media, .hero-slider {
     min-height: 320px;
   }
 }
