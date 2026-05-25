@@ -17,7 +17,7 @@
   --radius-md: 16px;
   --radius-sm: 12px;
   --max: 100%;
-  --max-content: 1400px;
+  --max-content: 100%;
   --padding: clamp(16px, 5vw, 60px);
 }
 
