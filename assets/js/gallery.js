@@ -47,6 +47,7 @@ function initGallery() {
   };
 
   let lightboxState = { isOpen: false, roomId: null, index: 0 };
+  let sectionIndexes = {}; // Track index for each room section
 
   const openLightbox = (src, alt, roomId, index) => {
     const overlay = document.getElementById('lightboxOverlay');
@@ -63,6 +64,20 @@ function initGallery() {
     const overlay = document.getElementById('lightboxOverlay');
     const image = document.getElementById('lightboxImage');
     if (!overlay || !image) return;
+    
+    // Sync the gallery index with the lightbox state before closing
+    if (lightboxState.roomId && sectionIndexes[lightboxState.roomId] !== undefined) {
+      const section = document.getElementById(lightboxState.roomId);
+      if (section) {
+        const stage = section.querySelector('.subgallery-stage');
+        if (stage) {
+          const slides = stage.querySelectorAll('.subslide');
+          slides.forEach((s, i) => s.classList.toggle('active', i === lightboxState.index));
+          sectionIndexes[lightboxState.roomId] = lightboxState.index;
+        }
+      }
+    }
+    
     overlay.style.display = 'none';
     image.src = '';
     document.body.style.overflow = '';
@@ -125,7 +140,7 @@ function initGallery() {
     if (!id || !stage || !prev || !next || !map[id]) return;
 
     const images = map[id];
-    let idx = 0;
+    sectionIndexes[id] = 0; // Initialize index for this room
 
     stage.innerHTML = images.map((src, i) => `
       <div class="subslide${i === 0 ? ' active' : ''}">
@@ -136,12 +151,12 @@ function initGallery() {
     const slides = () => stage.querySelectorAll('.subslide');
 
     const render = (n) => {
-      idx = (n + images.length) % images.length;
-      slides().forEach((s, i) => s.classList.toggle('active', i === idx));
+      sectionIndexes[id] = (n + images.length) % images.length;
+      slides().forEach((s, i) => s.classList.toggle('active', i === sectionIndexes[id]));
       
       // If lightbox is open and shows this room, update it
       if (lightboxState.isOpen && lightboxState.roomId === id) {
-        lightboxState.index = idx;
+        lightboxState.index = sectionIndexes[id];
         updateLightboxImage();
       }
     };
@@ -152,13 +167,13 @@ function initGallery() {
       // Find the actual index of the clicked image
       const clickedSrc = img.src;
       const clickedIndex = images.findIndex(src => img.src.includes(src.split('/').pop()));
-      const actualIndex = clickedIndex !== -1 ? clickedIndex : idx;
+      const actualIndex = clickedIndex !== -1 ? clickedIndex : sectionIndexes[id];
       openLightbox(img.src, img.alt, id, actualIndex);
-      idx = actualIndex; // Sync idx with the clicked image
+      sectionIndexes[id] = actualIndex; // Sync idx with the clicked image
     });
 
-    prev.addEventListener('click', () => render(idx - 1));
-    next.addEventListener('click', () => render(idx + 1));
+    prev.addEventListener('click', () => render(sectionIndexes[id] - 1));
+    next.addEventListener('click', () => render(sectionIndexes[id] + 1));
   });
 
 }
