@@ -45,7 +45,12 @@ button, input, textarea, select { font: inherit; }
 }
 
 .section {
-  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   padding: clamp(40px, 8vw, 100px) 0;
 }
 
