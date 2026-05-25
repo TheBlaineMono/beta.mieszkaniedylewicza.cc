@@ -164,9 +164,12 @@ function initGallery() {
     stage.addEventListener('click', (event) => {
       const img = event.target.closest('img');
       if (!img) return;
-      // Find the actual index of the clicked image by checking the full relative path
-      const clickedIndex = images.findIndex(src => img.src.includes(src));
-      const actualIndex = clickedIndex !== -1 ? clickedIndex : sectionIndexes[id];
+      // Find which subslide contains the clicked image
+      const clickedSlide = img.closest('.subslide');
+      if (!clickedSlide) return;
+      const allSlides = Array.from(slides());
+      const actualIndex = allSlides.indexOf(clickedSlide);
+      if (actualIndex === -1) return;
       openLightbox(images[actualIndex], `${id} ${actualIndex + 1}`, id, actualIndex);
       sectionIndexes[id] = actualIndex; // Sync idx with the clicked image
     });
