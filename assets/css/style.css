@@ -449,6 +449,7 @@ a:focus-visible {
   }
   .hero-grid {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
   .hero-copy {
     min-height: 360px;
