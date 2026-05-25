@@ -164,11 +164,10 @@ function initGallery() {
     stage.addEventListener('click', (event) => {
       const img = event.target.closest('img');
       if (!img) return;
-      // Find the actual index of the clicked image
-      const clickedSrc = img.src;
-      const clickedIndex = images.findIndex(src => img.src.includes(src.split('/').pop()));
+      // Find the actual index of the clicked image by checking the full relative path
+      const clickedIndex = images.findIndex(src => img.src.includes(src));
       const actualIndex = clickedIndex !== -1 ? clickedIndex : sectionIndexes[id];
-      openLightbox(img.src, img.alt, id, actualIndex);
+      openLightbox(images[actualIndex], `${id} ${actualIndex + 1}`, id, actualIndex);
       sectionIndexes[id] = actualIndex; // Sync idx with the clicked image
     });
 
