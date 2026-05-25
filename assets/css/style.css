@@ -401,7 +401,9 @@ a:focus-visible {
 .gallery-flex .room-tiles {
   grid-column: 2 / -1;
   grid-row: 1 / -1;
-  display: contents;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 28px);
 }
 .content-section .flex {
   display: grid;
