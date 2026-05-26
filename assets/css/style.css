@@ -188,7 +188,7 @@ a:focus-visible {
   grid-template-columns: 1.02fr .98fr;
   min-height: clamp(460px, 56vw, 700px);
   overflow: hidden;
-  border-radius: var(--radius-xl);
+  /* border-radius: var(--radius-xl); */
   box-shadow: var(--shadow);
 }
 .hero-copy {
