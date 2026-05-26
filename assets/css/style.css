@@ -338,7 +338,7 @@ a:focus-visible {
 
 .floor-plans {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: clamp(16px, 2vw, 24px);
   margin-top: 32px;
 }
