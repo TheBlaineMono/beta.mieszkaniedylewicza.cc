@@ -43,7 +43,12 @@ button, input, textarea, select { font: inherit; }
   margin: 0 auto;
   padding: 0 var(--padding);
 }
-
+.wrap-hero {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  /* padding: 0 var(--padding); */
+}
 .section {
   width: 100vw;
   position: relative;
