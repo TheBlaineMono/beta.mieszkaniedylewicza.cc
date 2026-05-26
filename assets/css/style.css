@@ -339,7 +339,7 @@ a:focus-visible {
 .floor-plan-placeholder {
   width: 100%;
   height: auto;
-  aspect-ratio: 1;
+  /* aspect-ratio: 1; */
   background: var(--surface-2);
   border: 2px dashed var(--line);
   border-radius: var(--radius-lg);
