@@ -307,9 +307,9 @@ a:focus-visible {
 }
 .opis-grid, .content-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 400px) 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: clamp(20px, 5vw, 50px);
-  align-items: start;
+  align-items: stretch;
 }
 .opis h2, .section-title {
   margin: 0;
@@ -351,7 +351,9 @@ a:focus-visible {
   border-radius: var(--radius-lg);
   object-fit: cover;
 }
-
+.opis-text,.floor-plans {
+  min-width: 0;
+}
 .room-tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
