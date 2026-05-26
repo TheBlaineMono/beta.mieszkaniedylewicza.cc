@@ -144,7 +144,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 800;
+  font-weight: 1200;
   white-space: nowrap;
   color: #fff;
 }
